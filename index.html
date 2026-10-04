@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monet – Know your wealth. All in one place.</title>
+<style>
+:root{--navy:#1A237E;--green:#00C853;--white:#FFFFFF;--card:#F5F5F5;--text:#263238;--coral:#FF6F61}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--white);color:var(--text);line-height:1.6}
+section{padding:96px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+h2.big{font-size:clamp(2rem,5.5vw,4rem);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-1.5px;color:var(--navy);margin-bottom:48px;max-width:900px}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 28px;background:rgba(26,35,126,.92);backdrop-filter:blur(6px)}
+nav .logo{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:900;letter-spacing:3px;text-decoration:none}
+nav .logo svg{width:34px;height:34px}
+nav .links{display:flex;gap:28px;align-items:center}
+nav a.l{color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.85}
+nav a.l:hover{color:var(--green);opacity:1}
+.lang{display:flex;border:2px solid var(--white);border-radius:999px;overflow:hidden}
+.lang button{border:0;padding:5px 12px;font-weight:800;cursor:pointer;background:transparent;color:var(--white)}
+.lang button.on{background:var(--green)}
+.hero{background:var(--navy);color:var(--white);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 24px 60px}
+.badge{display:inline-block;align-self:flex-start;padding:8px 18px;border:2px solid var(--green);border-radius:999px;font-weight:700;font-size:.85rem;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,200,83,.6)}50%{box-shadow:0 0 0 12px rgba(0,200,83,0)}}
+.hero .row{display:flex;align-items:center;gap:24px;margin:28px 0 8px}
+.avatar{flex:none;width:clamp(72px,12vw,150px);height:clamp(72px,12vw,150px)}
+.hero h1{font-size:clamp(4rem,17vw,12rem);font-weight:900;line-height:.9;letter-spacing:-4px;text-transform:uppercase}
+.hero .tag{font-size:clamp(.7rem,3.4vw,2.6rem);font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:-.5px;color:var(--green);white-space:nowrap;margin-top:12px}
+.hero .sub{max-width:560px;margin-top:20px;opacity:.85;font-size:1.1rem}
+.ticker{background:var(--green);color:var(--navy);overflow:hidden;white-space:nowrap;padding:14px 0;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+.ticker div{display:inline-block;animation:slide 22s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pane{padding:44px 36px}
+.pane h3{font-size:2rem;font-weight:900;text-transform:uppercase;letter-spacing:-1px;margin-bottom:20px}
+.chaos{background:var(--card)}.chaos h3{color:var(--coral)}
+.sol{background:var(--navy);color:var(--white)}.sol h3{color:var(--green)}
+.pane li{list-style:none;padding:16px 0;border-top:1px solid rgba(38,50,56,.25)}
+.sol li{border-color:rgba(255,255,255,.3)}
+.alt{background:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.cap{border-top:6px solid var(--navy);padding-top:20px}
+.cap .n{font-size:3.4rem;font-weight:900;color:var(--green);line-height:1}
+.cap h3{font-size:1.5rem;text-transform:uppercase;color:var(--navy);font-weight:900;margin:8px 0}
+.cap .tags{margin-top:16px;padding-top:12px;border-top:1px solid #CFD8DC;font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--navy)}
+.chat{max-width:600px;margin:0 auto;background:var(--white);border:3px solid var(--navy);overflow:hidden}
+.chead{background:var(--navy);color:var(--white);padding:14px 18px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.msgs{height:380px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FAFAFA}
+.m{max-width:84%;padding:10px 14px;border-radius:14px;font-size:.95rem;animation:in .3s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.u{align-self:flex-end;background:var(--navy);color:var(--white);border-bottom-right-radius:3px}
+.a{align-self:flex-start;background:var(--card);border-bottom-left-radius:3px}
+.typing span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#90A4AE;animation:b 1s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.chart{align-self:stretch;max-width:100%;background:var(--white);border:2px solid var(--navy);border-radius:10px;font-size:.8rem}
+.chart b{display:block;margin:10px 0 4px;color:var(--navy);text-transform:uppercase;letter-spacing:1px;font-size:.72rem}
+.chart b:first-child{margin-top:0}
+.br{display:flex;align-items:center;gap:8px;margin:6px 0}
+.br span{width:74px;flex:none}
+.br em{width:34px;flex:none;font-style:normal;font-weight:800;text-align:right}
+.tr{flex:1;height:16px;background:#ECEFF1;border-radius:4px;overflow:hidden}
+.stack{display:flex;height:20px;background:#ECEFF1;border-radius:4px;overflow:hidden}
+.tr i,.stack i{display:block;height:100%;width:0;transition:width 1s ease}
+.leg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px}
+.leg u{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;text-decoration:none}
+.btns{display:flex;flex-wrap:wrap;gap:8px;padding:14px;border-top:3px solid var(--navy)}
+.btns button{flex:1 1 150px;padding:12px;border:2px solid var(--navy);background:var(--white);color:var(--navy);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:1px;cursor:pointer}
+.btns button:hover:not(:disabled){background:var(--navy);color:var(--white)}
+.btns button:disabled{opacity:.5;cursor:wait}
+footer{background:var(--navy);color:var(--white);padding:96px 24px 40px}
+footer h2{font-size:clamp(2.4rem,8vw,6rem);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-2px;margin-bottom:20px}
+footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
+.built{margin-top:80px;padding-top:20px;border-top:1px solid rgba(255,255,255,.3);font-size:.85rem;opacity:.7}
+.cta{position:fixed;right:24px;bottom:24px;z-index:30;padding:16px 34px;background:var(--green);color:var(--white);font-size:1.05rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(0,200,83,.55);animation:float 3s ease-in-out infinite}
+.cta:hover{background:#00B248}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:760px){.cols,.cards{grid-template-columns:1fr}nav .links a.l{display:none}section{padding:64px 20px}.cta{right:14px;bottom:14px;padding:14px 26px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 120 120">
+    <rect width="120" height="120" rx="28" fill="#F6F1E4"/>
+    <g transform="translate(0,-5)" fill="none" stroke="#0F5C4D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M30 84V58A15 15 0 0 1 60 58V84M60 58A15 15 0 0 1 90 58V66"/>
+    </g>
+    <circle cx="90" cy="78" r="7" fill="#E5A02B"/>
+  </symbol>
+</svg>
+
+<nav>
+  <a class="logo" href="#top"><svg role="img" aria-label="Monet logo"><use href="#mk"/></svg>MONET</a>
+  <div class="links">
+    <a class="l" href="#problem" data-k="n1"></a><a class="l" href="#features" data-k="n2"></a><a class="l" href="#demo" data-k="n3"></a>
+    <div class="lang"><button id="en" class="on" onclick="setLang('en')">EN</button><button id="id" onclick="setLang('id')">ID</button></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <span class="badge" data-k="badge"></span>
+  <div class="row"><svg class="avatar" role="img" aria-label="Monet logo"><use href="#mk"/></svg><h1>Monet</h1></div>
+  <p class="tag">Know your wealth. All in one place.</p>
+  <p class="sub" data-k="sub"></p>
+</header>
+
+<div class="ticker"><div id="tk"></div></div>
+
+<section id="problem"><div class="wrap">
+  <h2 class="big" data-k="psTitle"></h2>
+  <div class="cols">
+    <div class="pane chaos"><h3>😵 The Chaos</h3><ul><li data-k="c1"></li><li data-k="c2"></li><li data-k="c3"></li></ul></div>
+    <div class="pane sol"><h3>✅ The Solution</h3><ul><li data-k="s1"></li><li data-k="s2"></li><li data-k="s3"></li></ul></div>
+  </div>
+</div></section>
+
+<section class="alt" id="features"><div class="wrap">
+  <h2 class="big" data-k="capTitle"></h2>
+  <div class="cards">
+    <div class="cap"><div class="n">01</div><h3 data-k="k1t"></h3><p data-k="k1d"></p><div class="tags">Gmail · Outlook</div></div>
+    <div class="cap"><div class="n">02</div><h3 data-k="k2t"></h3><p data-k="k2d"></p><div class="tags">WhatsApp API</div></div>
+    <div class="cap"><div class="n">03</div><h3 data-k="k3t"></h3><p data-k="k3d"></p><div class="tags">Human-in-the-Loop</div></div>
+  </div>
+</div></section>
+
+<section id="demo"><div class="wrap">
+  <h2 class="big" data-k="simTitle"></h2>
+  <div class="chat">
+    <div class="chead">💰 Monet</div>
+    <div class="msgs" id="msgs"></div>
+    <div class="btns"><button data-k="b1"></button><button data-k="b2"></button><button data-k="b3"></button></div>
+  </div>
+</div></section>
+
+<footer id="signup">
+  <h2 data-k="ctaTitle"></h2>
+  <p class="s" data-k="ctaSub"></p>
+  <p class="built">Built with AI · AI Builder Bootcamp Showcase</p>
+</footer>
+
+<a class="cta" href="#signup" data-k="cta"></a>
+
+<script>
+const T={
+en:{n1:"Problem",n2:"Features",n3:"Demo",badge:"🟢 Status: Active & Ready 24/7",
+sub:"Monet records your personal finances by reading your emails, chatting on WhatsApp, or taking manual input.",
+psTitle:"We turn money chaos into clarity",
+c1:"Tiring manual logging: you get too lazy to record every transaction by hand.",
+c2:"Forgotten small spends: micro-expenses slip through and shock you at month-end.",
+c3:"Scattered data: multiple banks, e-wallets, and investments hide your real-time net worth.",
+s1:"One place for all your financial records, captured automatically.",
+s2:"Financial reports generated on demand to show your true condition.",
+s3:"Bill reminders so you never miss a due date.",
+capTitle:"Everything Monet does is made to simplify",
+k1t:"Email Reading",k1d:"Connects to your inbox to capture receipts and transactions automatically.",
+k2t:"WhatsApp Chat",k2d:"Just text Monet: “lunch 35k” and it is logged instantly.",
+k3t:"Human-in-the-Loop",k3d:"Monet asks you to confirm uncertain entries, so your data stays accurate.",
+simTitle:"Try Monet live",b1:"📧 Read my email",b2:"💬 Log via WhatsApp",b3:"📊 Monthly report",
+ctaTitle:"Ready to know your wealth?",ctaSub:"Join Monet and put your finances in one place.",cta:"Sign Up Now",
+tk:"Track · Save · Invest · Remind · Report · ",
+ch1:"Income vs Expenses vs Savings (Rp M)",ch2:"Where your expenses go (Rp M)",
+inc:"Income",exp:"Expenses",sav:"Savings",food:"Food",trans:"Transport",bills:"Bills",oth:"Others",
+sims:[
+["Email from GoPay: Payment Rp 85,000 at Kopi Kenangan.","📧 Found a receipt in your inbox: Rp 85,000 at Kopi Kenangan. Category: Food & Drink. Logged! ✅"],
+["Lunch 35k, parking 5k","💬 Got it! Logged 2 items: Lunch Rp 35,000 and Parking Rp 5,000. Total today: Rp 40,000. ✅"],
+["Show me my report for this month","📊 This month: Income Rp 12.5M, Expenses Rp 8.2M, Savings Rp 4.3M (34%). ⚠️ Food spending is up 18%. Your electricity bill is due in 3 days. 🔔"]]},
+id:{n1:"Masalah",n2:"Fitur",n3:"Demo",badge:"🟢 Status: Aktif & Siaga 24/7",
+sub:"Monet mencatat keuangan pribadimu dengan membaca email, chat lewat WhatsApp, atau input manual.",
+psTitle:"Kami ubah kekacauan uang jadi jelas",
+c1:"Pencatatan manual yang melelahkan: malas mencatat transaksi satu per satu setiap hari.",
+c2:"Lupa transaksi kecil: pengeluaran kecil sering terlewat dan mengejutkan di akhir bulan.",
+c3:"Data tersebar: banyak rekening bank, e-wallet, dan investasi menyulitkan melihat total kekayaan secara real-time.",
+s1:"Pencatatan keuangan dalam satu tempat, tercatat otomatis.",
+s2:"Laporan keuangan dibuat kapan saja untuk melihat kondisi keuanganmu.",
+s3:"Pengingat bayar tagihan agar tidak pernah telat.",
+capTitle:"Semua yang Monet lakukan dibuat untuk menyederhanakan",
+k1t:"Membaca Email",k1d:"Terhubung ke inbox untuk menangkap struk dan transaksi secara otomatis.",
+k2t:"Chat WhatsApp",k2d:"Cukup kirim pesan ke Monet: “makan siang 35rb” langsung tercatat.",
+k3t:"Human-in-the-Loop",k3d:"Monet meminta konfirmasimu untuk data yang meragukan, sehingga catatan tetap akurat.",
+simTitle:"Coba Monet langsung",b1:"📧 Baca email saya",b2:"💬 Catat via WhatsApp",b3:"📊 Laporan bulanan",
+ctaTitle:"Siap mengenal kekayaanmu?",ctaSub:"Bergabung dengan Monet dan satukan keuanganmu di satu tempat.",cta:"Daftar Sekarang",
+tk:"Catat · Tabung · Investasi · Ingatkan · Laporkan · ",
+ch1:"Pemasukan vs Pengeluaran vs Tabungan (Rp jt)",ch2:"Ke mana pengeluaranmu pergi (Rp jt)",
+inc:"Pemasukan",exp:"Pengeluaran",sav:"Tabungan",food:"Makanan",trans:"Transportasi",bills:"Tagihan",oth:"Lainnya",
+sims:[
+["Email dari GoPay: Pembayaran Rp 85.000 di Kopi Kenangan.","📧 Struk ditemukan di inbox: Rp 85.000 di Kopi Kenangan. Kategori: Makanan & Minuman. Tercatat! ✅"],
+["Makan siang 35rb, parkir 5rb","💬 Siap! 2 item tercatat: Makan siang Rp 35.000 dan Parkir Rp 5.000. Total hari ini: Rp 40.000. ✅"],
+["Tampilkan laporan bulan ini","📊 Bulan ini: Pemasukan Rp 12,5 jt, Pengeluaran Rp 8,2 jt, Tabungan Rp 4,3 jt (34%). ⚠️ Pengeluaran makanan naik 18%. Tagihan listrik jatuh tempo 3 hari lagi. 🔔"]]}
+};
+let lang="en",busy=false;
+const $=s=>document.querySelector(s),box=$("#msgs");
+function setLang(l){
+  lang=l;document.documentElement.lang=l;
+  document.querySelectorAll("[data-k]").forEach(e=>e.textContent=T[l][e.dataset.k]);
+  $("#tk").textContent=T[l].tk.repeat(8);
+  $("#en").classList.toggle("on",l==="en");$("#id").classList.toggle("on",l==="id");
+  box.innerHTML="";
+}
+function add(txt,cls){
+  const d=document.createElement("div");d.className="m "+cls;
+  if(txt)d.textContent=txt;box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
+}
+function addChart(){
+  const L=T[lang],d=document.createElement("div");d.className="m chart";
+  const rows=[[L.inc,12.5,"var(--navy)"],[L.exp,8.2,"var(--coral)"],[L.sav,4.3,"var(--green)"]];
+  const cats=[[L.food,3.1,"var(--navy)"],[L.trans,1.4,"var(--green)"],[L.bills,2.2,"var(--coral)"],[L.oth,1.5,"#90A4AE"]];
+  d.innerHTML="<b>"+L.ch1+"</b>"+rows.map(r=>`<div class="br"><span>${r[0]}</span><div class="tr"><i data-w="${r[1]/12.5*100}" style="background:${r[2]}"></i></div><em>${r[1]}</em></div>`).join("")
+    +"<b>"+L.ch2+"</b><div class='stack'>"+cats.map(c=>`<i data-w="${c[1]/8.2*100}" style="background:${c[2]}"></i>`).join("")+"</div>"
+    +"<div class='leg'>"+cats.map(c=>`<span><u style="background:${c[2]}"></u>${c[0]} ${c[1]}</span>`).join("")+"</div>";
+  box.appendChild(d);box.scrollTop=box.scrollHeight;
+  setTimeout(()=>d.querySelectorAll("i[data-w]").forEach(e=>e.style.width=e.dataset.w+"%"),60);
+}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function run(i){
+  if(busy)return;busy=true;
+  const bs=document.querySelectorAll(".btns button");bs.forEach(b=>b.disabled=true);
+  box.innerHTML="";
+  const [u,a]=T[lang].sims[i];
+  await wait(200);add(u,"u");
+  await wait(500);
+  const t=add("","a typing");t.innerHTML="<span></span><span></span><span></span>";box.scrollTop=box.scrollHeight;
+  await wait(1500);
+  t.remove();add(a,"a");
+  if(i===2){await wait(400);addChart();}
+  bs.forEach(b=>b.disabled=false);busy=false;
+}
+document.querySelectorAll(".btns button").forEach((b,i)=>b.addEventListener("click",()=>run(i)));
+setLang("en");
+</script>
+</body>
+</html>
