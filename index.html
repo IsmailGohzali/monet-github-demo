@@ -75,10 +75,6 @@ nav a.l:hover{color:var(--green);opacity:1}
 .btns button{flex:1 1 150px;padding:12px;border:2px solid var(--navy);background:var(--white);color:var(--navy);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:1px;cursor:pointer}
 .btns button:hover:not(:disabled){background:var(--navy);color:var(--white)}
 .btns button:disabled{opacity:.5;cursor:wait}
-#places{width:100%;border-collapse:collapse;font-size:.9rem}
-#places th,#places td{padding:10px 12px;text-align:left;border-bottom:1px solid #CFD8DC}
-#places th{background:var(--navy);color:var(--white);text-transform:uppercase;letter-spacing:1px;font-size:.75rem}
-#places a{color:var(--navy);font-weight:700}
 footer{background:var(--navy);color:var(--white);padding:96px 24px 40px}
 footer h2{font-size:clamp(2.4rem,8vw,6rem);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-2px;margin-bottom:20px}
 footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
@@ -142,58 +138,6 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
     <div class="msgs" id="msgs"></div>
     <div class="btns"><button data-k="b1"></button><button data-k="b2"></button><button data-k="b3"></button></div>
   </div>
-</div></section>
-
-<section class="alt" id="places-section"><div class="wrap" style="overflow-x:auto">
-<table id="places">
-  <thead>
-    <tr><th>Nama</th><th>Kategori</th><th>Rating</th><th>Review</th><th>Kota</th><th>Telepon</th><th>Maps</th></tr>
-  </thead>
-  <tbody><tr><td colspan="7">Memuat data...</td></tr></tbody>
-</table>
-
-<script>
-  const SUPABASE_URL = 'https://hkytiyjkgpnyhczlhisg.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_9w8d9yYhZZGeD1wMhuGpZA_50mSEDga'; // publishable key, BUKAN secret key
-
-  async function loadPlaces() {
-    const tbody = document.querySelector('#places tbody');
-    try {
-      const res = await fetch(
-        SUPABASE_URL + '/rest/v1/places?select=*&order=reviews_count.desc.nullslast&limit=100',
-        { headers: { apikey: SUPABASE_KEY } }
-      );
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const rows = await res.json();
-
-      tbody.replaceChildren();
-      for (const p of rows) {
-        const tr = document.createElement('tr');
-        for (const v of [p.title, p.category_name, p.total_score, p.reviews_count, p.city, p.phone]) {
-          const td = document.createElement('td');
-          td.textContent = v ?? '-';
-          tr.appendChild(td);
-        }
-        const td = document.createElement('td');
-        if (p.url && p.url.startsWith('https://')) {
-          const a = document.createElement('a');
-          a.href = p.url;
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.textContent = 'Buka';
-          td.appendChild(a);
-        }
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-      }
-      if (!rows.length) tbody.innerHTML = '<tr><td colspan="7">Belum ada data.</td></tr>';
-    } catch (e) {
-      tbody.innerHTML = '<tr><td colspan="7">Gagal memuat data.</td></tr>';
-      console.error(e);
-    }
-  }
-  loadPlaces();
-</script>
 </div></section>
 
 <footer id="signup">
