@@ -52,7 +52,7 @@ nav a.l:hover{color:var(--green);opacity:1}
 .cap .tags{margin-top:16px;padding-top:12px;border-top:1px solid #CFD8DC;font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--navy)}
 .chat{max-width:600px;margin:0 auto;background:var(--white);border:3px solid var(--navy);overflow:hidden}
 .chead{background:var(--navy);color:var(--white);padding:14px 18px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
-.msgs{height:380px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FAFAFA}
+.msgs{height:480px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#FAFAFA}
 .m{max-width:84%;padding:10px 14px;border-radius:14px;font-size:.95rem;animation:in .3s}
 @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .u{align-self:flex-end;background:var(--navy);color:var(--white);border-bottom-right-radius:3px}
@@ -60,17 +60,16 @@ nav a.l:hover{color:var(--green);opacity:1}
 .typing span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:#90A4AE;animation:b 1s infinite}
 .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
 @keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.chart{align-self:stretch;max-width:100%;background:var(--white);border:2px solid var(--navy);border-radius:10px;font-size:.8rem}
-.chart b{display:block;margin:10px 0 4px;color:var(--navy);text-transform:uppercase;letter-spacing:1px;font-size:.72rem}
-.chart b:first-child{margin-top:0}
-.br{display:flex;align-items:center;gap:8px;margin:6px 0}
-.br span{width:74px;flex:none}
-.br em{width:34px;flex:none;font-style:normal;font-weight:800;text-align:right}
-.tr{flex:1;height:16px;background:#ECEFF1;border-radius:4px;overflow:hidden}
-.stack{display:flex;height:20px;background:#ECEFF1;border-radius:4px;overflow:hidden}
-.tr i,.stack i{display:block;height:100%;width:0;transition:width 1s ease}
-.leg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px}
-.leg u{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;text-decoration:none}
+.pie{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:10px 0;padding:12px;background:var(--white);border:2px solid var(--navy);border-radius:10px}
+.pie>b{flex-basis:100%;color:var(--navy);text-transform:uppercase;letter-spacing:1px;font-size:.7rem}
+.pie svg{width:150px;height:150px;flex:none;animation:pop .7s ease}
+@keyframes pop{from{opacity:0;transform:rotate(-60deg) scale(.6)}to{opacity:1;transform:none}}
+.pie path{cursor:default;transition:opacity .2s}.pie svg:hover path{opacity:.55}.pie svg path:hover{opacity:1}
+.pie text{font-weight:800;font-size:9px;pointer-events:none}
+.pie ul{list-style:none;flex:1 1 150px;font-size:.8rem}
+.pie li{display:flex;align-items:center;gap:6px;padding:2px 0}
+.pie li u{width:10px;height:10px;border-radius:2px;flex:none}
+.pie li em{margin-left:auto;font-style:normal;color:#546E7A;white-space:nowrap}
 .btns{display:flex;flex-wrap:wrap;gap:8px;padding:14px;border-top:3px solid var(--navy)}
 .btns button{flex:1 1 150px;padding:12px;border:2px solid var(--navy);background:var(--white);color:var(--navy);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:1px;cursor:pointer}
 .btns button:hover:not(:disabled){background:var(--navy);color:var(--white)}
@@ -82,7 +81,40 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
 .cta{position:fixed;right:24px;bottom:24px;z-index:30;padding:16px 34px;background:var(--green);color:var(--white);font-size:1.05rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(0,200,83,.55);animation:float 3s ease-in-out infinite}
 .cta:hover{background:#00B248}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media(max-width:760px){.cols,.cards{grid-template-columns:1fr}nav .links a.l{display:none}section{padding:64px 20px}.cta{right:14px;bottom:14px;padding:14px 26px}}
+.lead{font-size:1.15rem;max-width:640px;margin:-28px 0 44px;opacity:.85}
+.cards.four{grid-template-columns:repeat(4,1fr);gap:28px}
+.agent{border-top-color:var(--c)}
+.ico{font-size:2.4rem;line-height:1;margin-bottom:6px}
+.hub{display:flex;align-items:center;gap:14px;margin-top:56px;flex-wrap:wrap}
+.hub h4{flex-basis:100%;font-size:.85rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--navy)}
+.node{display:flex;align-items:center;gap:8px;padding:12px 18px;border:2px solid var(--navy);border-radius:14px;background:var(--white);color:var(--navy);font-weight:800}
+.node small{display:block;font-size:.7rem;font-weight:700;opacity:.7;letter-spacing:1px;text-transform:uppercase}
+.node.boss{background:var(--navy);color:var(--white);padding:18px 24px;font-size:1.15rem}
+.link{display:flex;flex-direction:column;align-items:center;color:var(--green);font-weight:900}
+.link span{font-size:1.6rem;line-height:1}.link small{font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--navy);opacity:.75;white-space:nowrap}
+.agents{display:flex;flex-direction:column;gap:10px}
+.note{flex-basis:100%;margin-top:6px;font-size:.95rem;opacity:.8}
+.role{font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#546E7A;margin:-4px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{background:var(--card);padding:6px 12px;border-radius:999px;font-weight:700;font-size:.85rem;color:var(--navy)}
+.a.monet{border-left:4px solid var(--navy);max-width:92%}
+.a .who{display:block;font-size:.66rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;color:var(--navy)}
+.sec{margin-top:10px;padding-top:8px;border-top:1px solid #CFD8DC}
+.sec:first-of-type{margin-top:4px;padding-top:0;border-top:0}
+.sec>i{display:block;font-style:normal;font-size:.66rem;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:2px;color:var(--c)}
+.sec.bk{--c:#00873A}.sec.an{--c:#D84315}.sec.rm{--c:#A86B00}.sec.end{--c:var(--navy)}
+.log{align-self:center;max-width:94%;font-size:.74rem;color:#546E7A;border:1px dashed #B0BEC5;border-radius:8px;padding:3px 10px;background:transparent}
+.log b{color:var(--navy)}
+.m table{width:100%;border-collapse:collapse;margin-top:6px;font-size:.76rem}
+.m th,.m td{text-align:left;padding:4px 5px;border-bottom:1px solid #CFD8DC}
+.m th{color:var(--navy);text-transform:uppercase;letter-spacing:.5px;font-size:.64rem}
+.m td.r{text-align:right;white-space:nowrap}
+.tw{overflow-x:auto}
+.m ol{padding-left:20px;margin-top:4px}
+.m small{display:block;margin-top:6px;opacity:.7;font-size:.75rem}
+.mem{align-self:center;background:#E8F5E9;color:#1B5E20;font-size:.78rem;font-weight:700;border-radius:999px;padding:6px 14px;text-align:center}
+@media(max-width:1000px){.cards.four{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.cols,.cards,.cards.four{grid-template-columns:1fr}.m table{font-size:.7rem}.m th,.m td{padding:4px 2px}.m table .y{display:none}.m th{letter-spacing:0;font-size:.6rem}.msgs{padding:12px}.a.monet{max-width:100%;padding:10px}.hub{flex-direction:column;align-items:stretch}.link{flex-direction:row;justify-content:center;gap:8px}.link span{transform:rotate(90deg)}nav .links a.l{display:none}section{padding:64px 20px}.cta{right:14px;bottom:14px;padding:14px 26px}}
 </style>
 </head>
 <body>
@@ -100,7 +132,7 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
 <nav>
   <a class="logo" href="#top"><svg viewBox="22 30 78 58" role="img" aria-label="Monet logo"><use href="#mk"/></svg><span>MONET</span></a>
   <div class="links">
-    <a class="l" href="#problem" data-k="n1"></a><a class="l" href="#features" data-k="n2"></a><a class="l" href="#demo" data-k="n3"></a>
+    <a class="l" href="#problem" data-k="n1"></a><a class="l" href="#team" data-k="n2"></a><a class="l" href="#features" data-k="n3"></a><a class="l" href="#demo" data-k="n4"></a>
     <div class="lang"><button id="en" class="on" onclick="setLang('en')">EN</button><button id="id" onclick="setLang('id')">ID</button></div>
   </div>
 </nav>
@@ -117,8 +149,38 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
 <section id="problem"><div class="wrap">
   <h2 class="big" data-k="psTitle"></h2>
   <div class="cols">
-    <div class="pane chaos"><h3>😵 The Chaos</h3><ul><li data-k="c1"></li><li data-k="c2"></li><li data-k="c3"></li></ul></div>
-    <div class="pane sol"><h3>✅ The Solution</h3><ul><li data-k="s1"></li><li data-k="s2"></li><li data-k="s3"></li></ul></div>
+    <div class="pane chaos"><h3>😵 The Chaos</h3><ul><li data-k="c1"></li><li data-k="c2"></li><li data-k="c3"></li><li data-k="c4"></li></ul></div>
+    <div class="pane sol"><h3>✅ The Solution</h3><ul><li data-k="s1"></li><li data-k="s2"></li><li data-k="s3"></li><li data-k="s4"></li></ul></div>
+  </div>
+</div></section>
+
+<section class="alt" id="team"><div class="wrap">
+  <h2 class="big" data-k="teamTitle"></h2>
+  <p class="lead" data-k="teamLead"></p>
+  <div class="cards four">
+    <div class="cap agent" style="--c:var(--navy)"><div class="ico">🎯</div><h3>Monet</h3><div class="role" data-k="r1"></div><p data-k="a1d"></p><div class="tags" data-k="a1g"></div></div>
+    <div class="cap agent" style="--c:var(--green)"><div class="ico">📒</div><h3>Bookkeeper</h3><div class="role" data-k="r2"></div><p data-k="a2d"></p><div class="tags" data-k="a2g"></div></div>
+    <div class="cap agent" style="--c:var(--coral)"><div class="ico">📊</div><h3>Analyst</h3><div class="role" data-k="r2"></div><p data-k="a3d"></p><div class="tags" data-k="a3g"></div></div>
+    <div class="cap agent" style="--c:#F2B544"><div class="ico">⏰</div><h3>Reminder</h3><div class="role" data-k="r2"></div><p data-k="a4d"></p><div class="tags" data-k="a4g"></div></div>
+  </div>
+  <div class="hub">
+    <h4 data-k="hubTitle"></h4>
+    <div class="node">💬 <span data-k="you"></span></div>
+    <div class="link"><span>⇄</span><small data-k="l1"></small></div>
+    <div class="node boss">🎯 <span>Monet<small>Manager</small></span></div>
+    <div class="link"><span>⇄</span><small data-k="l2"></small></div>
+    <div class="agents"><div class="node">📒 Bookkeeper</div><div class="node">📊 Analyst</div><div class="node">⏰ Reminder</div></div>
+    <p class="note" data-k="hubNote"></p>
+  </div>
+</div></section>
+
+<section id="memory"><div class="wrap">
+  <h2 class="big" data-k="memTitle"></h2>
+  <p class="lead" data-k="memLead"></p>
+  <div class="cards">
+    <div class="cap"><div class="ico">💸</div><h3 data-k="m1t"></h3><div class="chips" data-chips="m1f"></div></div>
+    <div class="cap"><div class="ico">🧾</div><h3 data-k="m2t"></h3><div class="chips" data-chips="m2f"></div></div>
+    <div class="cap"><div class="ico">⚙️</div><h3 data-k="m3t"></h3><div class="chips" data-chips="m3f"></div></div>
   </div>
 </div></section>
 
@@ -133,8 +195,9 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
 
 <section id="demo"><div class="wrap">
   <h2 class="big" data-k="simTitle"></h2>
+  <p class="lead" data-k="simLead"></p>
   <div class="chat">
-    <div class="chead">💰 Monet</div>
+    <div class="chead">🎯 Monet · Manager</div>
     <div class="msgs" id="msgs"></div>
     <div class="btns"><button data-k="b1"></button><button data-k="b2"></button><button data-k="b3"></button></div>
   </div>
@@ -150,86 +213,222 @@ footer p.s{font-size:1.2rem;opacity:.85;max-width:560px}
 
 <script>
 const T={
-en:{n1:"Problem",n2:"Features",n3:"Demo",badge:"🟢 Status: Active & Ready 24/7",
-sub:"Monet records your personal finances by reading your emails, chatting on WhatsApp, or taking manual input.",
+en:{n1:"Problem",n2:"Team",n3:"Features",n4:"Demo",badge:"🟢 Status: Active & Ready 24/7",
+sub:"Just chat with Monet, your AI finance manager. Behind the scenes, Monet runs a team of agents (Bookkeeper, Analyst & Reminder) that logs your finances from email, WhatsApp, or manual input, reports your real condition, and reminds you before bills are due.",
 psTitle:"We turn money chaos into clarity",
-c1:"Tiring manual logging: you get too lazy to record every transaction by hand.",
-c2:"Forgotten small spends: micro-expenses slip through and shock you at month-end.",
-c3:"Scattered data: multiple banks, e-wallets, and investments hide your real-time net worth.",
-s1:"One place for all your financial records, captured automatically.",
-s2:"Financial reports generated on demand to show your true condition.",
-s3:"Bill reminders so you never miss a due date.",
+c1:"Tedious logging: tracking personal finances is a hassle that eats up your time.",
+c2:"Scattered transactions: many banks, e-wallets, and cards mean entries get forgotten.",
+c3:"No clear picture: you don't really know your financial condition right now.",
+c4:"Missed due dates: paying bills late means paying penalty fees.",
+s1:"Just chat with Monet, forward an email, or snap a receipt. Monet and its team do the rest.",
+s2:"Bookkeeper logs transactions from every account automatically, so nothing slips.",
+s3:"Analyst turns your records into reports, plus saving and investing tips.",
+s4:"Reminder flags bills before they're due, and Monet reminds you, so no more late fees.",
+teamTitle:"Meet the team behind Monet",
+teamLead:"You only talk to Monet. Monet passes your request to the right agent, collects their work, and brings the answer back to you.",
+r1:"Manager · your only contact",r2:"Specialist · reports to Monet",
+a1d:"Your single point of contact. Monet forwards your requests to the agents, checks their results for consistency, and replies with one clear answer.",a1g:"Listen · Forward · Answer",
+a2d:"Turns messy input from Monet (free text, bank statements, notifications, receipts) into clean records across all your accounts, and flags missing or duplicate entries.",a2g:"Record · Clean · Verify",
+a3d:"Receives transaction and bill data from Monet, builds financial reports, and prepares saving and investing tips that fit your goals.",a3g:"Report · Save · Invest",
+a4d:"Tracks every bill and alerts Monet before one is due: 🔴 3 days or less, 🟡 4–7 days, 🟢 later. Monet then reminds you.",a4g:"Track · Alert · Remind",
+hubTitle:"How the team communicates",you:"You",l1:"chat",l2:"forward · report",
+hubNote:"Agents never talk to you or to each other directly. Every request and every answer goes through Monet.",
+memTitle:"What Monet remembers",
+memLead:"Every new entry shows up as a 🧠 Memory Update, so you never have to repeat yourself.",
+m1t:"Transactions",m1f:"Date · Type · Account · Description · Amount",
+m2t:"Bills",m2f:"Bill type · Due date · Amount · Status",
+m3t:"Preferences",m3f:"Investment goal · Time horizon · Risk profile · Monthly budget",
 capTitle:"Everything Monet does is made to simplify",
 k1t:"Email Reading",k1d:"Connects to your inbox to capture receipts and transactions automatically.",
 k2t:"WhatsApp Chat",k2d:"Just text Monet: “lunch 35k” and it is logged instantly.",
-k3t:"Human-in-the-Loop",k3d:"Monet asks you to confirm uncertain entries, so your data stays accurate.",
-simTitle:"Try Monet live",b1:"📧 Read my email",b2:"💬 Log via WhatsApp",b3:"📊 Monthly report",
+k3t:"Human-in-the-Loop",k3d:"Monet never guesses. Unclear amounts, dates, or accounts are confirmed with you first.",
+simTitle:"Chat with Monet",simLead:"You only see Monet's replies. The dashed lines show what Monet and its agents say to each other behind the scenes.",
+b1:"📒 Log transactions",b2:"📊 Monthly report",b3:"💡 Investing tips",
 ctaTitle:"Ready to know your wealth?",ctaSub:"Join Monet and put your finances in one place.",cta:"Sign Up Now",
 tk:"Track · Save · Invest · Remind · Report · ",
-ch1:"Income vs Expenses vs Savings (Rp M)",ch2:"Where your expenses go (Rp M)",
-inc:"Income",exp:"Expenses",sav:"Savings",food:"Food",trans:"Transport",bills:"Bills",oth:"Others",
-sims:[
-["Email from GoPay: Payment Rp 85,000 at Kopi Kenangan.","📧 Found a receipt in your inbox: Rp 85,000 at Kopi Kenangan. Category: Food & Drink. Logged! ✅"],
-["Lunch 35k, parking 5k","💬 Got it! Logged 2 items: Lunch Rp 35,000 and Parking Rp 5,000. Total today: Rp 40,000. ✅"],
-["Show me my report for this month","📊 This month: Income Rp 12.5M, Expenses Rp 8.2M, Savings Rp 4.3M (34%). ⚠️ Food spending is up 18%. Your electricity bill is due in 3 days. 🔔"]]},
-id:{n1:"Masalah",n2:"Fitur",n3:"Demo",badge:"🟢 Status: Aktif & Siaga 24/7",
-sub:"Monet mencatat keuangan pribadimu dengan membaca email, chat lewat WhatsApp, atau input manual.",
+monetL:"🎯 Monet · Manager",
+sec:{bk:"📒 From Bookkeeper",an:"📊 From Analyst",rm:"⏰ From Reminder",end:"✅ Conclusion"},
+th:["Date","Type","Account","Note","Amount (Rp)"],
+rp:v=>`Rp ${v}M`,
+pie:{title:"Where your Rp 12.5M income went",sav:"Savings",food:"Food",bills:"Bills",trans:"Transport",oth:"Others"}},
+id:{n1:"Masalah",n2:"Tim",n3:"Fitur",n4:"Demo",badge:"🟢 Status: Aktif & Siaga 24/7",
+sub:"Cukup chat dengan Monet, manajer keuangan AI-mu. Di balik layar, Monet memimpin tim agen (Bookkeeper, Analyst & Reminder) yang mencatat keuanganmu dari email, WhatsApp, atau input manual, melaporkan kondisi keuanganmu, dan mengingatkan tagihan sebelum jatuh tempo.",
 psTitle:"Kami ubah kekacauan uang jadi jelas",
-c1:"Pencatatan manual yang melelahkan: malas mencatat transaksi satu per satu setiap hari.",
-c2:"Lupa transaksi kecil: pengeluaran kecil sering terlewat dan mengejutkan di akhir bulan.",
-c3:"Data tersebar: banyak rekening bank, e-wallet, dan investasi menyulitkan melihat total kekayaan secara real-time.",
-s1:"Pencatatan keuangan dalam satu tempat, tercatat otomatis.",
-s2:"Laporan keuangan dibuat kapan saja untuk melihat kondisi keuanganmu.",
-s3:"Pengingat bayar tagihan agar tidak pernah telat.",
+c1:"Pencatatan ribet: mencatat keuangan pribadi itu repot dan menghabiskan waktu.",
+c2:"Transaksi tersebar: banyak rekening, e-wallet, dan kartu bikin transaksi sering lupa dicatat.",
+c3:"Kondisi tidak jelas: kamu tidak tahu kondisi keuanganmu yang sebenarnya saat ini.",
+c4:"Telat bayar tagihan: lewat jatuh tempo berarti kena denda.",
+s1:"Cukup chat dengan Monet, teruskan email, atau foto struk. Monet dan timnya mengerjakan sisanya.",
+s2:"Bookkeeper mencatat transaksi dari semua rekening dan akun secara otomatis, tidak ada yang terlewat.",
+s3:"Analyst mengubah catatanmu jadi laporan keuangan, plus tips menabung dan investasi.",
+s4:"Reminder menandai tagihan sebelum jatuh tempo dan Monet mengingatkanmu, jadi tidak kena denda lagi.",
+teamTitle:"Kenalan dengan tim di balik Monet",
+teamLead:"Kamu cukup bicara dengan Monet. Monet meneruskan permintaanmu ke agen yang tepat, mengumpulkan hasil kerjanya, lalu menyampaikan jawabannya ke kamu.",
+r1:"Manager · satu-satunya kontakmu",r2:"Spesialis · melapor ke Monet",
+a1d:"Satu-satunya yang kamu ajak bicara. Monet meneruskan permintaanmu ke agen, memeriksa konsistensi hasilnya, lalu membalas dengan satu jawaban yang jelas.",a1g:"Dengar · Teruskan · Jawab",
+a2d:"Mengubah input berantakan dari Monet (ketikan bebas, mutasi rekening, notifikasi, struk) jadi catatan rapi dari semua akunmu, dan menandai data yang kurang lengkap atau ganda.",a2g:"Catat · Rapikan · Verifikasi",
+a3d:"Menerima data transaksi dan tagihan dari Monet, menyusun laporan keuangan, serta menyiapkan tips menabung dan investasi sesuai tujuanmu.",a3g:"Laporan · Menabung · Investasi",
+a4d:"Memantau semua tagihan dan memberi tahu Monet sebelum jatuh tempo: 🔴 3 hari atau kurang, 🟡 4–7 hari, 🟢 lebih lama. Monet lalu mengingatkanmu.",a4g:"Pantau · Tandai · Ingatkan",
+hubTitle:"Cara tim berkomunikasi",you:"Kamu",l1:"chat",l2:"teruskan · lapor",
+hubNote:"Agen tidak pernah bicara langsung denganmu atau satu sama lain. Semua permintaan dan jawaban lewat Monet.",
+memTitle:"Yang diingat Monet",
+memLead:"Setiap data baru muncul sebagai 🧠 Update Memori, jadi kamu tidak perlu mengulang.",
+m1t:"Transaksi",m1f:"Tanggal · Jenis · Rekening/Akun · Keterangan · Jumlah",
+m2t:"Tagihan",m2f:"Jenis tagihan · Jatuh tempo · Jumlah · Status",
+m3t:"Preferensi",m3f:"Tujuan investasi · Jangka waktu · Profil risiko · Dana per bulan",
 capTitle:"Semua yang Monet lakukan dibuat untuk menyederhanakan",
 k1t:"Membaca Email",k1d:"Terhubung ke inbox untuk menangkap struk dan transaksi secara otomatis.",
 k2t:"Chat WhatsApp",k2d:"Cukup kirim pesan ke Monet: “makan siang 35rb” langsung tercatat.",
-k3t:"Human-in-the-Loop",k3d:"Monet meminta konfirmasimu untuk data yang meragukan, sehingga catatan tetap akurat.",
-simTitle:"Coba Monet langsung",b1:"📧 Baca email saya",b2:"💬 Catat via WhatsApp",b3:"📊 Laporan bulanan",
+k3t:"Human-in-the-Loop",k3d:"Monet tidak menebak. Jumlah, tanggal, atau akun yang tidak jelas dikonfirmasi dulu ke kamu.",
+simTitle:"Chat dengan Monet",simLead:"Kamu hanya melihat balasan Monet. Garis putus-putus menunjukkan percakapan Monet dengan para agen di balik layar.",
+b1:"📒 Catat transaksi",b2:"📊 Laporan bulanan",b3:"💡 Tips investasi",
 ctaTitle:"Siap mengenal kekayaanmu?",ctaSub:"Bergabung dengan Monet dan satukan keuanganmu di satu tempat.",cta:"Daftar Sekarang",
 tk:"Catat · Tabung · Investasi · Ingatkan · Laporkan · ",
-ch1:"Pemasukan vs Pengeluaran vs Tabungan (Rp jt)",ch2:"Ke mana pengeluaranmu pergi (Rp jt)",
-inc:"Pemasukan",exp:"Pengeluaran",sav:"Tabungan",food:"Makanan",trans:"Transportasi",bills:"Tagihan",oth:"Lainnya",
-sims:[
-["Email dari GoPay: Pembayaran Rp 85.000 di Kopi Kenangan.","📧 Struk ditemukan di inbox: Rp 85.000 di Kopi Kenangan. Kategori: Makanan & Minuman. Tercatat! ✅"],
-["Makan siang 35rb, parkir 5rb","💬 Siap! 2 item tercatat: Makan siang Rp 35.000 dan Parkir Rp 5.000. Total hari ini: Rp 40.000. ✅"],
-["Tampilkan laporan bulan ini","📊 Bulan ini: Pemasukan Rp 12,5 jt, Pengeluaran Rp 8,2 jt, Tabungan Rp 4,3 jt (34%). ⚠️ Pengeluaran makanan naik 18%. Tagihan listrik jatuh tempo 3 hari lagi. 🔔"]]}
+monetL:"🎯 Monet · Manager",
+sec:{bk:"📒 Dari Bookkeeper",an:"📊 Dari Analyst",rm:"⏰ Dari Reminder",end:"✅ Kesimpulan"},
+th:["Tanggal","Jenis","Akun","Keterangan","Jumlah (Rp)"],
+rp:v=>`Rp ${String(v).replace(".",",")} jt`,
+pie:{title:"Alokasi pemasukan Rp 12,5 jt",sav:"Tabungan",food:"Makanan",bills:"Tagihan",trans:"Transportasi",oth:"Lainnya"}}
 };
-let lang="en",busy=false;
+const AGN={mgr:"🎯 Monet",bk:"📒 Bookkeeper",an:"📊 Analyst",rm:"⏰ Reminder"};
+// Demo dates are relative to today so the reminders always look current (DD/MM/YYYY).
+function D(n){const d=new Date();d.setDate(d.getDate()+n);return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+d.getFullYear();}
+function tbl(rows){return "<div class='tw'><table><tr>"+T[lang].th.map(x=>`<th>${x}</th>`).join("")+"</tr>"+rows.map(r=>"<tr>"+r.map((c,i)=>`<td${i===4?' class="r"':""}>${i===0?c.replace(/(\/\d{4})$/,'<span class="y">$1</span>'):c}</td>`).join("")+"</tr>").join("")+"</table></div>";}
+// Pie of where this month's income went; percentages are drawn inside each slice.
+// Colors: validated categorical palette (fixed order); ink chosen per slice for contrast.
+function pie(){
+  const L=T[lang],P=L.pie,tot=12.5;
+  const data=[[P.sav,4.3,"#2a78d6","#fff"],[P.food,3.1,"#eb6834","#1a1a19"],[P.bills,2.2,"#1baf7a","#1a1a19"],[P.trans,1.4,"#eda100","#1a1a19"],[P.oth,1.5,"#e87ba4","#1a1a19"]];
+  const pt=(a,r)=>[(50+r*Math.cos(a)).toFixed(2),(50+r*Math.sin(a)).toFixed(2)];
+  let a0=-Math.PI/2,paths="",labels="";
+  for(const [n,v,c,ink] of data){
+    const a1=a0+v/tot*2*Math.PI,[x0,y0]=pt(a0,46),[x1,y1]=pt(a1,46),big=a1-a0>Math.PI?1:0,pc=Math.round(v/tot*100),[lx,ly]=pt((a0+a1)/2,30);
+    paths+=`<path d="M50 50L${x0} ${y0}A46 46 0 ${big} 1 ${x1} ${y1}Z" fill="${c}"><title>${n}: ${L.rp(v)} (${pc}%)</title></path>`;
+    labels+=`<text x="${lx}" y="${ly}" fill="${ink}" text-anchor="middle" dominant-baseline="central">${pc}%</text>`;
+    a0=a1;
+  }
+  return `<div class="pie"><b>${P.title}</b><svg viewBox="0 0 100 100" role="img" aria-label="${P.title}"><g stroke="#fff" stroke-width="1.3" stroke-linejoin="round">${paths}</g>${labels}</svg><ul>`
+    +data.map(([n,v,c])=>`<li><u style="background:${c}"></u>${n}<em>${L.rp(v)}</em></li>`).join("")+"</ul></div>";
+}
+// Scenario steps: ["u",text] user · ["log",from,to,text] agent traffic via Monet · ["monet",[[section,html],...]] Monet's reply · ["mem",text]
+const SIMS={
+en:()=>[
+[["u","Lunch 35k with GoPay, parking 5k cash, salary 12.5M into BCA"],
+ ["log","mgr","bk","record 3 transactions"],
+ ["log","bk","mgr","✓ recorded, today's spending Rp 40,000"],
+ ["log","mgr","an","analyze today's spending: Rp 40,000"],
+ ["log","an","mgr","✓ below the daily average"],
+ ["log","mgr","rm","any bills due soon?"],
+ ["log","rm","mgr","🔴 electricity due in 3 days"],
+ ["monet",[["bk","Logged 3 transactions:"+tbl([[D(0),"Expense","GoPay","Lunch","35,000"],[D(0),"Expense","Cash","Parking","5,000"],[D(0),"Income","BCA","Salary","12,500,000"]])],
+  ["an","Today's spending is Rp 40,000, below your daily average of Rp 270,000. 👍"],
+  ["rm",`🔴 PLN electricity, Rp 450,000, due in 3 days (${D(3)}).`],
+  ["end","All saved. Your salary is in, so now is a good time to pay the electricity bill."]]],
+ ["mem","🧠 Memory update: +3 transactions"]],
+[["u","Show me this month's report"],
+ ["log","mgr","bk","send this month's transactions"],
+ ["log","bk","mgr","✓ 86 transactions, 4 accounts, 2 need confirmation"],
+ ["log","mgr","rm","send active bills"],
+ ["log","rm","mgr","✓ 3 active bills"],
+ ["log","mgr","an","build a report: 86 transactions + 3 bills"],
+ ["log","an","mgr","✓ report and tips ready"],
+ ["monet",[["bk","86 transactions this month from 4 accounts (BCA, Mandiri, GoPay, OVO). 2 entries still need your confirmation."],
+  ["an","Income Rp 12.5M, expenses Rp 8.2M, savings Rp 4.3M. ⚠️ Food is up 18% from last month.{pie}💡 Tip: skipping 3 coffee runs a week saves about Rp 400K a month."],
+  ["rm",`🔴 PLN electricity · Rp 450,000 · ${D(3)}<br>🟡 Internet · Rp 385,000 · ${D(6)}<br>🟢 Credit card · Rp 2,100,000 · ${D(12)}`],
+  ["end","Your savings rate is healthy at 34%. Pay the electricity bill first, then keep an eye on food spending."]]]],
+[["u","Give me some investing tips"],
+ ["log","mgr","an","investing tips requested"],
+ ["log","an","mgr","no preferences in memory yet, need 4 details"],
+ ["monet",[[null,"Before I give recommendations, I need a few details:<ol><li>What's the goal?</li><li>How long?</li><li>Risk profile: conservative, moderate, or aggressive?</li><li>How much per month?</li></ol>"]]],
+ ["u","Emergency fund, 1 year, conservative, 1M a month"],
+ ["log","mgr","bk","average monthly spending?"],
+ ["log","bk","mgr","✓ Rp 8.2M/month"],
+ ["log","mgr","an","preferences + spending Rp 8.2M/month"],
+ ["log","an","mgr","✓ recommendation ready"],
+ ["log","mgr","rm","any bills due soon?"],
+ ["log","rm","mgr","no new bills, 🔴 electricity in 3 days"],
+ ["monet",[["an","Good fit: money market mutual funds (low risk, withdraw anytime) or time deposits. Rp 1M × 12 months ≈ Rp 12M, about 1.5 months of expenses. Top up from your Rp 4.3M monthly savings to reach 3 months faster.<small>ℹ️ Educational only, not licensed financial advice. Pick OJK-registered products.</small>"],
+  ["rm","No new bills. Still pending: 🔴 electricity, due in 3 days."],
+  ["end","Plan: Rp 1M/month into a money market fund for your emergency fund. I'll track it in your monthly report."]]],
+ ["mem","🧠 Memory update: investment preferences saved (emergency fund · 1 year · conservative · Rp 1M/month)"]]],
+id:()=>[
+[["u","Makan siang 35rb pakai GoPay, parkir 5rb tunai, gaji masuk BCA 12,5jt"],
+ ["log","mgr","bk","catat 3 transaksi"],
+ ["log","bk","mgr","✓ tercatat, pengeluaran hari ini Rp 40.000"],
+ ["log","mgr","an","analisa pengeluaran hari ini: Rp 40.000"],
+ ["log","an","mgr","✓ di bawah rata-rata harian"],
+ ["log","mgr","rm","ada tagihan yang dekat jatuh tempo?"],
+ ["log","rm","mgr","🔴 listrik jatuh tempo 3 hari lagi"],
+ ["monet",[["bk","3 transaksi tercatat:"+tbl([[D(0),"Pengeluaran","GoPay","Makan siang","35.000"],[D(0),"Pengeluaran","Tunai","Parkir","5.000"],[D(0),"Pemasukan","BCA","Gaji","12.500.000"]])],
+  ["an","Pengeluaran hari ini Rp 40.000, di bawah rata-rata harianmu Rp 270.000. 👍"],
+  ["rm",`🔴 Listrik PLN, Rp 450.000, jatuh tempo 3 hari lagi (${D(3)}).`],
+  ["end","Semua tersimpan. Gaji sudah masuk, jadi ini waktu yang pas untuk bayar listrik."]]],
+ ["mem","🧠 Update Memori: +3 transaksi"]],
+[["u","Tampilkan laporan bulan ini"],
+ ["log","mgr","bk","kirim transaksi bulan ini"],
+ ["log","bk","mgr","✓ 86 transaksi, 4 akun, 2 perlu konfirmasi"],
+ ["log","mgr","rm","kirim tagihan aktif"],
+ ["log","rm","mgr","✓ 3 tagihan aktif"],
+ ["log","mgr","an","susun laporan: 86 transaksi + 3 tagihan"],
+ ["log","an","mgr","✓ laporan dan tips siap"],
+ ["monet",[["bk","Bulan ini ada 86 transaksi dari 4 akun (BCA, Mandiri, GoPay, OVO). 2 transaksi masih perlu konfirmasimu."],
+  ["an","Pemasukan Rp 12,5 jt, pengeluaran Rp 8,2 jt, tabungan Rp 4,3 jt. ⚠️ Makanan naik 18% dari bulan lalu.{pie}💡 Tips: kurangi 3x beli kopi per minggu, hemat sekitar Rp 400 rb per bulan."],
+  ["rm",`🔴 Listrik PLN · Rp 450.000 · ${D(3)}<br>🟡 Internet · Rp 385.000 · ${D(6)}<br>🟢 Kartu kredit · Rp 2.100.000 · ${D(12)}`],
+  ["end","Rasio tabunganmu sehat di 34%. Bayar listrik dulu, lalu kendalikan pengeluaran makanan."]]]],
+[["u","Kasih tips investasi dong"],
+ ["log","mgr","an","ada permintaan tips investasi"],
+ ["log","an","mgr","preferensi belum ada di memori, perlu 4 info"],
+ ["monet",[[null,"Sebelum memberi rekomendasi, aku perlu beberapa info:<ol><li>Apa tujuan investasinya?</li><li>Berapa lama jangka waktunya?</li><li>Profil risiko: konservatif, moderat, atau agresif?</li><li>Berapa dana per bulan?</li></ol>"]]],
+ ["u","Dana darurat, 1 tahun, konservatif, 1jt per bulan"],
+ ["log","mgr","bk","rata-rata pengeluaran bulanan?"],
+ ["log","bk","mgr","✓ Rp 8,2 jt/bulan"],
+ ["log","mgr","an","preferensi + pengeluaran Rp 8,2 jt/bulan"],
+ ["log","an","mgr","✓ rekomendasi siap"],
+ ["log","mgr","rm","ada tagihan yang dekat jatuh tempo?"],
+ ["log","rm","mgr","tidak ada tagihan baru, 🔴 listrik 3 hari lagi"],
+ ["monet",[["an","Cocok: reksa dana pasar uang (risiko rendah, bisa dicairkan kapan saja) atau deposito. Rp 1 jt × 12 bulan ≈ Rp 12 jt, sekitar 1,5 bulan pengeluaran. Tambahkan dari tabungan Rp 4,3 jt/bulan supaya lebih cepat mencapai 3 bulan pengeluaran.<small>ℹ️ Bersifat edukatif, bukan nasihat keuangan berlisensi. Pilih produk yang terdaftar & diawasi OJK.</small>"],
+  ["rm","Tidak ada tagihan baru. Masih tertunda: 🔴 listrik, jatuh tempo 3 hari lagi."],
+  ["end","Rencana: Rp 1 jt/bulan ke reksa dana pasar uang untuk dana darurat. Aku akan memantaunya di laporan bulanan."]]],
+ ["mem","🧠 Update Memori: preferensi investasi tersimpan (dana darurat · 1 tahun · konservatif · Rp 1 jt/bulan)"]]]
+};
+let lang="en",busy=false,gen=0;
 const $=s=>document.querySelector(s),box=$("#msgs");
 function setLang(l){
   lang=l;document.documentElement.lang=l;
   document.querySelectorAll("[data-k]").forEach(e=>e.textContent=T[l][e.dataset.k]);
+  document.querySelectorAll("[data-chips]").forEach(e=>e.innerHTML=T[l][e.dataset.chips].split(" · ").map(x=>`<span>${x}</span>`).join(""));
   $("#tk").textContent=T[l].tk.repeat(8);
   $("#en").classList.toggle("on",l==="en");$("#id").classList.toggle("on",l==="id");
+  gen++;busy=false;document.querySelectorAll(".btns button").forEach(b=>b.disabled=false);
   box.innerHTML="";
 }
 function add(txt,cls){
   const d=document.createElement("div");d.className="m "+cls;
   if(txt)d.textContent=txt;box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
 }
-function addChart(){
-  const L=T[lang],d=document.createElement("div");d.className="m chart";
-  const rows=[[L.inc,12.5,"var(--navy)"],[L.exp,8.2,"var(--coral)"],[L.sav,4.3,"var(--green)"]];
-  const cats=[[L.food,3.1,"var(--navy)"],[L.trans,1.4,"var(--green)"],[L.bills,2.2,"var(--coral)"],[L.oth,1.5,"#90A4AE"]];
-  d.innerHTML="<b>"+L.ch1+"</b>"+rows.map(r=>`<div class="br"><span>${r[0]}</span><div class="tr"><i data-w="${r[1]/12.5*100}" style="background:${r[2]}"></i></div><em>${r[1]}</em></div>`).join("")
-    +"<b>"+L.ch2+"</b><div class='stack'>"+cats.map(c=>`<i data-w="${c[1]/8.2*100}" style="background:${c[2]}"></i>`).join("")+"</div>"
-    +"<div class='leg'>"+cats.map(c=>`<span><u style="background:${c[2]}"></u>${c[0]} ${c[1]}</span>`).join("")+"</div>";
+function addLog(from,to,txt){
+  const d=add("","log");d.innerHTML=`<b>${AGN[from]}</b> → <b>${AGN[to]}</b>: ${txt}`;box.scrollTop=box.scrollHeight;
+}
+function addMonet(secs){
+  const L=T[lang],d=document.createElement("div");d.className="m a monet";
+  d.innerHTML=`<b class="who">${L.monetL}</b>`+secs.map(([s,h])=>`<div class="sec ${s||""}">${s?`<i>${L.sec[s]}</i>`:""}${h.replace("{pie}",pie())}</div>`).join("");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
-  setTimeout(()=>d.querySelectorAll("i[data-w]").forEach(e=>e.style.width=e.dataset.w+"%"),60);
 }
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 async function run(i){
-  if(busy)return;busy=true;
+  if(busy)return;busy=true;const my=++gen;
   const bs=document.querySelectorAll(".btns button");bs.forEach(b=>b.disabled=true);
   box.innerHTML="";
-  const [u,a]=T[lang].sims[i];
-  await wait(200);add(u,"u");
-  await wait(500);
-  const t=add("","a typing");t.innerHTML="<span></span><span></span><span></span>";box.scrollTop=box.scrollHeight;
-  await wait(1500);
-  t.remove();add(a,"a");
-  if(i===2){await wait(400);addChart();}
+  for(const st of SIMS[lang]()[i]){
+    const k=st[0];
+    if(k==="u"){await wait(400);if(my!==gen)return;add(st[1],"u");continue;}
+    if(k==="log"){await wait(450);if(my!==gen)return;addLog(st[1],st[2],st[3]);continue;}
+    if(k==="mem"){await wait(500);if(my!==gen)return;add(st[1],"mem");continue;}
+    await wait(300);if(my!==gen)return;
+    const t=add("","a typing");t.innerHTML="<span></span><span></span><span></span>";box.scrollTop=box.scrollHeight;
+    await wait(1000);t.remove();if(my!==gen)return;
+    addMonet(st[1]);
+  }
   bs.forEach(b=>b.disabled=false);busy=false;
 }
 document.querySelectorAll(".btns button").forEach((b,i)=>b.addEventListener("click",()=>run(i)));
