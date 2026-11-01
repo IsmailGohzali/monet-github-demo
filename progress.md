@@ -19,16 +19,15 @@ Agents never talk to the user or to each other directly. Everything goes through
 ## 2. Current state
 | Item | Status |
 |---|---|
-| Original site (`index.html`) | Live on `main` (Vercel). Navy/green, EN/ID, chat simulation. |
-| New landing page (`saas/index.html`, white SaaS style) | **Done, pushed** to branch `claude/fervent-galileo-1pq0jv`. Not on `main` yet. |
+| Homepage (`index.html`) | **White SaaS landing page, live on `main`** (Vercel deploys from `main`). |
+| Old blue/navy site | Kept on branch **`monet-blue`** (not deployed as homepage). |
 | Coral prototype (`saas2/`) | Deleted on request. |
 | Real app (chat, database, WhatsApp) | **Not started.** Plans exist (see §7). |
 
 ## 3. Files in the repo
 | Path | What it is |
 |---|---|
-| `index.html` | Original Monet site (homepage on `main`) |
-| `saas/index.html` | New white landing page; single self-contained file (logos embedded), served at `/saas` |
+| `index.html` | White landing page (homepage); single self-contained file with logos embedded |
 | `progress.md` | This file |
 | `CLAUDE.md` | Tells Claude to read this file first |
 | `.gitignore` | Keeps the local planning docs out of Git |
@@ -36,13 +35,13 @@ Agents never talk to the user or to each other directly. Everything goes through
 ## 4. Working rules (how the owner wants changes done)
 1. **Read this file first**, then the files you'll change.
 2. **Preview before pushing.** Make changes locally, send the owner a preview (the page + desktop and mobile screenshots), and **push only after they approve**, unless they explicitly say "push".
-3. Develop on the branch `claude/fervent-galileo-1pq0jv`. Don't push to `main` or open pull requests unless asked.
+3. Work on a feature branch and get changes to `main` through a pull request, only when the owner asks. Don't push directly to `main`. The old blue site lives on branch `monet-blue`; don't change it unless asked.
 4. **Never push** the planning docs (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN). They're in `.gitignore`.
 5. Don't commit screenshots or other scratch files.
 6. Ask first when unsure what something means (e.g. document names, scope).
 7. After each change: test in a browser at **1440 px and 390 px** (no horizontal scroll, no console errors) and update this file.
 
-## 5. Landing page (`saas/index.html`): key facts
+## 5. Landing page (`index.html`): key facts
 **Sections:** floating menu (Features · How it works · Demo · FAQ · EN|ID switch · Get started) → hero + app mockup → scrolling bank/e-wallet logos → features (6 cards of different sizes) → how it works (agent diagram) → live chat demo + stats row → FAQ → dark sign-up section → footer.
 
 **Language switch (EN | ID):**
@@ -70,7 +69,6 @@ Agents never talk to the user or to each other directly. Everything goes through
 ## 6. Open items
 - [ ] **Stats row** ("5 min saved per day", "0 late fees", "4+ accounts", "24/7") is not measured. Verify or remove.
 - [ ] **Sign-up** only opens an email to the owner. Needs a real waitlist form.
-- [ ] Decide: should `saas/index.html` replace the homepage or stay at `/saas`? (Needs a pull request to `main`.)
 - [ ] Hero has both "Start for free" and "See it in action" buttons; menu has "Get started". Consider one label.
 - [ ] Native-speaker review of the Indonesian text.
 - [ ] Inter font isn't embedded (most visitors see their system font).
@@ -90,8 +88,7 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 
 ## 8. Next steps (suggested)
 1. Resolve the open items in §6 (stats row, real sign-up).
-2. Decide homepage vs `/saas`, then open a pull request to `main`.
-3. Start the app: IPD Phase 0 (Next.js + Supabase setup) and apply for WhatsApp Business early.
+2. Start the app: IPD Phase 0 (Next.js + Supabase setup) and apply for WhatsApp Business early.
 
 ## 9. Changelog
 | Date | Change |
@@ -103,3 +100,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 1 Nov 2026 | Added EN/ID switch to the white page; removed duplicate "Try demo" menu button |
 | 1 Nov 2026 | Wrote PRD, TRD, AFD, DBD, BSD, IPD, DESIGN (local only, in `.gitignore`) |
 | 1 Nov 2026 | Added `progress.md` and `CLAUDE.md` |
+| 1 Nov 2026 | White landing page merged to `main` as the homepage (`index.html`); `/saas` removed; footer "Original site" link removed. Old blue site saved on branch `monet-blue` |
