@@ -54,10 +54,6 @@ section{padding:110px 0}
 .hero h1 .grad{background:linear-gradient(100deg,var(--green2) 10%,var(--violet) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lead{margin:0 auto 34px;font-size:1.15rem}
 .hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:26px;font-size:.88rem;color:var(--ink2)}
-.faces{display:flex}.faces i{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;display:grid;place-items:center;font-style:normal;font-size:.7rem;font-weight:700;color:#fff}
-.faces i:first-child{margin-left:0}
-.stars{color:var(--gold);letter-spacing:1px}
 
 /* product mockup */
 .mock{position:relative;margin:70px auto 0;max-width:1080px;padding:10px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.5));border:1px solid var(--line);box-shadow:0 40px 100px -30px rgba(14,19,48,.35)}
@@ -194,31 +190,8 @@ section{padding:110px 0}
 .stats b{display:block;font-size:2.4rem;letter-spacing:-.04em;line-height:1.1}
 .stats span{color:var(--ink2);font-size:.9rem}
 
-/* testimonials */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-.quote p{font-size:1rem;color:var(--ink);margin-bottom:22px}
-.who{display:flex;align-items:center;gap:12px;font-size:.88rem}
-.who i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700}
-.who small{display:block;color:var(--muted)}
-
-/* pricing */
-.toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px;margin-top:26px;font-size:.88rem;font-weight:600}
-.toggle button{border:0;background:none;padding:8px 18px;border-radius:99px;cursor:pointer;font:inherit;color:var(--ink2)}
-.toggle button.on{background:var(--ink);color:#fff}
-.toggle em{font-style:normal;font-size:.72rem;color:var(--green2);margin-left:4px}
-.toggle button.on em{color:#7CF0A9}
-.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;text-align:left}
-.price{display:flex;flex-direction:column}
-.price .amt{font-size:2.6rem;font-weight:750;letter-spacing:-.04em;margin:14px 0 2px}
-.price .amt small{font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0}
-.price ul{list-style:none;margin:22px 0 28px;display:flex;flex-direction:column;gap:10px;font-size:.92rem;flex:1}
-.price li:before{content:"✓";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#E8F8EF;color:var(--green2);font-size:.7rem;font-weight:800;margin-right:10px}
-.price.dark li:before{background:rgba(0,200,83,.2);color:#7CF0A9}
-.price .btn{justify-content:center}
-.price .tag{position:absolute;top:22px;right:22px;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--green);color:#fff}
-
-/* faq */
 .faq{max-width:780px;margin:50px auto 0;display:flex;flex-direction:column;gap:10px}
+/* faq */
 details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 24px}
 summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
 summary::-webkit-details-marker{display:none}
@@ -244,7 +217,6 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   .app{grid-template-columns:1fr 280px}.side{display:none}
   .team{grid-template-columns:1fr}.f1,.f2{display:none}
   .c4,.c2,.c3{grid-column:span 6}
-  .quotes,.prices{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 @media(max-width:760px){
@@ -274,7 +246,7 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
 
 <nav class="nav">
   <a class="logo" href="#top"><svg viewBox="22 30 78 58" role="img" aria-label="Monet logo"><use href="#mk"/></svg>MONET</a>
-  <div class="links"><a href="#features">Features</a><a href="#team">How it works</a><a href="#demo">Demo</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <div class="links"><a href="#features">Features</a><a href="#team">How it works</a><a href="#demo">Demo</a><a href="#faq">FAQ</a></div>
   <div class="right"><a class="btn ghost" href="#demo">Try demo</a><a class="btn dark" href="#signup">Get started</a></div>
 </nav>
 
@@ -283,11 +255,6 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   <h1>Know your wealth.<br><span class="grad">All in one place.</span></h1>
   <p class="lead">Just chat with Monet. It logs every transaction from email, WhatsApp, or a quick message, shows you where your money really goes, and reminds you before bills are due.</p>
   <div class="ctas"><a class="btn dark" href="#signup">Start for free <span class="ar">→</span></a><a class="btn ghost" href="#demo">▶ See it in action</a></div>
-  <div class="trust">
-    <div class="faces"><i style="background:#6C63FF">AR</i><i style="background:#00A846">DS</i><i style="background:#FF6F61">NP</i><i style="background:#F2B544">RW</i></div>
-    <span><span class="stars">★★★★★</span> Loved by 2,400+ early users</span>
-  </div>
-
   <div class="mock rv">
     <div class="float f1"><div class="ic" style="background:#E8F8EF">📒</div><div><b>3 transactions logged</b><small>from “lunch 35k gopay…”</small></div></div>
     <div class="float f2"><div class="ic" style="background:#FFF1EF">⏰</div><div><b>PLN electricity · 3 days</b><small>Rp 450,000 due soon</small></div></div>
@@ -439,32 +406,6 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   </div>
 </div></section>
 
-<section style="padding-top:40px"><div class="wrap">
-  <div class="center rv"><span class="eyebrow plain">✦ Early users</span><h2 class="h2">People finally know<br>where their money goes</h2></div>
-  <div class="quotes">
-    <div class="card quote rv"><p>“I used to give up on budgeting apps after a week. With Monet I just text what I spent and it's done.”</p><div class="who"><i style="background:#6C63FF">AR</i><div><b>Aulia R.</b><small>Product designer</small></div></div></div>
-    <div class="card quote rv"><p>“The bill reminders alone paid for it. No more late electricity payments.”</p><div class="who"><i style="background:#00A846">DS</i><div><b>Dimas S.</b><small>Freelance developer</small></div></div></div>
-    <div class="card quote rv"><p>“Four accounts, one chat. The monthly report showed me I was spending way too much on coffee.”</p><div class="who"><i style="background:#FF6F61">NP</i><div><b>Nadia P.</b><small>Marketing lead</small></div></div></div>
-  </div>
-</div></section>
-
-<section id="pricing" style="padding-top:40px"><div class="wrap center">
-  <div class="rv">
-    <span class="eyebrow plain">✦ Pricing</span>
-    <h2 class="h2">Simple pricing. Start free.</h2>
-    <p class="lead">Upgrade when Monet becomes part of your routine.</p>
-    <div class="toggle"><button class="on" data-p="m">Monthly</button><button data-p="y">Yearly <em>−20%</em></button></div>
-  </div>
-  <div class="prices">
-    <div class="card price rv"><b>Starter</b><p>For getting started</p><div class="amt">Free</div><small style="color:var(--muted)">forever</small>
-      <ul><li>Chat logging on WhatsApp</li><li>2 linked accounts</li><li>Monthly report</li><li>Bill reminders</li></ul><a class="btn ghost" href="#signup">Start free</a></div>
-    <div class="card price dark rv"><span class="tag">Popular</span><b>Plus</b><p>For everyday money</p><div class="amt" data-m="49K" data-y="39K">Rp 49K<small> /month</small></div><small style="color:#B9BDD6">billed <span data-m="monthly" data-y="yearly">monthly</span></small>
-      <ul><li>Everything in Starter</li><li>Unlimited accounts</li><li>Email receipt reading</li><li>Saving &amp; investing tips</li><li>Weekly reports</li></ul><a class="btn green" href="#signup">Get Plus</a></div>
-    <div class="card price rv"><b>Family</b><p>For shared households</p><div class="amt" data-m="99K" data-y="79K">Rp 99K<small> /month</small></div><small style="color:var(--muted)">billed <span data-m="monthly" data-y="yearly">monthly</span></small>
-      <ul><li>Everything in Plus</li><li>Up to 5 members</li><li>Shared bills &amp; goals</li><li>Priority support</li></ul><a class="btn ghost" href="#signup">Get Family</a></div>
-  </div>
-</div></section>
-
 <section id="faq" style="padding-top:40px"><div class="wrap">
   <div class="center rv"><span class="eyebrow plain">✦ FAQ</span><h2 class="h2">Questions, answered</h2></div>
   <div class="faq rv">
@@ -487,7 +428,7 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
 <footer><div class="wrap">
   <div class="foot">
     <div><a class="logo" href="#top"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</a><p style="margin-top:12px;max-width:280px">Your AI finance manager. Know your wealth, all in one place.</p></div>
-    <div><h5>Product</h5><a href="#features">Features</a><a href="#demo">Demo</a><a href="#pricing">Pricing</a></div>
+    <div><h5>Product</h5><a href="#features">Features</a><a href="#demo">Demo</a></div>
     <div><h5>Company</h5><a href="#team">How it works</a><a href="#faq">FAQ</a><a href="../">Original site</a></div>
     <div><h5>Contact</h5><a href="mailto:ismailgohzali@gmail.com">Email us</a></div>
   </div>
@@ -515,13 +456,6 @@ function setStep(i){
 }
 $$(".step").forEach(s=>s.addEventListener("click",()=>{clearInterval(auto);setStep(+s.dataset.i)}));
 setStep(0);auto=setInterval(()=>setStep((step+1)%3),3200);
-
-// pricing toggle
-$$(".toggle button").forEach(b=>b.addEventListener("click",()=>{
-  const p=b.dataset.p;$$(".toggle button").forEach(x=>x.classList.toggle("on",x===b));
-  $$(".price .amt[data-m]").forEach(a=>a.innerHTML=`Rp ${a.dataset[p]}<small> /month</small>`);
-  $$(".price span[data-m]").forEach(s=>s.textContent=s.dataset[p]);
-}));
 
 // chat demo
 const S=[
