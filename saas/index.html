@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monet – Your AI finance manager</title>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{
+  --ink:#0E1330;--ink2:#4A5072;--muted:#8A8FA8;--line:#E7E8F0;--bg:#F7F7FB;--white:#fff;
+  --navy:#1A237E;--green:#00C853;--green2:#00A846;--gold:#F2B544;--coral:#FF6F61;--violet:#6C63FF;
+  --r:22px;--sh:0 1px 2px rgba(14,19,48,.04),0 12px 40px -12px rgba(14,19,48,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border:1px solid var(--line);background:var(--white);border-radius:999px;font-size:.82rem;font-weight:600;color:var(--ink2);box-shadow:var(--sh)}
+.eyebrow b{background:var(--ink);color:#fff;border-radius:999px;padding:3px 10px;font-size:.72rem;letter-spacing:.3px}
+.eyebrow.plain{padding:6px 14px}
+.h2{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.08;letter-spacing:-.035em;font-weight:700;margin:18px 0 14px}
+.h2 em{font-style:normal;color:var(--muted)}
+.lead{color:var(--ink2);font-size:1.08rem;max-width:620px}
+.center{text-align:center}.center .lead{margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.dark{background:var(--ink);color:#fff;box-shadow:0 8px 24px -8px rgba(14,19,48,.5)}
+.btn.green{background:var(--green);color:#fff;box-shadow:0 8px 24px -8px rgba(0,200,83,.6)}
+.btn.ghost{background:var(--white);border-color:var(--line);color:var(--ink)}
+.btn .ar{transition:transform .15s}.btn:hover .ar{transform:translateX(3px)}
+
+/* nav */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:min(1100px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px 20px;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(231,232,240,.9);border-radius:999px;box-shadow:var(--sh)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:2px;font-size:1.05rem}
+.logo svg{height:20px;width:auto}
+.nav .links{display:flex;gap:30px;font-size:.9rem;font-weight:500;color:var(--ink2)}
+.nav .links a:hover{color:var(--ink)}
+.nav .right{display:flex;gap:8px;align-items:center}
+.nav .btn{padding:10px 18px;font-size:.88rem}
+
+/* hero */
+.hero{position:relative;padding:170px 0 0;overflow:hidden;text-align:center}
+.hero:before{content:"";position:absolute;inset:-20% -10% auto;height:900px;background:
+  radial-gradient(40% 50% at 20% 30%,rgba(0,200,83,.20),transparent 70%),
+  radial-gradient(35% 45% at 80% 20%,rgba(108,99,255,.20),transparent 70%),
+  radial-gradient(30% 40% at 55% 60%,rgba(242,181,68,.16),transparent 70%);filter:blur(10px);z-index:-1}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(60% 50% at 50% 30%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(60% 50% at 50% 30%,#000 20%,transparent 75%);opacity:.6}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.045em;font-weight:750;max-width:920px;margin:26px auto 20px}
+.hero h1 .grad{background:linear-gradient(100deg,var(--green2) 10%,var(--violet) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{margin:0 auto 34px;font-size:1.15rem}
+.hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:26px;font-size:.88rem;color:var(--ink2)}
+.faces{display:flex}.faces i{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;display:grid;place-items:center;font-style:normal;font-size:.7rem;font-weight:700;color:#fff}
+.faces i:first-child{margin-left:0}
+.stars{color:var(--gold);letter-spacing:1px}
+
+/* product mockup */
+.mock{position:relative;margin:70px auto 0;max-width:1080px;padding:10px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.5));border:1px solid var(--line);box-shadow:0 40px 100px -30px rgba(14,19,48,.35)}
+.app{display:grid;grid-template-columns:210px 1fr 300px;min-height:520px;border-radius:20px;overflow:hidden;background:var(--white);border:1px solid var(--line);text-align:left}
+.side{background:#FBFBFD;border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:4px;font-size:.85rem}
+.side .logo{font-size:.9rem;margin:0 6px 18px}
+.side a{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:10px;color:var(--ink2);font-weight:500}
+.side a.on{background:var(--white);color:var(--ink);box-shadow:var(--sh);font-weight:600}
+.side .sp{flex:1}
+.side .pro{background:var(--ink);color:#fff;border-radius:14px;padding:14px;font-size:.78rem}
+.side .pro b{display:block;font-size:.88rem;margin-bottom:4px}
+.main{padding:22px 24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center}
+.topbar h3{font-size:1.15rem;letter-spacing:-.02em}
+.topbar small{color:var(--muted);display:block;font-weight:500;font-size:.78rem}
+.seg{display:flex;background:var(--bg);border-radius:10px;padding:3px;font-size:.75rem;font-weight:600}
+.seg span{padding:5px 10px;border-radius:8px;color:var(--muted)}.seg span.on{background:#fff;color:var(--ink);box-shadow:var(--sh)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{border:1px solid var(--line);border-radius:16px;padding:14px}
+.kpi small{color:var(--muted);font-size:.74rem;font-weight:600}
+.kpi b{display:block;font-size:1.35rem;letter-spacing:-.03em;margin:2px 0}
+.kpi .d{font-size:.72rem;font-weight:700;color:var(--green2)}.kpi .d.dn{color:var(--coral)}
+.chart{border:1px solid var(--line);border-radius:16px;padding:14px 14px 6px;flex:1;display:flex;flex-direction:column}
+.chart .hd{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;margin-bottom:6px}
+.chart .hd span{color:var(--muted);font-weight:500;display:flex;gap:12px}
+.chart .hd span i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.chart svg{width:100%;flex:1;min-height:170px}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar{display:grid;grid-template-columns:90px 1fr 60px;align-items:center;gap:10px;font-size:.78rem}
+.bar u{display:block;height:8px;border-radius:99px;background:var(--bg);overflow:hidden}
+.bar u i{display:block;height:100%;border-radius:99px}
+.bar em{font-style:normal;text-align:right;color:var(--ink2);font-weight:600}
+.rail{border-left:1px solid var(--line);display:flex;flex-direction:column;background:#FBFBFD}
+.rail .hd{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem}
+.rail .hd .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,200,83,.18);margin-left:auto}
+.av{width:30px;height:30px;border-radius:10px;background:var(--navy);display:grid;place-items:center;flex:none}
+.av svg{height:13px}
+.feed{flex:1;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.8rem;overflow:hidden}
+.bub{padding:9px 12px;border-radius:14px;max-width:90%}
+.bub.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:4px}
+.bub.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+.bub.sys{align-self:center;font-size:.7rem;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:3px 10px}
+.bub.mem{align-self:center;font-size:.7rem;background:#E8F8EF;color:#0B7A3B;font-weight:700;border-radius:99px;padding:4px 10px}
+.compose{margin:12px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--muted);font-size:.8rem;display:flex;justify-content:space-between;align-items:center}
+.compose b{width:26px;height:26px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center}
+.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:12px 14px;font-size:.8rem;display:flex;gap:10px;align-items:center;text-align:left;animation:bob 5s ease-in-out infinite}
+.float .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:1rem}
+.float small{display:block;color:var(--muted);font-size:.72rem}
+.f1{left:-40px;top:120px}.f2{right:-36px;bottom:90px;animation-delay:-2.5s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* logos */
+.logos{padding:70px 0 20px;text-align:center}
+.logos p{color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:22px}
+.marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.marq div{display:inline-flex;gap:64px;white-space:nowrap;animation:mq 30s linear infinite;font-weight:800;font-size:1.35rem;color:#B5B8CA;letter-spacing:-.02em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:56px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.card h3{font-size:1.25rem;letter-spacing:-.02em;margin-bottom:6px}
+.card p{color:var(--ink2);font-size:.95rem}
+.card .pill{display:inline-block;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--bg);color:var(--ink2);margin-bottom:14px}
+.c4{grid-column:span 4}.c2{grid-column:span 2}.c3{grid-column:span 3}
+.card.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.card.dark p{color:#B9BDD6}.card.dark .pill{background:rgba(255,255,255,.1);color:#fff}
+.vis{margin-top:22px}
+.inbox{display:flex;flex-direction:column;gap:8px}
+.mail{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:.84rem;background:#FBFBFD}
+.mail .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;font-size:.9rem}
+.mail span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mail .tg{font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:99px;background:#E8F8EF;color:#0B7A3B;flex:none}
+.wa{background:#ECE5DD;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;font-size:.84rem;color:var(--ink)}
+.wa div{background:#fff;padding:7px 10px;border-radius:10px;max-width:85%}
+.wa .o{align-self:flex-end;background:#D9FDD3}
+.ring{display:flex;align-items:center;gap:18px}
+.ring svg{width:120px;height:120px;flex:none}
+.rem{display:flex;flex-direction:column;gap:8px}
+.rem div{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.85rem}
+.rem small{color:#B9BDD6}
+.ask{display:flex;flex-direction:column;gap:8px}
+.ask .q{padding:10px 12px;border-radius:12px;border:1px solid var(--line);font-size:.85rem;background:#FBFBFD}
+.ask .opts{display:flex;gap:6px;flex-wrap:wrap}
+.ask .opts span{font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:99px;border:1px solid var(--line)}
+.ask .opts span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* team / steps */
+.team{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.steps{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.step{display:flex;gap:16px;padding:18px;border-radius:18px;border:1px solid transparent;cursor:pointer;transition:all .2s}
+.step:hover{background:rgba(255,255,255,.6)}
+.step.on{background:#fff;border-color:var(--line);box-shadow:var(--sh)}
+.step .n{width:34px;height:34px;border-radius:10px;background:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none;color:var(--ink2)}
+.step.on .n{background:var(--ink);color:#fff}
+.step h4{font-size:1.02rem;margin-bottom:2px}
+.step p{font-size:.9rem;color:var(--ink2)}
+.org{position:relative;background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px;box-shadow:var(--sh);min-height:440px}
+.org svg.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.org .lines path{stroke:var(--line);stroke-width:2;fill:none;stroke-dasharray:6 6}
+.org .lines path.hot{stroke:var(--green);animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.nd{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 14px;box-shadow:var(--sh);font-weight:700;font-size:.9rem;white-space:nowrap;transition:all .25s}
+.nd small{display:block;font-size:.7rem;color:var(--muted);font-weight:600}
+.nd .e{font-size:1.2rem}
+.nd.boss{background:var(--ink);color:#fff;border-color:var(--ink);padding:14px 18px}
+.nd.boss small{color:#B9BDD6}
+.nd.hot{border-color:var(--green);box-shadow:0 0 0 5px rgba(0,200,83,.14),var(--sh)}
+.org .msg{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:.8rem;color:var(--ink2);background:var(--bg);border-radius:99px;padding:6px 14px;white-space:nowrap}
+
+/* demo */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+.chat{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);display:flex;flex-direction:column;overflow:hidden}
+.chat .hd{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-weight:700}
+.chat .hd small{display:block;font-weight:500;color:var(--muted);font-size:.75rem}
+#msgs{height:420px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;font-size:.88rem;background:#FBFBFD}
+#msgs .bub{animation:in .3s}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.typing span{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--muted);animation:b 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-5px)}}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt{text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;cursor:pointer;font:inherit;color:inherit;display:flex;gap:14px;align-items:flex-start;transition:all .2s;box-shadow:var(--sh)}
+.prompt:hover:not(:disabled){border-color:var(--ink);transform:translateY(-2px)}
+.prompt:disabled{opacity:.55;cursor:wait}
+.prompt .e{font-size:1.4rem;width:44px;height:44px;border-radius:12px;background:var(--bg);display:grid;place-items:center;flex:none}
+.prompt b{display:block;font-size:1rem;margin-bottom:2px}
+.prompt span{font-size:.88rem;color:var(--ink2)}
+.prompt .ar{margin-left:auto;align-self:center;color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted);padding:4px 6px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh);margin-top:56px}
+.stats div{padding:30px;border-right:1px solid var(--line)}.stats div:last-child{border:0}
+.stats b{display:block;font-size:2.4rem;letter-spacing:-.04em;line-height:1.1}
+.stats span{color:var(--ink2);font-size:.9rem}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.quote p{font-size:1rem;color:var(--ink);margin-bottom:22px}
+.who{display:flex;align-items:center;gap:12px;font-size:.88rem}
+.who i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700}
+.who small{display:block;color:var(--muted)}
+
+/* pricing */
+.toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px;margin-top:26px;font-size:.88rem;font-weight:600}
+.toggle button{border:0;background:none;padding:8px 18px;border-radius:99px;cursor:pointer;font:inherit;color:var(--ink2)}
+.toggle button.on{background:var(--ink);color:#fff}
+.toggle em{font-style:normal;font-size:.72rem;color:var(--green2);margin-left:4px}
+.toggle button.on em{color:#7CF0A9}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;text-align:left}
+.price{display:flex;flex-direction:column}
+.price .amt{font-size:2.6rem;font-weight:750;letter-spacing:-.04em;margin:14px 0 2px}
+.price .amt small{font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.price ul{list-style:none;margin:22px 0 28px;display:flex;flex-direction:column;gap:10px;font-size:.92rem;flex:1}
+.price li:before{content:"✓";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#E8F8EF;color:var(--green2);font-size:.7rem;font-weight:800;margin-right:10px}
+.price.dark li:before{background:rgba(0,200,83,.2);color:#7CF0A9}
+.price .btn{justify-content:center}
+.price .tag{position:absolute;top:22px;right:22px;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--green);color:#fff}
+
+/* faq */
+.faq{max-width:780px;margin:50px auto 0;display:flex;flex-direction:column;gap:10px}
+details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 24px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.3rem;line-height:1;color:var(--muted);transition:transform .2s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{color:var(--ink2);margin-top:10px;font-size:.95rem}
+
+/* cta */
+.cta{position:relative;background:var(--ink);color:#fff;border-radius:32px;padding:80px 40px;text-align:center;overflow:hidden}
+.cta:before{content:"";position:absolute;inset:0;background:radial-gradient(40% 70% at 20% 0%,rgba(0,200,83,.35),transparent 70%),radial-gradient(40% 70% at 85% 100%,rgba(108,99,255,.35),transparent 70%)}
+.cta>*{position:relative}
+.cta .h2{color:#fff}.cta .lead{color:#B9BDD6;margin:0 auto 30px}
+footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.foot h5{color:var(--ink);font-size:.85rem;margin-bottom:12px}
+.foot a{display:block;padding:3px 0}.foot a:hover{color:var(--ink)}
+.copy{margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .app{grid-template-columns:1fr 280px}.side{display:none}
+  .team{grid-template-columns:1fr}.f1,.f2{display:none}
+  .c4,.c2,.c3{grid-column:span 6}
+  .quotes,.prices{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media(max-width:760px){
+  section{padding:80px 0}
+  .nav .links,.nav .ghost{display:none}
+  .app{grid-template-columns:1fr}.rail{display:none}
+  .kpis{grid-template-columns:1fr 1fr}.kpi:last-child{display:none}
+  .demo{grid-template-columns:1fr}
+  .org{min-height:520px;padding:20px}
+  .foot{grid-template-columns:1fr 1fr}
+  .copy{flex-direction:column;gap:6px}
+  .ring{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mk">
+      <g transform="translate(0,-5)" fill="none" stroke="#00C853" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M30 84V58A15 15 0 0 1 60 58V84M60 58A15 15 0 0 1 90 58V66"/>
+      </g>
+      <circle cx="90" cy="78" r="7" fill="#F2B544"/>
+    </g>
+  </defs>
+</svg>
+
+<nav class="nav">
+  <a class="logo" href="#top"><svg viewBox="22 30 78 58" role="img" aria-label="Monet logo"><use href="#mk"/></svg>MONET</a>
+  <div class="links"><a href="#features">Features</a><a href="#team">How it works</a><a href="#demo">Demo</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <div class="right"><a class="btn ghost" href="#demo">Try demo</a><a class="btn dark" href="#signup">Get started</a></div>
+</nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <span class="eyebrow"><b>NEW</b> Meet your AI finance team: Bookkeeper, Analyst &amp; Reminder →</span>
+  <h1>Know your wealth.<br><span class="grad">All in one place.</span></h1>
+  <p class="lead">Just chat with Monet. It logs every transaction from email, WhatsApp, or a quick message, shows you where your money really goes, and reminds you before bills are due.</p>
+  <div class="ctas"><a class="btn dark" href="#signup">Start for free <span class="ar">→</span></a><a class="btn ghost" href="#demo">▶ See it in action</a></div>
+  <div class="trust">
+    <div class="faces"><i style="background:#6C63FF">AR</i><i style="background:#00A846">DS</i><i style="background:#FF6F61">NP</i><i style="background:#F2B544">RW</i></div>
+    <span><span class="stars">★★★★★</span> Loved by 2,400+ early users</span>
+  </div>
+
+  <div class="mock rv">
+    <div class="float f1"><div class="ic" style="background:#E8F8EF">📒</div><div><b>3 transactions logged</b><small>from “lunch 35k gopay…”</small></div></div>
+    <div class="float f2"><div class="ic" style="background:#FFF1EF">⏰</div><div><b>PLN electricity · 3 days</b><small>Rp 450,000 due soon</small></div></div>
+    <div class="app">
+      <aside class="side">
+        <div class="logo"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</div>
+        <a class="on">◧ Overview</a><a>⇄ Transactions</a><a>🧾 Bills</a><a>📈 Reports</a><a>💡 Invest</a><a>⚙ Settings</a>
+        <div class="sp"></div>
+        <div class="pro"><b>4 accounts linked</b>BCA · Mandiri · GoPay · OVO</div>
+      </aside>
+      <div class="main">
+        <div class="topbar"><h3><small>Good morning, Rina 👋</small>Your money this month</h3><div class="seg"><span>Week</span><span class="on">Month</span><span>Year</span></div></div>
+        <div class="kpis">
+          <div class="kpi"><small>Income</small><b>Rp 12.5M</b><span class="d">▲ 4.2%</span></div>
+          <div class="kpi"><small>Spending</small><b>Rp 8.2M</b><span class="d dn">▲ 6.1%</span></div>
+          <div class="kpi"><small>Saved</small><b>Rp 4.3M</b><span class="d">34% rate</span></div>
+        </div>
+        <div class="chart">
+          <div class="hd">Cash flow<span><span><i style="background:var(--green)"></i>Income</span><span><i style="background:var(--violet)"></i>Spending</span></span></div>
+          <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00C853" stop-opacity=".25"/><stop offset="1" stop-color="#00C853" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#EEF0F5" stroke-width="1"><line x1="0" y1="30" x2="400" y2="30"/><line x1="0" y1="75" x2="400" y2="75"/><line x1="0" y1="120" x2="400" y2="120"/></g>
+            <path d="M0 95C40 80 70 88 100 70S160 40 200 52 260 30 300 36 360 20 400 24V150H0Z" fill="url(#gA)"/>
+            <path d="M0 95C40 80 70 88 100 70S160 40 200 52 260 30 300 36 360 20 400 24" stroke="#00C853" stroke-width="2.5" fill="none"/>
+            <path d="M0 120C40 112 70 118 100 104S160 96 200 100 260 84 300 90 360 78 400 82" stroke="#6C63FF" stroke-width="2.5" fill="none" stroke-dasharray="5 5"/>
+            <circle cx="300" cy="36" r="5" fill="#fff" stroke="#00C853" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="bars">
+          <div class="bar">Food<u><i style="width:38%;background:var(--coral)"></i></u><em>Rp 3.1M</em></div>
+          <div class="bar">Bills<u><i style="width:27%;background:var(--violet)"></i></u><em>Rp 2.2M</em></div>
+          <div class="bar">Transport<u><i style="width:17%;background:var(--gold)"></i></u><em>Rp 1.4M</em></div>
+        </div>
+      </div>
+      <aside class="rail">
+        <div class="hd"><div class="av"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div>Monet<span class="dot"></span></div>
+        <div class="feed">
+          <div class="bub me">Lunch 35k GoPay, parking 5k cash</div>
+          <div class="bub sys">🎯 Monet → 📒 Bookkeeper</div>
+          <div class="bub bot">Logged 2 expenses, Rp 40,000 total. That's below your daily average 👍</div>
+          <div class="bub mem">🧠 +2 transactions</div>
+          <div class="bub me">Anything due soon?</div>
+          <div class="bub bot">🔴 PLN electricity, Rp 450,000 in 3 days. Your salary just came in, so now is a good time to pay.</div>
+        </div>
+        <div class="compose">Message Monet…<b>↑</b></div>
+      </aside>
+    </div>
+  </div>
+</div></header>
+
+<div class="logos"><div class="wrap">
+  <p>Works with the accounts you already use</p>
+  <div class="marq"><div id="mq"></div></div>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <div class="center rv">
+    <span class="eyebrow plain">✦ Features</span>
+    <h2 class="h2">Everything you need to stay on top.<br><em>Nothing you don't.</em></h2>
+    <p class="lead">Monet takes the busywork out of personal finance, so you get the clarity without the spreadsheets.</p>
+  </div>
+  <div class="bento">
+    <div class="card c4 rv"><span class="pill">📧 Email reading</span><h3>Receipts log themselves</h3><p>Connect Gmail or Outlook and Monet picks up receipts, bank alerts, and e-wallet top-ups automatically.</p>
+      <div class="vis inbox">
+        <div class="mail"><div class="ic" style="background:#EEF0FF">🏦</div><span><b>BCA</b> · Transfer received Rp 12,500,000</span><em class="tg">Logged</em></div>
+        <div class="mail"><div class="ic" style="background:#FFF1EF">🛵</div><span><b>GoPay</b> · Payment Rp 35,000 to Warung Sari</span><em class="tg">Logged</em></div>
+        <div class="mail"><div class="ic" style="background:#FFF7E6">⚡</div><span><b>PLN</b> · Your bill of Rp 450,000 is ready</span><em class="tg" style="background:#FFF1EF;color:#C2410C">Bill added</em></div>
+      </div>
+    </div>
+    <div class="card c2 rv"><span class="pill">💬 WhatsApp</span><h3>Just text it</h3><p>Type like you talk. Monet understands.</p>
+      <div class="vis wa"><div class="o">coffee 28k ovo</div><div>✅ Logged: Coffee · OVO · Rp 28,000</div></div>
+    </div>
+    <div class="card c3 rv"><span class="pill">📊 Reports</span><h3>See where it all goes</h3><p>Monthly reports with clear breakdowns and tips that fit your goals.</p>
+      <div class="vis ring">
+        <svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#F0F1F6" stroke-width="5"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#00C853" stroke-width="5" stroke-dasharray="34 66" stroke-dashoffset="25"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#FF6F61" stroke-width="5" stroke-dasharray="25 75" stroke-dashoffset="-9"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6C63FF" stroke-width="5" stroke-dasharray="18 82" stroke-dashoffset="-34"/>
+          <circle cx="21" cy="21" r="15.9" fill="none" stroke="#F2B544" stroke-width="5" stroke-dasharray="23 77" stroke-dashoffset="-52"/>
+          <text x="21" y="22.5" text-anchor="middle" font-size="6" font-weight="800" fill="#0E1330">34%</text></svg>
+        <div class="bars" style="flex:1">
+          <div class="bar" style="grid-template-columns:70px 1fr">Savings<u><i style="width:34%;background:var(--green)"></i></u></div>
+          <div class="bar" style="grid-template-columns:70px 1fr">Food<u><i style="width:25%;background:var(--coral)"></i></u></div>
+          <div class="bar" style="grid-template-columns:70px 1fr">Bills<u><i style="width:18%;background:var(--violet)"></i></u></div>
+        </div>
+      </div>
+    </div>
+    <div class="card c3 dark rv"><span class="pill">⏰ Reminders</span><h3>Never pay a late fee again</h3><p>Every bill is tracked and flagged before it's due.</p>
+      <div class="vis rem">
+        <div><span>🔴 PLN electricity</span><small>Rp 450,000 · 3 days</small></div>
+        <div><span>🟡 Internet</span><small>Rp 385,000 · 6 days</small></div>
+        <div><span>🟢 Credit card</span><small>Rp 2,100,000 · 12 days</small></div>
+      </div>
+    </div>
+    <div class="card c2 rv"><span class="pill">🧠 Memory</span><h3>Remembers for you</h3><p>Transactions, bills, and your goals are saved, so you never repeat yourself.</p></div>
+    <div class="card c4 rv"><span class="pill">🤝 Human-in-the-loop</span><h3>Monet never guesses</h3><p>Unclear amount, date, or account? Monet asks first, so your records stay right.</p>
+      <div class="vis ask"><div class="q">“transfer 500 to Andi” — did you mean <b>Rp 500,000</b>, and from which account?</div>
+        <div class="opts"><span class="on">BCA</span><span>Mandiri</span><span>GoPay</span><span>OVO</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="team" style="padding-top:40px"><div class="wrap team">
+  <div class="rv">
+    <span class="eyebrow plain">✦ How it works</span>
+    <h2 class="h2">One chat. A whole<br>finance team behind it.</h2>
+    <p class="lead">You only ever talk to Monet. Monet hands each request to the right specialist, checks their work, and gives you one clear answer.</p>
+    <div class="steps" id="steps">
+      <div class="step on" data-i="0"><div class="n">01</div><div><h4>📒 Bookkeeper records</h4><p>Turns messy text, statements, and receipts into clean records across all your accounts.</p></div></div>
+      <div class="step" data-i="1"><div class="n">02</div><div><h4>📊 Analyst explains</h4><p>Builds your reports and prepares saving and investing tips that fit your goals.</p></div></div>
+      <div class="step" data-i="2"><div class="n">03</div><div><h4>⏰ Reminder watches</h4><p>Tracks every bill and alerts Monet before one is due, so Monet can remind you.</p></div></div>
+    </div>
+  </div>
+  <div class="org rv" id="org">
+    <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path id="L0" d="M50 18V44"/><path id="L1" d="M50 56C50 70 20 66 20 80"/><path id="L2" d="M50 56V80"/><path id="L3" d="M50 56C50 70 80 66 80 80"/>
+    </svg>
+    <div class="nd" style="left:50%;top:14%"><span class="e">💬</span><div>You<small>just chat</small></div></div>
+    <div class="nd boss" style="left:50%;top:50%"><div class="av" style="background:rgba(255,255,255,.1)"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div><div>Monet<small>Manager</small></div></div>
+    <div class="nd" id="N0" style="left:20%;top:82%"><span class="e">📒</span><div>Bookkeeper<small>Record</small></div></div>
+    <div class="nd" id="N1" style="left:50%;top:82%"><span class="e">📊</span><div>Analyst<small>Report</small></div></div>
+    <div class="nd" id="N2" style="left:80%;top:82%"><span class="e">⏰</span><div>Reminder<small>Alert</small></div></div>
+  </div>
+</div></section>
+
+<section id="demo" style="padding-top:40px"><div class="wrap">
+  <div class="center rv">
+    <span class="eyebrow plain">✦ Live demo</span>
+    <h2 class="h2">Try a conversation</h2>
+    <p class="lead">Pick a prompt. The dashed lines show what Monet and its agents say to each other behind the scenes.</p>
+  </div>
+  <div class="demo">
+    <div class="prompts rv">
+      <button class="prompt" data-s="0"><span class="e">📒</span><div><b>Log my day</b><span>“Lunch 35k GoPay, parking 5k cash, salary 12.5M into BCA”</span></div><span class="ar">→</span></button>
+      <button class="prompt" data-s="1"><span class="e">📊</span><div><b>Monthly report</b><span>“Show me this month's report”</span></div><span class="ar">→</span></button>
+      <button class="prompt" data-s="2"><span class="e">💡</span><div><b>Investing tips</b><span>“Emergency fund, 1 year, conservative, 1M a month”</span></div><span class="ar">→</span></button>
+      <p class="note">ℹ️ Prototype with scripted responses. Investing content is educational only, not licensed financial advice.</p>
+    </div>
+    <div class="chat rv">
+      <div class="hd"><div class="av"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div><div>Monet<small>Your AI finance manager · online</small></div></div>
+      <div id="msgs"><div class="bub bot">Hi! I'm Monet 👋 Pick a prompt on the left to see how I work.</div></div>
+    </div>
+  </div>
+  <div class="stats rv">
+    <div><b>5 min</b><span>saved per day on logging</span></div>
+    <div><b>4+</b><span>accounts in one view</span></div>
+    <div><b>0</b><span>late fees with reminders</span></div>
+    <div><b>24/7</b><span>always on, on WhatsApp</span></div>
+  </div>
+</div></section>
+
+<section style="padding-top:40px"><div class="wrap">
+  <div class="center rv"><span class="eyebrow plain">✦ Early users</span><h2 class="h2">People finally know<br>where their money goes</h2></div>
+  <div class="quotes">
+    <div class="card quote rv"><p>“I used to give up on budgeting apps after a week. With Monet I just text what I spent and it's done.”</p><div class="who"><i style="background:#6C63FF">AR</i><div><b>Aulia R.</b><small>Product designer</small></div></div></div>
+    <div class="card quote rv"><p>“The bill reminders alone paid for it. No more late electricity payments.”</p><div class="who"><i style="background:#00A846">DS</i><div><b>Dimas S.</b><small>Freelance developer</small></div></div></div>
+    <div class="card quote rv"><p>“Four accounts, one chat. The monthly report showed me I was spending way too much on coffee.”</p><div class="who"><i style="background:#FF6F61">NP</i><div><b>Nadia P.</b><small>Marketing lead</small></div></div></div>
+  </div>
+</div></section>
+
+<section id="pricing" style="padding-top:40px"><div class="wrap center">
+  <div class="rv">
+    <span class="eyebrow plain">✦ Pricing</span>
+    <h2 class="h2">Simple pricing. Start free.</h2>
+    <p class="lead">Upgrade when Monet becomes part of your routine.</p>
+    <div class="toggle"><button class="on" data-p="m">Monthly</button><button data-p="y">Yearly <em>−20%</em></button></div>
+  </div>
+  <div class="prices">
+    <div class="card price rv"><b>Starter</b><p>For getting started</p><div class="amt">Free</div><small style="color:var(--muted)">forever</small>
+      <ul><li>Chat logging on WhatsApp</li><li>2 linked accounts</li><li>Monthly report</li><li>Bill reminders</li></ul><a class="btn ghost" href="#signup">Start free</a></div>
+    <div class="card price dark rv"><span class="tag">Popular</span><b>Plus</b><p>For everyday money</p><div class="amt" data-m="49K" data-y="39K">Rp 49K<small> /month</small></div><small style="color:#B9BDD6">billed <span data-m="monthly" data-y="yearly">monthly</span></small>
+      <ul><li>Everything in Starter</li><li>Unlimited accounts</li><li>Email receipt reading</li><li>Saving &amp; investing tips</li><li>Weekly reports</li></ul><a class="btn green" href="#signup">Get Plus</a></div>
+    <div class="card price rv"><b>Family</b><p>For shared households</p><div class="amt" data-m="99K" data-y="79K">Rp 99K<small> /month</small></div><small style="color:var(--muted)">billed <span data-m="monthly" data-y="yearly">monthly</span></small>
+      <ul><li>Everything in Plus</li><li>Up to 5 members</li><li>Shared bills &amp; goals</li><li>Priority support</li></ul><a class="btn ghost" href="#signup">Get Family</a></div>
+  </div>
+</div></section>
+
+<section id="faq" style="padding-top:40px"><div class="wrap">
+  <div class="center rv"><span class="eyebrow plain">✦ FAQ</span><h2 class="h2">Questions, answered</h2></div>
+  <div class="faq rv">
+    <details open><summary>Do I need to download an app?</summary><p>No. You can chat with Monet on WhatsApp, forward emails, or use the web dashboard.</p></details>
+    <details><summary>Is my financial data safe?</summary><p>Monet only reads the receipts and notifications you connect, and never moves money on your behalf.</p></details>
+    <details><summary>What if Monet gets something wrong?</summary><p>When an amount, date, or account is unclear, Monet asks you before saving. You can edit any record at any time.</p></details>
+    <details><summary>Is the investing advice licensed?</summary><p>No. Tips are educational only. Monet suggests product types and recommends choosing OJK-registered products.</p></details>
+  </div>
+</div></section>
+
+<section id="signup" style="padding-top:20px"><div class="wrap">
+  <div class="cta rv">
+    <span class="eyebrow plain" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff">🟢 Active &amp; ready 24/7</span>
+    <h2 class="h2">Ready to know your wealth?</h2>
+    <p class="lead">Join Monet and put your finances in one place. Set up takes under two minutes.</p>
+    <a class="btn green" href="mailto:ismailgohzali@gmail.com?subject=Sign%20Up%20-%20Monet">Sign up now <span class="ar">→</span></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div><a class="logo" href="#top"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</a><p style="margin-top:12px;max-width:280px">Your AI finance manager. Know your wealth, all in one place.</p></div>
+    <div><h5>Product</h5><a href="#features">Features</a><a href="#demo">Demo</a><a href="#pricing">Pricing</a></div>
+    <div><h5>Company</h5><a href="#team">How it works</a><a href="#faq">FAQ</a><a href="../">Original site</a></div>
+    <div><h5>Contact</h5><a href="mailto:ismailgohzali@gmail.com">Email us</a></div>
+  </div>
+  <div class="copy"><span>© 2026 Monet</span><span>Built with AI · AI Builder Bootcamp Showcase</span></div>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+
+// logo marquee
+const banks=["BCA","Mandiri","BRI","BNI","GoPay","OVO","DANA","ShopeePay","Jenius","Gmail","Outlook","WhatsApp"];
+$("#mq").innerHTML=[...banks,...banks].map(b=>`<span>${b}</span>`).join("");
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+$$(".rv").forEach(el=>io.observe(el));
+
+// how-it-works: highlight path You → Monet → agent
+let step=0,auto;
+function setStep(i){
+  step=i;
+  $$(".step").forEach((s,j)=>s.classList.toggle("on",j===i));
+  [0,1,2].forEach(j=>{$("#N"+j).classList.toggle("hot",j===i);$("#L"+(j+1)).classList.toggle("hot",j===i)});
+  $("#L0").classList.add("hot");
+}
+$$(".step").forEach(s=>s.addEventListener("click",()=>{clearInterval(auto);setStep(+s.dataset.i)}));
+setStep(0);auto=setInterval(()=>setStep((step+1)%3),3200);
+
+// pricing toggle
+$$(".toggle button").forEach(b=>b.addEventListener("click",()=>{
+  const p=b.dataset.p;$$(".toggle button").forEach(x=>x.classList.toggle("on",x===b));
+  $$(".price .amt[data-m]").forEach(a=>a.innerHTML=`Rp ${a.dataset[p]}<small> /month</small>`);
+  $$(".price span[data-m]").forEach(s=>s.textContent=s.dataset[p]);
+}));
+
+// chat demo
+const S=[
+ [["me","Lunch 35k with GoPay, parking 5k cash, salary 12.5M into BCA"],["sys","🎯 Monet → 📒 Bookkeeper: record 3 transactions"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ recorded"],["sys","🎯 Monet → ⏰ Reminder: any bills due?"],["sys","⏰ Reminder → 🎯 Monet: 🔴 electricity in 3 days"],
+  ["bot","Logged 3 transactions ✅<br>• Lunch · GoPay · Rp 35,000<br>• Parking · Cash · Rp 5,000<br>• Salary · BCA · +Rp 12,500,000<br><br>Today's spending is Rp 40,000, below your daily average. 🔴 PLN electricity (Rp 450,000) is due in 3 days, and your salary just landed, so now's a good time to pay."],["mem","🧠 Memory update: +3 transactions"]],
+ [["me","Show me this month's report"],["sys","🎯 Monet → 📒 Bookkeeper: send this month's transactions"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ 86 transactions, 4 accounts"],["sys","🎯 Monet → 📊 Analyst: build report"],["sys","📊 Analyst → 🎯 Monet: ✓ report ready"],
+  ["bot","<b>This month</b><br>Income Rp 12.5M · Spending Rp 8.2M · Saved Rp 4.3M (34%)<br><br>⚠️ Food is up 18% from last month.<br>💡 Skipping 3 coffee runs a week saves about Rp 400K a month.<br><br>Upcoming: 🔴 Electricity · 🟡 Internet · 🟢 Credit card"]],
+ [["me","Give me some investing tips"],["sys","🎯 Monet → 📊 Analyst: investing tips requested"],["sys","📊 Analyst → 🎯 Monet: need goal, horizon, risk, budget"],
+  ["bot","Happy to help! What's the goal, how long, your risk profile, and how much per month?"],["me","Emergency fund, 1 year, conservative, 1M a month"],["sys","🎯 Monet → 📊 Analyst: preferences + spending Rp 8.2M/mo"],["sys","📊 Analyst → 🎯 Monet: ✓ recommendation ready"],
+  ["bot","Good fit: money market mutual funds or time deposits (low risk, easy to withdraw). Rp 1M × 12 ≈ Rp 12M, about 1.5 months of expenses. Top up from your monthly savings to reach 3 months faster.<br><small style='color:var(--muted)'>Educational only. Pick OJK-registered products.</small>"],["mem","🧠 Memory update: investment preferences saved"]]
+];
+const box=$("#msgs"),wait=ms=>new Promise(r=>setTimeout(r,ms));let busy=false;
+function add(cls,html){const d=document.createElement("div");d.className="bub "+cls;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
+async function run(i){
+  if(busy)return;busy=true;$$(".prompt").forEach(b=>b.disabled=true);box.innerHTML="";
+  for(const [k,t] of S[i]){
+    if(k==="bot"){await wait(250);const ty=add("bot typing","<span></span><span></span><span></span>");await wait(900);ty.remove()}
+    else await wait(k==="sys"?420:450);
+    add(k,t);
+  }
+  busy=false;$$(".prompt").forEach(b=>b.disabled=false);
+}
+$$(".prompt").forEach(b=>b.addEventListener("click",()=>run(+b.dataset.s)));
+</script>
+</body>
+</html>
