@@ -30,13 +30,13 @@ Agents never talk to the user or to each other directly. Everything goes through
 | `index.html` | White landing page (homepage); single self-contained file with logos embedded |
 | `progress.md` | This file |
 | `CLAUDE.md` | Tells Claude to read this file first |
-| `.gitignore` | Keeps the local planning docs out of Git |
+| `.gitignore` | Ignores the `docs/` folder (local planning docs) |
 
 ## 4. Working rules (how the owner wants changes done)
 1. **Read this file first**, then the files you'll change.
 2. **Preview before pushing.** Make changes locally, send the owner a preview (the page + desktop and mobile screenshots), and **push only after they approve**, unless they explicitly say "push".
 3. Work on a feature branch and get changes to `main` through a pull request, only when the owner asks. Don't push directly to `main`. The old blue site lives on branch `monet-blue`; don't change it unless asked.
-4. **Never push** the planning docs (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN). They're in `.gitignore`.
+4. **Never push** the planning docs (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN). They live in the `docs/` folder, which `.gitignore` ignores.
 5. Don't commit screenshots or other scratch files.
 6. Ask first when unsure what something means (e.g. document names, scope).
 7. After each change: test in a browser at **1440 px and 390 px** (no horizontal scroll, no console errors) and update this file.
@@ -73,7 +73,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 - [ ] Native-speaker review of the Indonesian text.
 - [ ] Inter font isn't embedded (most visitors see their system font).
 
-## 7. Planning documents (local only, not in Git)
+## 7. Planning documents (local only, in `docs/`, not in Git)
 Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**, so a new session won't have them unless the owner provides them again.
 
 | File | Content |
@@ -101,3 +101,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 1 Nov 2026 | Wrote PRD, TRD, AFD, DBD, BSD, IPD, DESIGN (local only, in `.gitignore`) |
 | 1 Nov 2026 | Added `progress.md` and `CLAUDE.md` |
 | 1 Nov 2026 | White landing page merged to `main` as the homepage (`index.html`); `/saas` removed; footer "Original site" link removed. Old blue site saved on branch `monet-blue` |
+| 1 Nov 2026 | `.gitignore` now ignores the whole `docs/` folder; planning docs moved into `docs/` |
