@@ -42,6 +42,9 @@ section{padding:110px 0}
 .nav .links a:hover{color:var(--ink)}
 .nav .right{display:flex;gap:8px;align-items:center}
 .nav .btn{padding:10px 18px;font-size:.88rem}
+.lang{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;font:inherit;font-size:.78rem;font-weight:700;letter-spacing:.3px;padding:6px 11px;border-radius:999px;cursor:pointer;color:var(--ink2)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
 
 /* hero */
 .hero{position:relative;padding:170px 0 0;overflow:hidden;text-align:center}
@@ -248,34 +251,37 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
 
 <nav class="nav">
   <a class="logo" href="#top"><svg viewBox="22 30 78 58" role="img" aria-label="Monet logo"><use href="#mk"/></svg>MONET</a>
-  <div class="links"><a href="#features">Features</a><a href="#team">How it works</a><a href="#demo">Demo</a><a href="#faq">FAQ</a></div>
-  <div class="right"><a class="btn ghost" href="#demo">Try demo</a><a class="btn dark" href="#signup">Get started</a></div>
+  <div class="links"><a href="#features" data-i="nFeat">Features</a><a href="#team" data-i="nHow">How it works</a><a href="#demo" data-i="nDemo">Demo</a><a href="#faq">FAQ</a></div>
+  <div class="right">
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="id" aria-pressed="false">ID</button></div>
+    <a class="btn dark" href="#signup" data-i="nStart">Get started</a>
+  </div>
 </nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <span class="eyebrow"><b>NEW</b> Meet your AI finance team: Bookkeeper, Analyst &amp; Reminder →</span>
-  <h1>Know your wealth.<br><span class="grad">All in one place.</span></h1>
-  <p class="lead">Just chat with Monet. It logs every transaction from email, WhatsApp, or a quick message, shows you where your money really goes, and reminds you before bills are due.</p>
-  <div class="ctas"><a class="btn dark" href="#signup">Start for free <span class="ar">→</span></a><a class="btn ghost" href="#demo">▶ See it in action</a></div>
+  <span class="eyebrow"><b data-i="new">NEW</b> <span data-i="eyebrow">Meet your AI finance team: Bookkeeper, Analyst &amp; Reminder →</span></span>
+  <h1 data-i="h1">Know your wealth.<br><span class="grad">All in one place.</span></h1>
+  <p class="lead" data-i="heroLead">Just chat with Monet. It logs every transaction from email, WhatsApp, or a quick message, shows you where your money really goes, and reminds you before bills are due.</p>
+  <div class="ctas"><a class="btn dark" href="#signup" data-i="ctaFree">Start for free <span class="ar">→</span></a><a class="btn ghost" href="#demo" data-i="ctaSee">▶ See it in action</a></div>
   <div class="mock rv">
-    <div class="float f1"><div class="ic" style="background:#E8F8EF">📒</div><div><b>3 transactions logged</b><small>from “lunch 35k gopay…”</small></div></div>
-    <div class="float f2"><div class="ic" style="background:#FFF1EF">⏰</div><div><b>PLN electricity · 3 days</b><small>Rp 450,000 due soon</small></div></div>
+    <div class="float f1"><div class="ic" style="background:#E8F8EF">📒</div><div data-i="f1"><b>3 transactions logged</b><small>from “lunch 35k gopay…”</small></div></div>
+    <div class="float f2"><div class="ic" style="background:#FFF1EF">⏰</div><div data-i="f2"><b>PLN electricity · 3 days</b><small>Rp 450,000 due soon</small></div></div>
     <div class="app">
       <aside class="side">
         <div class="logo"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</div>
-        <a class="on">◧ Overview</a><a>⇄ Transactions</a><a>🧾 Bills</a><a>📈 Reports</a><a>💡 Invest</a><a>⚙ Settings</a>
+        <a class="on" data-i="sOv">◧ Overview</a><a data-i="sTx">⇄ Transactions</a><a data-i="sBills">🧾 Bills</a><a data-i="sRep">📈 Reports</a><a data-i="sInv">💡 Invest</a><a data-i="sSet">⚙ Settings</a>
         <div class="sp"></div>
-        <div class="pro"><b>4 accounts linked</b>BCA · Mandiri · GoPay · OVO</div>
+        <div class="pro"><b data-i="linked">4 accounts linked</b>BCA · Mandiri · GoPay · OVO</div>
       </aside>
       <div class="main">
-        <div class="topbar"><h3><small>Good morning, Rina 👋</small>Your money this month</h3><div class="seg"><span>Week</span><span class="on">Month</span><span>Year</span></div></div>
+        <div class="topbar"><h3 data-i="greet"><small>Good morning, Rina 👋</small>Your money this month</h3><div class="seg"><span data-i="wk">Week</span><span class="on" data-i="mo">Month</span><span data-i="yr">Year</span></div></div>
         <div class="kpis">
-          <div class="kpi"><small>Income</small><b>Rp 12.5M</b><span class="d">▲ 4.2%</span></div>
-          <div class="kpi"><small>Spending</small><b>Rp 8.2M</b><span class="d dn">▲ 6.1%</span></div>
-          <div class="kpi"><small>Saved</small><b>Rp 4.3M</b><span class="d">34% rate</span></div>
+          <div class="kpi"><small data-i="inc">Income</small><b data-i="k1">Rp 12.5M</b><span class="d">▲ 4.2%</span></div>
+          <div class="kpi"><small data-i="spd">Spending</small><b data-i="k2">Rp 8.2M</b><span class="d dn">▲ 6.1%</span></div>
+          <div class="kpi"><small data-i="svd">Saved</small><b data-i="k3">Rp 4.3M</b><span class="d" data-i="rate">34% rate</span></div>
         </div>
         <div class="chart">
-          <div class="hd">Cash flow<span><span><i style="background:var(--green)"></i>Income</span><span><i style="background:var(--violet)"></i>Spending</span></span></div>
+          <div class="hd"><span data-i="cf" style="color:inherit;font-weight:600">Cash flow</span><span><span><i style="background:var(--green)"></i><span data-i="inc2" style="color:inherit">Income</span></span><span><i style="background:var(--violet)"></i><span data-i="spd2" style="color:inherit">Spending</span></span></span></div>
           <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
             <defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00C853" stop-opacity=".25"/><stop offset="1" stop-color="#00C853" stop-opacity="0"/></linearGradient></defs>
             <g stroke="#EEF0F5" stroke-width="1"><line x1="0" y1="30" x2="400" y2="30"/><line x1="0" y1="75" x2="400" y2="75"/><line x1="0" y1="120" x2="400" y2="120"/></g>
@@ -286,50 +292,50 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
           </svg>
         </div>
         <div class="bars">
-          <div class="bar">Food<u><i style="width:38%;background:var(--coral)"></i></u><em>Rp 3.1M</em></div>
-          <div class="bar">Bills<u><i style="width:27%;background:var(--violet)"></i></u><em>Rp 2.2M</em></div>
-          <div class="bar">Transport<u><i style="width:17%;background:var(--gold)"></i></u><em>Rp 1.4M</em></div>
+          <div class="bar"><span data-i="food">Food</span><u><i style="width:38%;background:var(--coral)"></i></u><em data-i="v31">Rp 3.1M</em></div>
+          <div class="bar"><span data-i="bills">Bills</span><u><i style="width:27%;background:var(--violet)"></i></u><em data-i="v22">Rp 2.2M</em></div>
+          <div class="bar"><span data-i="trans">Transport</span><u><i style="width:17%;background:var(--gold)"></i></u><em data-i="v14">Rp 1.4M</em></div>
         </div>
       </div>
       <aside class="rail">
         <div class="hd"><div class="av"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div>Monet<span class="dot"></span></div>
         <div class="feed">
-          <div class="bub me">Lunch 35k GoPay, parking 5k cash</div>
+          <div class="bub me" data-i="r1">Lunch 35k GoPay, parking 5k cash</div>
           <div class="bub sys">🎯 Monet → 📒 Bookkeeper</div>
-          <div class="bub bot">Logged 2 expenses, Rp 40,000 total. That's below your daily average 👍</div>
-          <div class="bub mem">🧠 +2 transactions</div>
-          <div class="bub me">Anything due soon?</div>
-          <div class="bub bot">🔴 PLN electricity, Rp 450,000 in 3 days. Your salary just came in, so now is a good time to pay.</div>
+          <div class="bub bot" data-i="r2">Logged 2 expenses, Rp 40,000 total. That's below your daily average 👍</div>
+          <div class="bub mem" data-i="r3">🧠 +2 transactions</div>
+          <div class="bub me" data-i="r4">Anything due soon?</div>
+          <div class="bub bot" data-i="r5">🔴 PLN electricity, Rp 450,000 in 3 days. Your salary just came in, so now is a good time to pay.</div>
         </div>
-        <div class="compose">Message Monet…<b>↑</b></div>
+        <div class="compose"><span data-i="compose">Message Monet…</span><b>↑</b></div>
       </aside>
     </div>
   </div>
 </div></header>
 
 <div class="logos"><div class="wrap">
-  <p>Works with the accounts you already use</p>
+  <p data-i="worksWith">Works with the accounts you already use</p>
   <div class="marq"><div id="mq"></div></div>
 </div></div>
 
 <section id="features"><div class="wrap">
   <div class="center rv">
-    <span class="eyebrow plain">✦ Features</span>
-    <h2 class="h2">Everything you need to stay on top.<br><em>Nothing you don't.</em></h2>
-    <p class="lead">Monet takes the busywork out of personal finance, so you get the clarity without the spreadsheets.</p>
+    <span class="eyebrow plain" data-i="eFeat">✦ Features</span>
+    <h2 class="h2" data-i="featH">Everything you need to stay on top.<br><em>Nothing you don't.</em></h2>
+    <p class="lead" data-i="featLead">Monet takes the busywork out of personal finance, so you get the clarity without the spreadsheets.</p>
   </div>
   <div class="bento">
-    <div class="card c4 rv"><span class="pill">📧 Email reading</span><h3>Receipts log themselves</h3><p>Connect Gmail or Outlook and Monet picks up receipts, bank alerts, and e-wallet top-ups automatically.</p>
+    <div class="card c4 rv"><span class="pill" data-i="pEmail">📧 Email reading</span><h3 data-i="emailH">Receipts log themselves</h3><p data-i="emailP">Connect Gmail or Outlook and Monet picks up receipts, bank alerts, and e-wallet top-ups automatically.</p>
       <div class="vis inbox">
-        <div class="mail"><div class="ic" style="background:#EEF0FF">🏦</div><span><b>BCA</b> · Transfer received Rp 12,500,000</span><em class="tg">Logged</em></div>
-        <div class="mail"><div class="ic" style="background:#FFF1EF">🛵</div><span><b>GoPay</b> · Payment Rp 35,000 to Warung Sari</span><em class="tg">Logged</em></div>
-        <div class="mail"><div class="ic" style="background:#FFF7E6">⚡</div><span><b>PLN</b> · Your bill of Rp 450,000 is ready</span><em class="tg" style="background:#FFF1EF;color:#C2410C">Bill added</em></div>
+        <div class="mail"><div class="ic" style="background:#EEF0FF">🏦</div><span data-i="m1"><b>BCA</b> · Transfer received Rp 12,500,000</span><em class="tg" data-i="logged">Logged</em></div>
+        <div class="mail"><div class="ic" style="background:#FFF1EF">🛵</div><span data-i="m2"><b>GoPay</b> · Payment Rp 35,000 to Warung Sari</span><em class="tg" data-i="logged">Logged</em></div>
+        <div class="mail"><div class="ic" style="background:#FFF7E6">⚡</div><span data-i="m3"><b>PLN</b> · Your bill of Rp 450,000 is ready</span><em class="tg" style="background:#FFF1EF;color:#C2410C" data-i="billAdded">Bill added</em></div>
       </div>
     </div>
-    <div class="card c2 rv"><span class="pill">💬 WhatsApp</span><h3>Just text it</h3><p>Type like you talk. Monet understands.</p>
-      <div class="vis wa"><div class="o">coffee 28k ovo</div><div>✅ Logged: Coffee · OVO · Rp 28,000</div></div>
+    <div class="card c2 rv"><span class="pill">💬 WhatsApp</span><h3 data-i="waH">Just text it</h3><p data-i="waP">Type like you talk. Monet understands.</p>
+      <div class="vis wa"><div class="o" data-i="wa1">coffee 28k ovo</div><div data-i="wa2">✅ Logged: Coffee · OVO · Rp 28,000</div></div>
     </div>
-    <div class="card c3 rv"><span class="pill">📊 Reports</span><h3>See where it all goes</h3><p>Monthly reports with clear breakdowns and tips that fit your goals.</p>
+    <div class="card c3 rv"><span class="pill" data-i="pRep">📊 Reports</span><h3 data-i="repH">See where it all goes</h3><p data-i="repP">Monthly reports with clear breakdowns and tips that fit your goals.</p>
       <div class="vis ring">
         <svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#F0F1F6" stroke-width="5"/>
           <circle cx="21" cy="21" r="15.9" fill="none" stroke="#00C853" stroke-width="5" stroke-dasharray="34 66" stroke-dashoffset="25"/>
@@ -338,22 +344,22 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
           <circle cx="21" cy="21" r="15.9" fill="none" stroke="#F2B544" stroke-width="5" stroke-dasharray="23 77" stroke-dashoffset="-52"/>
           <text x="21" y="22.5" text-anchor="middle" font-size="6" font-weight="800" fill="#0E1330">34%</text></svg>
         <div class="bars" style="flex:1">
-          <div class="bar" style="grid-template-columns:70px 1fr">Savings<u><i style="width:34%;background:var(--green)"></i></u></div>
-          <div class="bar" style="grid-template-columns:70px 1fr">Food<u><i style="width:25%;background:var(--coral)"></i></u></div>
-          <div class="bar" style="grid-template-columns:70px 1fr">Bills<u><i style="width:18%;background:var(--violet)"></i></u></div>
+          <div class="bar" style="grid-template-columns:90px 1fr"><span data-i="sav">Savings</span><u><i style="width:34%;background:var(--green)"></i></u></div>
+          <div class="bar" style="grid-template-columns:90px 1fr"><span data-i="food">Food</span><u><i style="width:25%;background:var(--coral)"></i></u></div>
+          <div class="bar" style="grid-template-columns:90px 1fr"><span data-i="bills">Bills</span><u><i style="width:18%;background:var(--violet)"></i></u></div>
         </div>
       </div>
     </div>
-    <div class="card c3 dark rv"><span class="pill">⏰ Reminders</span><h3>Never pay a late fee again</h3><p>Every bill is tracked and flagged before it's due.</p>
+    <div class="card c3 dark rv"><span class="pill" data-i="pRem">⏰ Reminders</span><h3 data-i="remH">Never pay a late fee again</h3><p data-i="remP">Every bill is tracked and flagged before it's due.</p>
       <div class="vis rem">
-        <div><span>🔴 PLN electricity</span><small>Rp 450,000 · 3 days</small></div>
-        <div><span>🟡 Internet</span><small>Rp 385,000 · 6 days</small></div>
-        <div><span>🟢 Credit card</span><small>Rp 2,100,000 · 12 days</small></div>
+        <div><span data-i="b1">🔴 PLN electricity</span><small data-i="b1v">Rp 450,000 · 3 days</small></div>
+        <div><span>🟡 Internet</span><small data-i="b2v">Rp 385,000 · 6 days</small></div>
+        <div><span data-i="b3">🟢 Credit card</span><small data-i="b3v">Rp 2,100,000 · 12 days</small></div>
       </div>
     </div>
-    <div class="card c2 rv"><span class="pill">🧠 Memory</span><h3>Remembers for you</h3><p>Transactions, bills, and your goals are saved, so you never repeat yourself.</p></div>
-    <div class="card c4 rv"><span class="pill">🤝 Human-in-the-loop</span><h3>Monet never guesses</h3><p>Unclear amount, date, or account? Monet asks first, so your records stay right.</p>
-      <div class="vis ask"><div class="q">“transfer 500 to Andi” — did you mean <b>Rp 500,000</b>, and from which account?</div>
+    <div class="card c2 rv"><span class="pill" data-i="pMem">🧠 Memory</span><h3 data-i="memH">Remembers for you</h3><p data-i="memP">Transactions, bills, and your goals are saved, so you never repeat yourself.</p></div>
+    <div class="card c4 rv"><span class="pill">🤝 Human-in-the-loop</span><h3 data-i="hilH">Monet never guesses</h3><p data-i="hilP">Unclear amount, date, or account? Monet asks first, so your records stay right.</p>
+      <div class="vis ask"><div class="q" data-i="hilQ">“transfer 500 to Andi” — did you mean <b>Rp 500,000</b>, and from which account?</div>
         <div class="opts"><span class="on">BCA</span><span>Mandiri</span><span>GoPay</span><span>OVO</span></div></div>
     </div>
   </div>
@@ -361,80 +367,80 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
 
 <section id="team" style="padding-top:40px"><div class="wrap team">
   <div class="rv">
-    <span class="eyebrow plain">✦ How it works</span>
-    <h2 class="h2">One chat. A whole<br>finance team behind it.</h2>
-    <p class="lead">You only ever talk to Monet. Monet hands each request to the right specialist, checks their work, and gives you one clear answer.</p>
+    <span class="eyebrow plain" data-i="eHow">✦ How it works</span>
+    <h2 class="h2" data-i="teamH">One chat. A whole<br>finance team behind it.</h2>
+    <p class="lead" data-i="teamLead">You only ever talk to Monet. Monet hands each request to the right specialist, checks their work, and gives you one clear answer.</p>
     <div class="steps" id="steps">
-      <div class="step on" data-i="0"><div class="n">01</div><div><h4>📒 Bookkeeper records</h4><p>Turns messy text, statements, and receipts into clean records across all your accounts.</p></div></div>
-      <div class="step" data-i="1"><div class="n">02</div><div><h4>📊 Analyst explains</h4><p>Builds your reports and prepares saving and investing tips that fit your goals.</p></div></div>
-      <div class="step" data-i="2"><div class="n">03</div><div><h4>⏰ Reminder watches</h4><p>Tracks every bill and alerts Monet before one is due, so Monet can remind you.</p></div></div>
+      <div class="step on" data-n="0"><div class="n">01</div><div><h4 data-i="st1h">📒 Bookkeeper records</h4><p data-i="st1p">Turns messy text, statements, and receipts into clean records across all your accounts.</p></div></div>
+      <div class="step" data-n="1"><div class="n">02</div><div><h4 data-i="st2h">📊 Analyst explains</h4><p data-i="st2p">Builds your reports and prepares saving and investing tips that fit your goals.</p></div></div>
+      <div class="step" data-n="2"><div class="n">03</div><div><h4 data-i="st3h">⏰ Reminder watches</h4><p data-i="st3p">Tracks every bill and alerts Monet before one is due, so Monet can remind you.</p></div></div>
     </div>
   </div>
   <div class="org rv" id="org">
     <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       <path id="L0" d="M50 18V44"/><path id="L1" d="M50 56C50 70 20 66 20 80"/><path id="L2" d="M50 56V80"/><path id="L3" d="M50 56C50 70 80 66 80 80"/>
     </svg>
-    <div class="nd" style="left:50%;top:14%"><span class="e">💬</span><div>You<small>just chat</small></div></div>
+    <div class="nd" style="left:50%;top:14%"><span class="e">💬</span><div data-i="ndYou">You<small>just chat</small></div></div>
     <div class="nd boss" style="left:50%;top:50%"><div class="av" style="background:rgba(255,255,255,.1)"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div><div>Monet<small>Manager</small></div></div>
-    <div class="nd" id="N0" style="left:20%;top:82%"><span class="e">📒</span><div>Bookkeeper<small>Record</small></div></div>
-    <div class="nd" id="N1" style="left:50%;top:82%"><span class="e">📊</span><div>Analyst<small>Report</small></div></div>
-    <div class="nd" id="N2" style="left:80%;top:82%"><span class="e">⏰</span><div>Reminder<small>Alert</small></div></div>
+    <div class="nd" id="N0" style="left:20%;top:82%"><span class="e">📒</span><div data-i="nd1">Bookkeeper<small>Record</small></div></div>
+    <div class="nd" id="N1" style="left:50%;top:82%"><span class="e">📊</span><div data-i="nd2">Analyst<small>Report</small></div></div>
+    <div class="nd" id="N2" style="left:80%;top:82%"><span class="e">⏰</span><div data-i="nd3">Reminder<small>Alert</small></div></div>
   </div>
 </div></section>
 
 <section id="demo" style="padding-top:40px"><div class="wrap">
   <div class="center rv">
-    <span class="eyebrow plain">✦ Live demo</span>
-    <h2 class="h2">Try a conversation</h2>
-    <p class="lead">Pick a prompt. The dashed lines show what Monet and its agents say to each other behind the scenes.</p>
+    <span class="eyebrow plain" data-i="eDemo">✦ Live demo</span>
+    <h2 class="h2" data-i="demoH">Try a conversation</h2>
+    <p class="lead" data-i="demoLead">Pick a prompt. The dashed lines show what Monet and its agents say to each other behind the scenes.</p>
   </div>
   <div class="demo">
     <div class="prompts rv">
-      <button class="prompt" data-s="0"><span class="e">📒</span><div><b>Log my day</b><span>“Lunch 35k GoPay, parking 5k cash, salary 12.5M into BCA”</span></div><span class="ar">→</span></button>
-      <button class="prompt" data-s="1"><span class="e">📊</span><div><b>Monthly report</b><span>“Show me this month's report”</span></div><span class="ar">→</span></button>
-      <button class="prompt" data-s="2"><span class="e">💡</span><div><b>Investing tips</b><span>“Emergency fund, 1 year, conservative, 1M a month”</span></div><span class="ar">→</span></button>
-      <p class="note">ℹ️ Prototype with scripted responses. Investing content is educational only, not licensed financial advice.</p>
+      <button class="prompt" data-s="0"><span class="e">📒</span><div data-i="pr1"><b>Log my day</b><span>“Lunch 35k GoPay, parking 5k cash, salary 12.5M into BCA”</span></div><span class="ar">→</span></button>
+      <button class="prompt" data-s="1"><span class="e">📊</span><div data-i="pr2"><b>Monthly report</b><span>“Show me this month's report”</span></div><span class="ar">→</span></button>
+      <button class="prompt" data-s="2"><span class="e">💡</span><div data-i="pr3"><b>Investing tips</b><span>“Emergency fund, 1 year, conservative, 1M a month”</span></div><span class="ar">→</span></button>
+      <p class="note" data-i="demoNote">ℹ️ Prototype with scripted responses. Investing content is educational only, not licensed financial advice.</p>
     </div>
     <div class="chat rv">
-      <div class="hd"><div class="av"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div><div>Monet<small>Your AI finance manager · online</small></div></div>
-      <div id="msgs"><div class="bub bot">Hi! I'm Monet 👋 Pick a prompt on the left to see how I work.</div></div>
+      <div class="hd"><div class="av"><svg viewBox="22 30 78 58"><use href="#mk"/></svg></div><div data-i="chatHd">Monet<small>Your AI finance manager · online</small></div></div>
+      <div id="msgs"></div>
     </div>
   </div>
   <div class="stats rv">
-    <div><b>5 min</b><span>saved per day on logging</span></div>
-    <div><b>4+</b><span>accounts in one view</span></div>
-    <div><b>0</b><span>late fees with reminders</span></div>
-    <div><b>24/7</b><span>always on, on WhatsApp</span></div>
+    <div data-i="sa1"><b>5 min</b><span>saved per day on logging</span></div>
+    <div data-i="sa2"><b>4+</b><span>accounts in one view</span></div>
+    <div data-i="sa3"><b>0</b><span>late fees with reminders</span></div>
+    <div data-i="sa4"><b>24/7</b><span>always on, on WhatsApp</span></div>
   </div>
 </div></section>
 
 <section id="faq" style="padding-top:40px"><div class="wrap">
-  <div class="center rv"><span class="eyebrow plain">✦ FAQ</span><h2 class="h2">Questions, answered</h2></div>
+  <div class="center rv"><span class="eyebrow plain">✦ FAQ</span><h2 class="h2" data-i="faqH">Questions, answered</h2></div>
   <div class="faq rv">
-    <details open><summary>Do I need to download an app?</summary><p>No. You can chat with Monet on WhatsApp, forward emails, or use the web dashboard.</p></details>
-    <details><summary>Is my financial data safe?</summary><p>Monet only reads the receipts and notifications you connect, and never moves money on your behalf.</p></details>
-    <details><summary>What if Monet gets something wrong?</summary><p>When an amount, date, or account is unclear, Monet asks you before saving. You can edit any record at any time.</p></details>
-    <details><summary>Is the investing advice licensed?</summary><p>No. Tips are educational only. Monet suggests product types and recommends choosing OJK-registered products.</p></details>
+    <details open><summary data-i="q1">Do I need to download an app?</summary><p data-i="a1">No. You can chat with Monet on WhatsApp, forward emails, or use the web dashboard.</p></details>
+    <details><summary data-i="q2">Is my financial data safe?</summary><p data-i="a2">Monet only reads the receipts and notifications you connect, and never moves money on your behalf.</p></details>
+    <details><summary data-i="q3">What if Monet gets something wrong?</summary><p data-i="a3">When an amount, date, or account is unclear, Monet asks you before saving. You can edit any record at any time.</p></details>
+    <details><summary data-i="q4">Is the investing advice licensed?</summary><p data-i="a4">No. Tips are educational only. Monet suggests product types and recommends choosing OJK-registered products.</p></details>
   </div>
 </div></section>
 
 <section id="signup" style="padding-top:20px"><div class="wrap">
   <div class="cta rv">
-    <span class="eyebrow plain" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff">🟢 Active &amp; ready 24/7</span>
-    <h2 class="h2">Ready to know your wealth?</h2>
-    <p class="lead">Join Monet and put your finances in one place. Set up takes under two minutes.</p>
-    <a class="btn green" href="mailto:ismailgohzali@gmail.com?subject=Sign%20Up%20-%20Monet">Sign up now <span class="ar">→</span></a>
+    <span class="eyebrow plain" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff" data-i="active">🟢 Active &amp; ready 24/7</span>
+    <h2 class="h2" data-i="ctaH">Ready to know your wealth?</h2>
+    <p class="lead" data-i="ctaLead">Join Monet and put your finances in one place. Set up takes under two minutes.</p>
+    <a class="btn green" href="mailto:ismailgohzali@gmail.com?subject=Sign%20Up%20-%20Monet" data-i="signUp">Sign up now <span class="ar">→</span></a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="foot">
-    <div><a class="logo" href="#top"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</a><p style="margin-top:12px;max-width:280px">Your AI finance manager. Know your wealth, all in one place.</p></div>
-    <div><h5>Product</h5><a href="#features">Features</a><a href="#demo">Demo</a></div>
-    <div><h5>Company</h5><a href="#team">How it works</a><a href="#faq">FAQ</a><a href="../">Original site</a></div>
-    <div><h5>Contact</h5><a href="mailto:ismailgohzali@gmail.com">Email us</a></div>
+    <div><a class="logo" href="#top"><svg viewBox="22 30 78 58"><use href="#mk"/></svg>MONET</a><p style="margin-top:12px;max-width:280px" data-i="footTag">Your AI finance manager. Know your wealth, all in one place.</p></div>
+    <div><h5 data-i="fProd">Product</h5><a href="#features" data-i="nFeat">Features</a><a href="#demo" data-i="nDemo">Demo</a></div>
+    <div><h5 data-i="fComp">Company</h5><a href="#team" data-i="nHow">How it works</a><a href="#faq">FAQ</a><a href="../" data-i="fOrig">Original site</a></div>
+    <div><h5 data-i="fCont">Contact</h5><a href="mailto:ismailgohzali@gmail.com" data-i="fMail">Email us</a></div>
   </div>
-  <div class="copy"><span>© 2026 Monet</span><span>Built with AI · AI Builder Bootcamp Showcase · Bank &amp; e-wallet logos: <a href="https://github.com/hafidznoor/idn-finlogos" style="text-decoration:underline">idn-finlogos</a>, <a href="https://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration:underline">CC BY-NC 4.0</a>. Trademarks belong to their owners.</span></div>
+  <div class="copy"><span>© 2026 Monet</span><span data-i="credit">Built with AI · AI Builder Bootcamp Showcase · Bank &amp; e-wallet logos: <a href="https://github.com/hafidznoor/idn-finlogos" style="text-decoration:underline">idn-finlogos</a>, <a href="https://creativecommons.org/licenses/by-nc/4.0/" style="text-decoration:underline">CC BY-NC 4.0</a>. Trademarks belong to their owners.</span></div>
 </div></footer>
 
 <script>
@@ -470,11 +476,80 @@ function setStep(i){
   [0,1,2].forEach(j=>{$("#N"+j).classList.toggle("hot",j===i);$("#L"+(j+1)).classList.toggle("hot",j===i)});
   $("#L0").classList.add("hot");
 }
-$$(".step").forEach(s=>s.addEventListener("click",()=>{clearInterval(auto);setStep(+s.dataset.i)}));
+$$(".step").forEach(s=>s.addEventListener("click",()=>{clearInterval(auto);setStep(+s.dataset.n)}));
 setStep(0);auto=setInterval(()=>setStep((step+1)%3),3200);
 
-// chat demo
-const S=[
+// ---------- Language (EN text lives in the HTML; ID text below, keyed by data-i) ----------
+const ID={
+nFeat:"Fitur",nHow:"Cara kerja",nDemo:"Demo",nStart:"Mulai",
+new:"BARU",eyebrow:"Kenalan dengan tim keuangan AI-mu: Bookkeeper, Analyst &amp; Reminder →",
+h1:"Kenali kekayaanmu.<br><span class=\"grad\">Semua di satu tempat.</span>",
+heroLead:"Cukup chat dengan Monet. Monet mencatat setiap transaksi dari email, WhatsApp, atau pesan singkat, menunjukkan ke mana uangmu benar-benar pergi, dan mengingatkanmu sebelum tagihan jatuh tempo.",
+ctaFree:"Mulai gratis <span class=\"ar\">→</span>",ctaSee:"▶ Lihat cara kerjanya",
+f1:"<b>3 transaksi tercatat</b><small>dari “makan siang 35rb gopay…”</small>",
+f2:"<b>Listrik PLN · 3 hari</b><small>Rp 450.000 segera jatuh tempo</small>",
+sOv:"◧ Ringkasan",sTx:"⇄ Transaksi",sBills:"🧾 Tagihan",sRep:"📈 Laporan",sInv:"💡 Investasi",sSet:"⚙ Pengaturan",
+linked:"4 akun terhubung",
+greet:"<small>Selamat pagi, Rina 👋</small>Keuanganmu bulan ini",wk:"Minggu",mo:"Bulan",yr:"Tahun",
+inc:"Pemasukan",spd:"Pengeluaran",svd:"Tabungan",k1:"Rp 12,5 jt",k2:"Rp 8,2 jt",k3:"Rp 4,3 jt",rate:"rasio 34%",
+cf:"Arus kas",inc2:"Pemasukan",spd2:"Pengeluaran",
+food:"Makanan",bills:"Tagihan",trans:"Transportasi",v31:"Rp 3,1 jt",v22:"Rp 2,2 jt",v14:"Rp 1,4 jt",
+r1:"Makan siang 35rb GoPay, parkir 5rb tunai",
+r2:"2 pengeluaran tercatat, total Rp 40.000. Masih di bawah rata-rata harianmu 👍",
+r3:"🧠 +2 transaksi",r4:"Ada tagihan yang dekat jatuh tempo?",
+r5:"🔴 Listrik PLN, Rp 450.000 dalam 3 hari. Gajimu baru masuk, jadi ini waktu yang pas untuk bayar.",
+compose:"Kirim pesan ke Monet…",
+worksWith:"Terhubung dengan rekening dan e-wallet yang sudah kamu pakai",
+eFeat:"✦ Fitur",featH:"Semua yang kamu perlukan untuk tetap terkendali.<br><em>Tanpa yang tidak perlu.</em>",
+featLead:"Monet mengambil alih pekerjaan ribet dalam mengelola keuangan pribadi, jadi kamu dapat kejelasan tanpa spreadsheet.",
+pEmail:"📧 Membaca email",emailH:"Struk tercatat sendiri",
+emailP:"Hubungkan Gmail atau Outlook, dan Monet otomatis menangkap struk, notifikasi bank, dan top-up e-wallet.",
+m1:"<b>BCA</b> · Transfer masuk Rp 12.500.000",m2:"<b>GoPay</b> · Pembayaran Rp 35.000 ke Warung Sari",m3:"<b>PLN</b> · Tagihanmu Rp 450.000 sudah terbit",
+logged:"Tercatat",billAdded:"Tagihan ditambah",
+waH:"Cukup kirim pesan",waP:"Ketik seperti kamu ngobrol. Monet mengerti.",
+wa1:"kopi 28rb ovo",wa2:"✅ Tercatat: Kopi · OVO · Rp 28.000",
+pRep:"📊 Laporan",repH:"Lihat ke mana uangmu pergi",repP:"Laporan bulanan dengan rincian yang jelas dan tips yang sesuai tujuanmu.",
+sav:"Tabungan",
+pRem:"⏰ Pengingat",remH:"Tidak ada lagi denda telat bayar",remP:"Setiap tagihan dipantau dan ditandai sebelum jatuh tempo.",
+b1:"🔴 Listrik PLN",b1v:"Rp 450.000 · 3 hari",b2v:"Rp 385.000 · 6 hari",b3:"🟢 Kartu kredit",b3v:"Rp 2.100.000 · 12 hari",
+pMem:"🧠 Memori",memH:"Mengingat untukmu",memP:"Transaksi, tagihan, dan tujuanmu tersimpan, jadi kamu tidak perlu mengulang.",
+hilH:"Monet tidak pernah menebak",hilP:"Jumlah, tanggal, atau akun tidak jelas? Monet bertanya dulu, jadi catatanmu tetap benar.",
+hilQ:"“transfer 500 ke Andi” — maksudnya <b>Rp 500.000</b>, dan dari akun mana?",
+eHow:"✦ Cara kerja",teamH:"Satu chat. Satu tim<br>keuangan di baliknya.",
+teamLead:"Kamu cukup bicara dengan Monet. Monet meneruskan setiap permintaan ke spesialis yang tepat, memeriksa hasilnya, dan memberimu satu jawaban yang jelas.",
+st1h:"📒 Bookkeeper mencatat",st1p:"Mengubah ketikan bebas, mutasi rekening, dan struk jadi catatan rapi dari semua akunmu.",
+st2h:"📊 Analyst menjelaskan",st2p:"Menyusun laporanmu dan menyiapkan tips menabung serta investasi yang sesuai tujuanmu.",
+st3h:"⏰ Reminder memantau",st3p:"Memantau setiap tagihan dan memberi tahu Monet sebelum jatuh tempo, supaya Monet bisa mengingatkanmu.",
+ndYou:"Kamu<small>cukup chat</small>",nd1:"Bookkeeper<small>Catat</small>",nd2:"Analyst<small>Laporan</small>",nd3:"Reminder<small>Ingatkan</small>",
+eDemo:"✦ Demo langsung",demoH:"Coba percakapan",
+demoLead:"Pilih salah satu prompt. Garis putus-putus menunjukkan percakapan Monet dengan para agennya di balik layar.",
+pr1:"<b>Catat hariku</b><span>“Makan siang 35rb GoPay, parkir 5rb tunai, gaji 12,5jt masuk BCA”</span>",
+pr2:"<b>Laporan bulanan</b><span>“Tampilkan laporan bulan ini”</span>",
+pr3:"<b>Tips investasi</b><span>“Dana darurat, 1 tahun, konservatif, 1jt per bulan”</span>",
+demoNote:"ℹ️ Prototipe dengan respons yang sudah disiapkan. Konten investasi bersifat edukatif, bukan nasihat keuangan berlisensi.",
+chatHd:"Monet<small>Manajer keuangan AI-mu · online</small>",
+sa1:"<b>5 menit</b><span>hemat per hari untuk pencatatan</span>",sa2:"<b>4+</b><span>akun dalam satu tampilan</span>",
+sa3:"<b>0</b><span>denda telat dengan pengingat</span>",sa4:"<b>24/7</b><span>selalu aktif di WhatsApp</span>",
+faqH:"Pertanyaan yang sering diajukan",
+q1:"Apakah saya perlu mengunduh aplikasi?",a1:"Tidak. Kamu bisa chat dengan Monet lewat WhatsApp, meneruskan email, atau memakai dashboard web.",
+q2:"Apakah data keuangan saya aman?",a2:"Monet hanya membaca struk dan notifikasi yang kamu hubungkan, dan tidak pernah memindahkan uang atas namamu.",
+q3:"Bagaimana kalau Monet salah?",a3:"Kalau jumlah, tanggal, atau akun tidak jelas, Monet bertanya dulu sebelum menyimpan. Kamu bisa mengubah catatan kapan saja.",
+q4:"Apakah saran investasinya berlisensi?",a4:"Tidak. Tips bersifat edukatif. Monet menyarankan jenis produk dan merekomendasikan produk yang terdaftar dan diawasi OJK.",
+active:"🟢 Aktif &amp; siaga 24/7",ctaH:"Siap mengenal kekayaanmu?",
+ctaLead:"Bergabung dengan Monet dan satukan keuanganmu di satu tempat. Pengaturan kurang dari dua menit.",
+signUp:"Daftar sekarang <span class=\"ar\">→</span>",
+footTag:"Manajer keuangan AI-mu. Kenali kekayaanmu, semua di satu tempat.",
+fProd:"Produk",fComp:"Perusahaan",fOrig:"Situs asli",fCont:"Kontak",fMail:"Kirim email",
+credit:"Dibuat dengan AI · AI Builder Bootcamp Showcase · Logo bank &amp; e-wallet: <a href=\"https://github.com/hafidznoor/idn-finlogos\" style=\"text-decoration:underline\">idn-finlogos</a>, <a href=\"https://creativecommons.org/licenses/by-nc/4.0/\" style=\"text-decoration:underline\">CC BY-NC 4.0</a>. Merek dagang milik pemiliknya masing-masing."
+};
+const META={
+en:{title:"Monet – Your AI finance manager",hi:"Hi! I'm Monet 👋 Pick a prompt on the left to see how I work."},
+id:{title:"Monet – Manajer keuangan AI-mu",hi:"Hai! Aku Monet 👋 Pilih salah satu prompt untuk melihat cara kerjaku."}
+};
+
+// chat demo scripts
+const S={
+en:[
  [["me","Lunch 35k with GoPay, parking 5k cash, salary 12.5M into BCA"],["sys","🎯 Monet → 📒 Bookkeeper: record 3 transactions"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ recorded"],["sys","🎯 Monet → ⏰ Reminder: any bills due?"],["sys","⏰ Reminder → 🎯 Monet: 🔴 electricity in 3 days"],
   ["bot","Logged 3 transactions ✅<br>• Lunch · GoPay · Rp 35,000<br>• Parking · Cash · Rp 5,000<br>• Salary · BCA · +Rp 12,500,000<br><br>Today's spending is Rp 40,000, below your daily average. 🔴 PLN electricity (Rp 450,000) is due in 3 days, and your salary just landed, so now's a good time to pay."],["mem","🧠 Memory update: +3 transactions"]],
  [["me","Show me this month's report"],["sys","🎯 Monet → 📒 Bookkeeper: send this month's transactions"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ 86 transactions, 4 accounts"],["sys","🎯 Monet → 📊 Analyst: build report"],["sys","📊 Analyst → 🎯 Monet: ✓ report ready"],
@@ -482,19 +557,46 @@ const S=[
  [["me","Give me some investing tips"],["sys","🎯 Monet → 📊 Analyst: investing tips requested"],["sys","📊 Analyst → 🎯 Monet: need goal, horizon, risk, budget"],
   ["bot","Happy to help! What's the goal, how long, your risk profile, and how much per month?"],["me","Emergency fund, 1 year, conservative, 1M a month"],["sys","🎯 Monet → 📊 Analyst: preferences + spending Rp 8.2M/mo"],["sys","📊 Analyst → 🎯 Monet: ✓ recommendation ready"],
   ["bot","Good fit: money market mutual funds or time deposits (low risk, easy to withdraw). Rp 1M × 12 ≈ Rp 12M, about 1.5 months of expenses. Top up from your monthly savings to reach 3 months faster.<br><small style='color:var(--muted)'>Educational only. Pick OJK-registered products.</small>"],["mem","🧠 Memory update: investment preferences saved"]]
-];
-const box=$("#msgs"),wait=ms=>new Promise(r=>setTimeout(r,ms));let busy=false;
+],
+id:[
+ [["me","Makan siang 35rb pakai GoPay, parkir 5rb tunai, gaji 12,5jt masuk BCA"],["sys","🎯 Monet → 📒 Bookkeeper: catat 3 transaksi"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ tercatat"],["sys","🎯 Monet → ⏰ Reminder: ada tagihan yang dekat jatuh tempo?"],["sys","⏰ Reminder → 🎯 Monet: 🔴 listrik 3 hari lagi"],
+  ["bot","3 transaksi tercatat ✅<br>• Makan siang · GoPay · Rp 35.000<br>• Parkir · Tunai · Rp 5.000<br>• Gaji · BCA · +Rp 12.500.000<br><br>Pengeluaran hari ini Rp 40.000, di bawah rata-rata harianmu. 🔴 Listrik PLN (Rp 450.000) jatuh tempo 3 hari lagi, dan gajimu baru masuk, jadi ini waktu yang pas untuk bayar."],["mem","🧠 Update memori: +3 transaksi"]],
+ [["me","Tampilkan laporan bulan ini"],["sys","🎯 Monet → 📒 Bookkeeper: kirim transaksi bulan ini"],["sys","📒 Bookkeeper → 🎯 Monet: ✓ 86 transaksi, 4 akun"],["sys","🎯 Monet → 📊 Analyst: susun laporan"],["sys","📊 Analyst → 🎯 Monet: ✓ laporan siap"],
+  ["bot","<b>Bulan ini</b><br>Pemasukan Rp 12,5 jt · Pengeluaran Rp 8,2 jt · Tabungan Rp 4,3 jt (34%)<br><br>⚠️ Makanan naik 18% dari bulan lalu.<br>💡 Kurangi 3x beli kopi per minggu, hemat sekitar Rp 400 rb per bulan.<br><br>Akan datang: 🔴 Listrik · 🟡 Internet · 🟢 Kartu kredit"]],
+ [["me","Kasih tips investasi dong"],["sys","🎯 Monet → 📊 Analyst: ada permintaan tips investasi"],["sys","📊 Analyst → 🎯 Monet: perlu tujuan, jangka waktu, profil risiko, dana"],
+  ["bot","Boleh! Apa tujuannya, berapa lama, profil risikomu, dan berapa dana per bulan?"],["me","Dana darurat, 1 tahun, konservatif, 1jt per bulan"],["sys","🎯 Monet → 📊 Analyst: preferensi + pengeluaran Rp 8,2 jt/bulan"],["sys","📊 Analyst → 🎯 Monet: ✓ rekomendasi siap"],
+  ["bot","Cocok: reksa dana pasar uang atau deposito (risiko rendah, mudah dicairkan). Rp 1 jt × 12 ≈ Rp 12 jt, sekitar 1,5 bulan pengeluaran. Tambahkan dari tabungan bulananmu supaya lebih cepat mencapai 3 bulan.<br><small style='color:var(--muted)'>Bersifat edukatif. Pilih produk yang terdaftar di OJK.</small>"],["mem","🧠 Update memori: preferensi investasi tersimpan"]]
+]};
+
+const EN={};$$("[data-i]").forEach(e=>{if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
+let lang="en",busy=false,gen=0;
+const box=$("#msgs"),wait=ms=>new Promise(r=>setTimeout(r,ms));
+function setLang(l){
+  lang=l;document.documentElement.lang=l;document.title=META[l].title;
+  $$("[data-i]").forEach(e=>{const k=e.dataset.i;e.innerHTML=l==="id"&&ID[k]!=null?ID[k]:EN[k]});
+  $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
+  try{localStorage.setItem("monet-lang",l)}catch(e){}
+  gen++;busy=false;$$(".prompt").forEach(b=>b.disabled=false);
+  box.innerHTML="";add("bot",META[l].hi);
+}
+$$(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
 function add(cls,html){const d=document.createElement("div");d.className="bub "+cls;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
 async function run(i){
-  if(busy)return;busy=true;$$(".prompt").forEach(b=>b.disabled=true);box.innerHTML="";
-  for(const [k,t] of S[i]){
-    if(k==="bot"){await wait(250);const ty=add("bot typing","<span></span><span></span><span></span>");await wait(900);ty.remove()}
+  if(busy)return;busy=true;const my=++gen;
+  $$(".prompt").forEach(b=>b.disabled=true);box.innerHTML="";
+  for(const [k,t] of S[lang][i]){
+    if(k==="bot"){await wait(250);if(my!==gen)return;const ty=add("bot typing","<span></span><span></span><span></span>");await wait(900);ty.remove()}
     else await wait(k==="sys"?420:450);
+    if(my!==gen)return;
     add(k,t);
   }
   busy=false;$$(".prompt").forEach(b=>b.disabled=false);
 }
 $$(".prompt").forEach(b=>b.addEventListener("click",()=>run(+b.dataset.s)));
+
+let saved=null;try{saved=localStorage.getItem("monet-lang")}catch(e){}
+setLang(saved==="id"?"id":"en");
 </script>
 </body>
 </html>
