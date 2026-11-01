@@ -1,8 +1,2 @@
-# Local planning documents: kept on this machine, never pushed
-PRD.md
-TRD.md
-AFD.md
-DBD.md
-BSD.md
-IPD.md
-DESIGN.md
+# Local planning documents (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN): kept on your computer, never pushed
+docs/
