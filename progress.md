@@ -140,3 +140,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 2 Nov 2026 | Landing page (local, not pushed): owner chose logo tiles (option A); outline option removed |
 | 2 Nov 2026 | Landing page changes committed and pushed to GitHub branch `landing-mobile-fixes` (not merged to `main`, so the live site is unchanged). `app/` prototype still local only |
 | 2 Nov 2026 | Landing page commit `1f9d588` pushed to `main` (fast-forward, no PR: `gh` not installed on this computer) and live on Vercel |
+| 2 Nov 2026 | Landing page (pushed to `main`): "How it works" heading, label and intro now centred above the steps and diagram, like the other sections. Tested at 1440 px and 390 px |

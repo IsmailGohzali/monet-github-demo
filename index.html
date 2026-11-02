@@ -162,8 +162,8 @@ html[data-theme="dark"] .marq img{background:#EEF0F7;border-color:#EEF0F7}
 .ask .opts span.on{background:var(--solid);color:var(--on-solid);border-color:var(--solid)}
 
 /* team / steps */
-.team{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
-.steps{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.team{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;margin-top:56px}
+.steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:16px;padding:18px;border-radius:18px;border:1px solid transparent;cursor:pointer;transition:all .2s}
 .step:hover{background:var(--hover)}
 .step.on{background:var(--white);border-color:var(--line);box-shadow:var(--sh)}
@@ -257,6 +257,7 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   .mail span{white-space:normal}
   .demo{grid-template-columns:1fr}
   .org{min-height:520px;padding:20px}
+  .team{margin-top:32px}
   .nd{flex-direction:column;gap:2px;padding:8px 10px;text-align:center;font-size:.8rem}
   .nd.boss{padding:10px 16px}
   footer{padding-bottom:90px}
@@ -425,11 +426,14 @@ html[data-theme="dark"] .mail .tg[style]{background:rgba(255,111,97,.16)!importa
   </div>
 </div></section>
 
-<section id="team" style="padding-top:40px"><div class="wrap team">
-  <div class="rv">
+<section id="team" style="padding-top:40px"><div class="wrap">
+  <div class="center rv">
     <span class="eyebrow plain" data-i="eHow">✦ How it works</span>
     <h2 class="h2" data-i="teamH">One chat. A whole<br>finance team behind it.</h2>
     <p class="lead" data-i="teamLead">You only ever talk to Monet. Monet hands each request to the right specialist, checks their work, and gives you one clear answer.</p>
+  </div>
+  <div class="team">
+  <div class="rv">
     <div class="steps" id="steps">
       <div class="step on" data-n="0"><div class="n">01</div><div><h4 data-i="st1h">📒 Bookkeeper records</h4><p data-i="st1p">Turns messy text, statements, and receipts into clean records across all your accounts.</p></div></div>
       <div class="step" data-n="1"><div class="n">02</div><div><h4 data-i="st2h">📊 Analyst explains</h4><p data-i="st2p">Builds your reports and prepares saving and investing tips that fit your goals.</p></div></div>
@@ -445,6 +449,7 @@ html[data-theme="dark"] .mail .tg[style]{background:rgba(255,111,97,.16)!importa
     <div class="nd" id="N0" style="left:20%;top:82%"><span class="e">📒</span><div data-i="nd1">Bookkeeper<small>Record</small></div></div>
     <div class="nd" id="N1" style="left:50%;top:82%"><span class="e">📊</span><div data-i="nd2">Analyst<small>Report</small></div></div>
     <div class="nd" id="N2" style="left:80%;top:82%"><span class="e">⏰</span><div data-i="nd3">Reminder<small>Alert</small></div></div>
+  </div>
   </div>
 </div></section>
 
