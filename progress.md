@@ -25,7 +25,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 | App prototype (`app/`) | **Built locally, not committed or pushed** (branch `app-prototype`, local only). Clickable front-end with demo data; no backend. See §5b. |
 | Real app (chat, database, WhatsApp) | **Not started.** Plans exist (see §7). |
 | Branches on GitHub | Only `main` and `monet-blue` (others deleted 1 Nov 2026). |
-| Planning docs in `docs/` | All 7 present (latest v1.1 versions, 1 Nov 2026). |
+| Planning docs in `docs/` | All 7 present. DESIGN, PRD, AFD, IPD, TRD updated to v1.2 on 2 Nov 2026 (dark mode, menu, floating button, logo tiles, phone rules, app prototype); BSD and DBD unchanged (v1.1). |
 
 ## 3. Files in the repo
 | Path | What it is |
@@ -141,3 +141,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 2 Nov 2026 | Landing page changes committed and pushed to GitHub branch `landing-mobile-fixes` (not merged to `main`, so the live site is unchanged). `app/` prototype still local only |
 | 2 Nov 2026 | Landing page commit `1f9d588` pushed to `main` (fast-forward, no PR: `gh` not installed on this computer) and live on Vercel |
 | 2 Nov 2026 | Landing page (pushed to `main`): "How it works" heading, label and intro now centred above the steps and diagram, like the other sections. Tested at 1440 px and 390 px |
+| 2 Nov 2026 | `docs/` updated (local only): DESIGN.md (theme tokens + dark mode, menu controls, floating "Get started", same-size buttons, logo tiles, phone rules, app prototype section), PRD.md (F-80b–d, status), AFD.md (Add/input screen, prototype note), IPD.md (done list), TRD.md (theme keys, prototype note) |
