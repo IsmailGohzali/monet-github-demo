@@ -19,7 +19,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 ## 2. Current state
 | Item | Status |
 |---|---|
-| Homepage (`index.html`) | **White SaaS landing page, live on `main`** (Vercel deploys from `main`). |
+| Homepage (`index.html`) | **White SaaS landing page, live on `main`** (Vercel deploys from `main`, https://monet-github-demo.vercel.app). Includes light/dark mode, EN | ID in the menu, floating green "Get started", phone fixes and logo tiles (pushed 2 Nov 2026). |
 | Old blue/navy site | Kept on branch **`monet-blue`** (not deployed as homepage). |
 | Coral prototype (`saas2/`) | Deleted on request. |
 | App prototype (`app/`) | **Built locally, not committed or pushed** (branch `app-prototype`, local only). Clickable front-end with demo data; no backend. See §5b. |
@@ -139,3 +139,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 2 Nov 2026 | Landing page (local, not pushed): removed the logo stripe; built two logo options to compare: A equal-size tiles (default), B light outline in dark mode (`?logos=glow`) |
 | 2 Nov 2026 | Landing page (local, not pushed): owner chose logo tiles (option A); outline option removed |
 | 2 Nov 2026 | Landing page changes committed and pushed to GitHub branch `landing-mobile-fixes` (not merged to `main`, so the live site is unchanged). `app/` prototype still local only |
+| 2 Nov 2026 | Landing page commit `1f9d588` pushed to `main` (fast-forward, no PR: `gh` not installed on this computer) and live on Vercel |
