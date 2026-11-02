@@ -65,7 +65,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 - Colours (CSS variables): ink `#0E1330` (text, dark buttons), ink2 `#4A5072`, muted `#8A8FA8`, line `#E7E8F0`, background `#F7F7FB`, Monet green `#00C853` (logo, final sign-up button, success), gold `#F2B544`, violet `#6C63FF`, coral `#FF6F61`.
 - Font: Inter → system fonts. Headings bold with tight letter spacing; second line of a heading in `<em>` (muted).
 - White cards: 22 px radius, 1 px border, soft shadow. Buttons and chips are pills.
-- Green buttons: the final sign-up and the floating "Get started" (owner's request; Monet logo green `#00C853`, with a soft pulse ring every 2.2 s that stops for users who turn off motion). Other main buttons are dark ink.
+- Green buttons: the final sign-up and the floating "Get started" (owner's request; Monet logo green `#00C853`, bigger (60 px tall), with a strong pulse ring every 1.8 s and a small hop every 3.6 s, both off for users who turn off motion). Other main buttons are dark ink.
 - Reports card on phones: the donut is centred, the bars run full width.
 - Sentence case for headings and buttons. Logo is `MONET`.
 - Breakpoints: 1000 px and 760 px. On small screens nothing is hidden except the mockup's sidebar menu: the two floating cards sit above the mockup, the Monet chat panel sits under the dashboard, all 3 figures show, email rows wrap, and the agent diagram uses compact stacked boxes.
@@ -142,3 +142,4 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 2 Nov 2026 | Landing page commit `1f9d588` pushed to `main` (fast-forward, no PR: `gh` not installed on this computer) and live on Vercel |
 | 2 Nov 2026 | Landing page (pushed to `main`): "How it works" heading, label and intro now centred above the steps and diagram, like the other sections. Tested at 1440 px and 390 px |
 | 2 Nov 2026 | `docs/` updated (local only): DESIGN.md (theme tokens + dark mode, menu controls, floating "Get started", same-size buttons, logo tiles, phone rules, app prototype section), PRD.md (F-80b–d, status), AFD.md (Add/input screen, prototype note), IPD.md (done list), TRD.md (theme keys, prototype note) |
+| 2 Nov 2026 | Landing page (pushed to `main`): floating "Get started" bigger (60 px tall), higher (32 px desktop, 28 px phone) and more noticeable (stronger pulse + hop). Tested at 1440 px and 390 px |

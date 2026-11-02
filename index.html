@@ -45,9 +45,12 @@ section{padding:110px 0}
 .nav .right{display:flex;gap:8px;align-items:center}
 .menu-btn{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--white);font-size:1.05rem;cursor:pointer;color:var(--ink)}
 /* "Get started" floats: bottom right on larger screens, bottom centre on phones */
-.getfix{position:fixed;right:16px;bottom:16px;z-index:50}
-.getfix .btn{animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 8px 24px -8px rgba(0,200,83,.6),0 0 0 0 rgba(0,200,83,.55)}70%{box-shadow:0 8px 24px -8px rgba(0,200,83,.6),0 0 0 16px rgba(0,200,83,0)}100%{box-shadow:0 8px 24px -8px rgba(0,200,83,.6),0 0 0 0 rgba(0,200,83,0)}}
+.getfix{position:fixed;right:24px;bottom:32px;z-index:50}
+.getfix .btn{padding:16px 32px;font-size:1.05rem;font-weight:700;animation:pulse 1.8s ease-out infinite,nudge 3.6s ease-in-out infinite}
+.getfix .btn:hover{animation-play-state:paused}
+/* strong green ring that grows and fades, plus a small "hop" every few seconds */
+@keyframes pulse{0%{box-shadow:0 10px 28px -8px rgba(0,200,83,.7),0 0 0 0 rgba(0,200,83,.7)}70%{box-shadow:0 10px 28px -8px rgba(0,200,83,.7),0 0 0 24px rgba(0,200,83,0)}100%{box-shadow:0 10px 28px -8px rgba(0,200,83,.7),0 0 0 0 rgba(0,200,83,0)}}
+@keyframes nudge{0%,70%,100%{transform:translateY(0) scale(1)}78%{transform:translateY(-6px) scale(1.06)}86%{transform:translateY(0) scale(1)}92%{transform:translateY(-3px) scale(1.03)}}
 @media(prefers-reduced-motion:reduce){.getfix .btn{animation:none}}
 .lang{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px}
 .lang button{border:0;background:none;font:inherit;font-size:.78rem;font-weight:700;letter-spacing:.3px;padding:6px 11px;border-radius:999px;cursor:pointer;color:var(--ink2)}
@@ -260,8 +263,8 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   .team{margin-top:32px}
   .nd{flex-direction:column;gap:2px;padding:8px 10px;text-align:center;font-size:.8rem}
   .nd.boss{padding:10px 16px}
-  footer{padding-bottom:90px}
-  .getfix{left:0;right:0;display:flex;justify-content:center;pointer-events:none}
+  footer{padding-bottom:130px}
+  .getfix{left:0;right:0;bottom:28px;display:flex;justify-content:center;pointer-events:none}
   .getfix .btn{pointer-events:auto}
   .nav .right{gap:6px}
   .foot{grid-template-columns:1fr 1fr}
