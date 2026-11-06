@@ -209,11 +209,6 @@ html[data-theme="dark"] .marq img{background:#EEF0F7;border-color:#EEF0F7}
 .step-desc{display:none}
 .note{font-size:.82rem;color:var(--muted);padding:4px 6px}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:var(--white);box-shadow:var(--sh);margin-top:56px}
-.stats div{padding:30px;border-right:1px solid var(--line)}.stats div:last-child{border:0}
-.stats b{display:block;font-size:2.4rem;letter-spacing:-.04em;line-height:1.1}
-.stats span{color:var(--ink2);font-size:.9rem}
 
 .faq{max-width:780px;margin:50px auto 0;display:flex;flex-direction:column;gap:10px}
 /* faq */
@@ -244,7 +239,6 @@ footer{padding:70px 0 40px;font-size:.88rem;color:var(--ink2)}
   .mock{display:flex;flex-wrap:wrap;gap:10px}.mock .app{flex:1 1 100%}
   .float{position:static;animation:none;flex:1 1 220px}
   .c4,.c2,.c3{grid-column:span 6}
-  .stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 @media(max-width:760px){
   section{padding:80px 0}
@@ -494,12 +488,6 @@ html[data-theme="dark"] .mail .tg[style]{background:rgba(255,111,97,.16)!importa
       <div id="msgs"></div>
     </div>
   </div>
-  <div class="stats rv">
-    <div data-i="sa1"><b>5 min</b><span>saved per day on logging</span></div>
-    <div data-i="sa2"><b>4+</b><span>accounts in one view</span></div>
-    <div data-i="sa3"><b>0</b><span>late fees with reminders</span></div>
-    <div data-i="sa4"><b>24/7</b><span>always on, on WhatsApp</span></div>
-  </div>
 </div></section>
 
 <section id="faq" style="padding-top:40px"><div class="wrap">
@@ -616,8 +604,6 @@ pr2:"<b>Laporan bulanan</b><span>“Tampilkan laporan bulan ini”</span>",
 pr3:"<b>Tips investasi</b><span>“Dana darurat, 1 tahun, konservatif, 1jt per bulan”</span>",
 demoNote:"ℹ️ Prototipe dengan respons yang sudah disiapkan. Konten investasi bersifat edukatif, bukan nasihat keuangan berlisensi.",
 chatHd:"Monet<small>Manajer keuangan AI-mu · online</small>",
-sa1:"<b>5 menit</b><span>hemat per hari untuk pencatatan</span>",sa2:"<b>4+</b><span>akun dalam satu tampilan</span>",
-sa3:"<b>0</b><span>denda telat dengan pengingat</span>",sa4:"<b>24/7</b><span>selalu aktif di WhatsApp</span>",
 faqH:"Pertanyaan yang sering diajukan",
 q1:"Apakah saya perlu mengunduh aplikasi?",a1:"Tidak. Kamu bisa chat dengan Monet lewat WhatsApp, meneruskan email, atau memakai dashboard web.",
 q2:"Apakah data keuangan saya aman?",a2:"Monet hanya membaca struk dan notifikasi yang kamu hubungkan, dan tidak pernah memindahkan uang atas namamu.",
