@@ -3,7 +3,7 @@
 > **Read this file first before changing anything in the app.**
 > Update it at the end of every change: add a line to the Changelog, and update "Current state" and "Next steps" if they changed.
 
-_Last updated: 1 Nov 2026_
+_Last updated: 6 Nov 2026_
 
 ---
 
@@ -22,10 +22,10 @@ Agents never talk to the user or to each other directly. Everything goes through
 | Homepage (`index.html`) | **White SaaS landing page, live on `main`** (Vercel deploys from `main`, https://monet-github-demo.vercel.app). Includes light/dark mode, EN | ID in the menu, floating green "Get started", phone fixes and logo tiles (pushed 2 Nov 2026). |
 | Old blue/navy site | Kept on branch **`monet-blue`** (not deployed as homepage). |
 | Coral prototype (`saas2/`) | Deleted on request. |
-| App prototype (`app/`) | **Built locally, not committed or pushed** (branch `app-prototype`, local only). Clickable front-end with demo data; no backend. See §5b. |
-| Real app (Monet v2) | **Not started.** Fully planned as **Monet v2** (local-first, encrypted, Cloudflare): see §7 and `docs/MONET-V2.md`. |
-| Branches on GitHub | Only `main`, `monet-blue` and `landing-mobile-fixes` (same as `main`). |
-| Planning docs in `docs/` | **v2 (6 Nov 2026):** PRD, TRD, AFD, DBD, BSD, IPD rewritten for Monet v2; DESIGN extended (§11 v2 screens); MONET-V2.md = decision record. Old v1 docs (Supabase plan) kept in `docs/v1/`. |
+| App prototype (`app/`) | **Backed up on GitHub branch `app-prototype`** (commit `0416e20`, 6 Nov 2026; not merged, not deployed). Switch to that branch to see or run it. Clickable front-end with demo data; no backend. See §5b. |
+| Real app (Monet v2) | **Not started.** MONET-V2 **approved** as the plan (6 Nov 2026). Code will live in a new private repo `monet-app`. See §7 and §7b. |
+| Branches on GitHub | `main`, `monet-blue`, `landing-mobile-fixes` (same as `main`), `app-prototype` (prototype backup). |
+| Planning docs in `docs/` | **v2 (6 Nov 2026):** PRD, TRD, AFD, DBD, BSD, IPD rewritten for Monet v2; DESIGN extended (§11 v2 screens); MONET-V2.md = decision record. Old v1 docs (Supabase plan) kept in `docs/v1/`. **Backed up in the private repo [monet-docs](https://github.com/IsmailGohzali/monet-docs)** (`docs/` is its own git repo; this repo still ignores it). |
 
 ## 3. Files in the repo
 | Path | What it is |
@@ -33,21 +33,21 @@ Agents never talk to the user or to each other directly. Everything goes through
 | `index.html` | White landing page (homepage); single self-contained file with logos embedded |
 | `progress.md` | This file |
 | `CLAUDE.md` | Tells Claude to read this file first |
-| `.gitignore` | Ignores the `docs/` folder (local planning docs) |
-| `app/` (local only, untracked) | App prototype: `index.html` shell, `app.css`, `i18n.js` (EN/ID text), `data.js` (demo data + storage), `agents.js` (mock Monet/Bookkeeper/Analyst/Reminder), `app.js` (pages) |
+| `.gitignore` | Ignores the `docs/` folder (planning docs; their own private repo `monet-docs`) |
+| `app/` (only on branch `app-prototype`) | App prototype: `index.html` shell, `app.css`, `i18n.js` (EN/ID text), `data.js` (demo data + storage), `agents.js` (mock Monet/Bookkeeper/Analyst/Reminder), `app.js` (pages) |
 | `.claude/launch.json` + `.claude/serve.js` (local only, untracked) | Start a local preview server on port 5173 |
 
 ## 4. Working rules (how the owner wants changes done)
 1. **Read this file first**, then the files you'll change.
 2. **Preview before pushing.** Make changes locally, send the owner a preview (the page + desktop and mobile screenshots), and **push only after they approve**, unless they explicitly say "push".
 3. Work on a feature branch and get changes to `main` through a pull request, only when the owner asks. Don't push directly to `main`. The old blue site lives on branch `monet-blue`; don't change it unless asked.
-4. **Never push** the planning docs (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN). They live in the `docs/` folder, which `.gitignore` ignores.
+4. **Never push** the planning docs (PRD, TRD, AFD, DBD, BSD, IPD, DESIGN) to this public repo. They live in the `docs/` folder, which `.gitignore` ignores; `docs/` is its own git repo pushed only to the private repo `monet-docs`.
 5. Don't commit screenshots or other scratch files.
 6. Ask first when unsure what something means (e.g. document names, scope).
 7. After each change: test in a browser at **1440 px and 390 px** (no horizontal scroll, no console errors) and update this file.
 
 ## 5. Landing page (`index.html`): key facts
-**Sections:** floating menu (Features · How it works · Demo · FAQ · 🌙/☀️ light-dark · EN | ID; on phones the links open from a ☰ button) + floating "Get started" button (`.getfix`: bottom right on larger screens, bottom centre on phones) → hero + app mockup → scrolling bank/e-wallet logos → features (6 cards of different sizes) → how it works (agent diagram) → live chat demo + stats row → FAQ → dark sign-up section → footer.
+**Sections:** floating menu (Features · How it works · Demo · FAQ · 🌙/☀️ light-dark · EN | ID; on phones the links open from a ☰ button) + floating "Get started" button (`.getfix`: bottom right on larger screens, bottom centre on phones) → hero + app mockup → scrolling bank/e-wallet logos → features (6 cards of different sizes) → how it works (agent diagram) → live chat demo → FAQ → dark sign-up section → footer.
 
 **Language switch (EN | ID):**
 - English text is in the HTML; each translatable element has `data-i="key"`.
@@ -78,7 +78,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 - Only one menu link per destination (the duplicate "Try demo" button was removed).
 
 ## 5b. App prototype (`app/`): key facts
-- **Run it:** start the `monet-local` preview (`.claude/launch.json`) and open `http://localhost:5173/app/`. Sign in with `rina@example.com` (demo data) or any other email (empty account → onboarding). Code is always `123456`.
+- **Run it:** switch to branch `app-prototype`, start the `monet-local` preview (`.claude/launch.json`) and open `http://localhost:5173/app/`. Sign in with `rina@example.com` (demo data) or any other email (empty account → onboarding). Code is always `123456`.
 - **Pages (routes per AFD §1):** sign-in, 4-step onboarding, Overview `#/overview`, Chat `#/chat`, Add/input `#/input` (type it, form, receipt photo, paste bank notification), Transactions `#/transactions`, Bills `#/bills`, Analysis `#/analysis` (monthly report, tips, investing ideas, archive), Settings `#/settings` (automations: WhatsApp, email forwarding + senders, receipts, inbox "coming soon"; rules; reminders; profile; accounts; memory; export; delete account; reset demo).
 - **Agents are mocked** with rules in `agents.js` (no AI calls). They follow the AFD flows: Monet asks before saving anything unclear (amount, account, new account, duplicates), shows 🧠 memory updates, mentions 🔴 bills once a day, can't move money, investing always shows the OJK disclaimer. "Behind the scenes" toggle shows agent messages.
 - **Data** lives in the browser's `localStorage` (`monet-proto-v2`); language shares the landing page key `monet-lang`. Settings → "Reset demo data" restores it.
@@ -87,14 +87,14 @@ Agents never talk to the user or to each other directly. Everything goes through
 - On the first days of a month, Overview and Analysis open on **last month** (this month has almost no data yet); a switch goes back to this month.
 
 ## 6. Open items
-- [ ] **Stats row** ("5 min saved per day", "0 late fees", "4+ accounts", "24/7") is not measured. Verify or remove.
+- [x] **Stats row** removed (not measured; 6 Nov 2026, branch `remove-stats-row`). Bring back only with real numbers.
 - [ ] **Sign-up** only opens an email to the owner. Needs a real waitlist form.
 - [ ] Hero has both "Start for free" and "See it in action" buttons; menu has "Get started". Consider one label.
 - [ ] Native-speaker review of the Indonesian text.
 - [ ] Inter font isn't embedded (most visitors see their system font).
 
-## 7. Planning documents (local only, in `docs/`, not in Git)
-Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v1/`). **They are not in the repository**, so a new session won't have them unless the owner provides them again.
+## 7. Planning documents (in `docs/`, private repo `monet-docs`)
+Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v1/`). **Not in this repository**; a new session can get them by cloning the private repo `IsmailGohzali/monet-docs` into `docs/`.
 
 | File | Content |
 |---|---|
@@ -107,11 +107,29 @@ Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v
 | IPD.md | v2.0: 10 phases (~15 weeks); owner uses it daily from Phase 2 (~week 4); beta prep last |
 | DESIGN.md | Full design rules (short version in §5 above); §11 = v2 screens (setup, recovery phrase, storage choice, sync status, recovery, money tools, plan gates) |
 
+## 7b. Owner decisions (grilling session, 6 Nov 2026)
+Not yet copied into the docs in `docs/` (next step 2).
+- **Direction:** MONET-V2 approved; focus is building for personal use first (waitlist and marketing later).
+- **Repos:** real app in a new **private** repo `monet-app` (GitHub `IsmailGohzali`); planning docs in private `monet-docs`.
+- **Step 1 = done when:** installable PWA on the owner's phone, passkey sign-in, 12-word recovery key, add a transaction by hand and see it in a list (encrypted in IndexedDB), encrypted backup export/import, deployed on Cloudflare. No AI, sync or polish.
+- **Step 1 is a static Next.js export** on Cloudflare; Workers (AI proxy, sync, inbox) come later as separate pieces. ⚠️ TRD/BSD v2 say OpenNext from the start; update them.
+- **Encryption:** Dexie + Monet's own small Web Crypto layer, built test-first; no Dexie encryption add-on.
+- **Recovery key:** BIP39 English word list (built-in typo check).
+- **No passkey PRF on a device:** unlock with a **device PIN/password** for that device, locked after a few wrong tries.
+- **Auto-lock:** after 15 min idle and when the app is closed.
+- **Owner's devices:** Android phone + Chrome, Windows laptop + Chrome.
+- **Address/deploy:** free Cloudflare address (`*.pages.dev`) until beta; Cloudflare linked to `monet-app` GitHub, push to `main` deploys (build must pass).
+- **EN | ID from step 1**, reusing the prototype's `i18n.js` pattern.
+- **MONET-V2 §12:** Monet recovery on by default, user can turn it off (warning; Monet's copy deleted); recovery built only before beta; Google Drive / OneDrive sync **free**, Monet-server sync + AI paid (needs Google/Microsoft app approval); investment prices typed by hand in v1; speech-to-text, on-device model, price and payment provider decided at their build step.
+- **Owner has no Cloudflare account yet:** the owner creates it before the first deploy (Claude guides).
+
 ## 8. Next steps (suggested)
-1. Owner decides the open points (PRD.md §11 / MONET-V2.md §12): recovery ID check and opt-out, Drive sync free or paid, price sources, speech-to-text provider. Only the price sources are needed before Phase 3; the rest can wait.
-2. Start IPD.md Phase 0–1: monorepo on Cloudflare, encrypted vault, passkey + recovery phrase, backup file.
-3. Phase 2: port the `app/` prototype screens onto the vault with the offline rules engine → owner starts daily use.
-4. Before beta: landing page v2 copy (F-84), real waitlist (F-82), stats row (F-83).
+1. Owner approves the stats-row removal (branch `remove-stats-row`), then PR to `main`.
+2. Copy the decisions in §7b into `docs/` (MONET-V2 §12 settled, TRD/BSD static start, AFD unlock-by-PIN and auto-lock, DBD/TRD BIP39) and push to `monet-docs`.
+3. Create private repo `monet-app`; build step 1 test-first up to deploy.
+4. Owner creates a Cloudflare account and links it to GitHub; deploy and test step 1 on phone and laptop.
+5. Then IPD Phase 2: port the `app/` prototype screens onto the encrypted store with the offline rules engine → owner starts daily use.
+6. Before beta: landing page v2 copy (F-84), real waitlist (F-82).
 
 ## 9. Changelog
 | Date | Change |
@@ -147,3 +165,6 @@ Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v
 | 2 Nov 2026 | Landing page (pushed to `main`): on phones, How it works (diagram on top, 3 compact step buttons + active step text below) and Demo (chat on top, 3 compact prompt buttons below) each fit in one screen. Desktop unchanged. Tested at 390 px and desktop |
 | 3 Nov 2026 | Reimagined Monet with the owner (4 rounds of questions); decisions saved to `docs/MONET-V2.md` (local only). Next steps updated: docs rewrite, then build v2 for personal use |
 | 6 Nov 2026 | `docs/` rewritten for Monet v2 (local only): PRD, TRD, AFD, DBD, BSD, IPD → v2.0; DESIGN §11 v2 screens; MONET-V2 marked approved. v1 docs kept in `docs/v1/`. Cross-checked: no Supabase/QStash leftovers, every referenced feature ID exists |
+| 6 Nov 2026 | Grilling session with the owner (4 rounds): decisions saved in §7b; next steps rewritten |
+| 6 Nov 2026 | Backups: `app/` prototype committed and pushed to branch `app-prototype` (`0416e20`); `docs/` made its own git repo and pushed to private repo `monet-docs` (`1e25496`). Git name/email set for this repo only |
+| 6 Nov 2026 | Landing page (branch `remove-stats-row`, not pushed): removed the unmeasured stats row under the demo (HTML, CSS, `sa1`–`sa4` in `ID`). Tested at 1440 px and 390 px |
