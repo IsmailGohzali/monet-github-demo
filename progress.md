@@ -24,7 +24,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 | Coral prototype (`saas2/`) | Deleted on request. |
 | App prototype (`app/`) | **Backed up on GitHub branch `app-prototype`** (commit `0416e20`, 6 Nov 2026; not merged, not deployed). Switch to that branch to see or run it. Clickable front-end with demo data; no backend. See §5b. |
 | Real app (Monet v2) | **Not started.** MONET-V2 **approved** as the plan (6 Nov 2026). Code will live in a new private repo `monet-app`. See §7 and §7b. |
-| Branches on GitHub | `main`, `monet-blue`, `landing-mobile-fixes` (same as `main`), `app-prototype` (prototype backup). |
+| Branches on GitHub | `main`, `monet-blue` (old blue site), `app-prototype` (prototype backup). |
 | Planning docs in `docs/` | **v2 (6 Nov 2026):** PRD, TRD, AFD, DBD, BSD, IPD rewritten for Monet v2; DESIGN extended (§11 v2 screens); MONET-V2.md = decision record. Old v1 docs (Supabase plan) kept in `docs/v1/`. **Backed up in the private repo [monet-docs](https://github.com/IsmailGohzali/monet-docs)** (`docs/` is its own git repo; this repo still ignores it). |
 
 ## 3. Files in the repo
@@ -87,7 +87,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 - On the first days of a month, Overview and Analysis open on **last month** (this month has almost no data yet); a switch goes back to this month.
 
 ## 6. Open items
-- [x] **Stats row** removed (not measured; 6 Nov 2026, branch `remove-stats-row`). Bring back only with real numbers.
+- [x] **Stats row** removed (not measured; 6 Nov 2026, PR #4, live). Bring back only with real numbers.
 - [ ] **Sign-up** only opens an email to the owner. Needs a real waitlist form.
 - [ ] Hero has both "Start for free" and "See it in action" buttons; menu has "Get started". Consider one label.
 - [ ] Native-speaker review of the Indonesian text.
@@ -98,7 +98,7 @@ Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v
 
 | File | Content |
 |---|---|
-| **MONET-V2.md** | Decision record (3 Nov 2026): local-first and encrypted; user chooses sync (Monet's encrypted Cloudflare server, own Google Drive/OneDrive, device only); passkey + 12-word recovery phrase + Monet-assisted recovery; Telegram bot + email inbox read instantly, only sealed results kept; AI online / rules offline / on-device AI; learns the user's style; budgets, goals, debts, investments; freemium; personal use first. §12 = open questions |
+| **MONET-V2.md** | Decision record (3 Nov 2026): local-first and encrypted; user chooses sync (Monet's encrypted Cloudflare server, own Google Drive/OneDrive, device only); passkey + 12-word recovery phrase + Monet-assisted recovery; Telegram bot + email inbox read instantly, only sealed results kept; AI online / rules offline / on-device AI; learns the user's style; budgets, goals, debts, investments; freemium; personal use first. §12 = settled 6 Nov, §13 = build decisions, §14 = still open |
 | PRD.md | v2.0: features F-1 … F-112 with priorities and Free/Paid plan per feature; privacy model; risks; open questions |
 | TRD.md | v2.0: privacy model (what Monet can/can't read), stack (Next.js PWA + OpenNext, Cloudflare Workers/D1/R2/KV, Dexie, Web Crypto, passkeys, Telegram, Claude: `claude-sonnet-5-5` chat/reports, `claude-haiku-5-5` extraction/inbox, `claude-opus-5-5` advanced reports), keys and encryption, sync, device-side AI orchestration, inbox, reminders, security |
 | AFD.md | v2.0: setup (passkey, phrase, storage choice), unlock, input → log, learning, receipts, voice, Telegram/email inbox, reports, reminders, money tools, sync, assisted recovery, settings, edge cases |
@@ -108,7 +108,7 @@ Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v
 | DESIGN.md | Full design rules (short version in §5 above); §11 = v2 screens (setup, recovery phrase, storage choice, sync status, recovery, money tools, plan gates) |
 
 ## 7b. Owner decisions (grilling session, 6 Nov 2026)
-Not yet copied into the docs in `docs/` (next step 2).
+Copied into the docs on 6 Nov 2026 (MONET-V2 §12–14 and PRD, TRD, AFD, DBD, BSD, IPD, DESIGN; `monet-docs` commit `ec8f957`). Step 1 = IPD Phases 0 + 1.
 - **Direction:** MONET-V2 approved; focus is building for personal use first (waitlist and marketing later).
 - **Repos:** real app in a new **private** repo `monet-app` (GitHub `IsmailGohzali`); planning docs in private `monet-docs`.
 - **Step 1 = done when:** installable PWA on the owner's phone, passkey sign-in, 12-word recovery key, add a transaction by hand and see it in a list (encrypted in IndexedDB), encrypted backup export/import, deployed on Cloudflare. No AI, sync or polish.
@@ -118,18 +118,17 @@ Not yet copied into the docs in `docs/` (next step 2).
 - **No passkey PRF on a device:** unlock with a **device PIN/password** for that device, locked after a few wrong tries.
 - **Auto-lock:** after 15 min idle and when the app is closed.
 - **Owner's devices:** Android phone + Chrome, Windows laptop + Chrome.
-- **Address/deploy:** free Cloudflare address (`*.pages.dev`) until beta; Cloudflare linked to `monet-app` GitHub, push to `main` deploys (build must pass).
+- **Device PIN caveat:** the PIN stops someone holding the device; it is weak against someone who copies the browser's data. The passkey path doesn't have this weakness. The app says so in Settings.
+- **Address/deploy:** free Cloudflare address until a domain is needed: **by Phase 6** (email inbox needs a domain), which is before the beta; Cloudflare linked to `monet-app` GitHub, push to `main` deploys (build must pass).
 - **EN | ID from step 1**, reusing the prototype's `i18n.js` pattern.
 - **MONET-V2 §12:** Monet recovery on by default, user can turn it off (warning; Monet's copy deleted); recovery built only before beta; Google Drive / OneDrive sync **free**, Monet-server sync + AI paid (needs Google/Microsoft app approval); investment prices typed by hand in v1; speech-to-text, on-device model, price and payment provider decided at their build step.
 - **Owner has no Cloudflare account yet:** the owner creates it before the first deploy (Claude guides).
 
 ## 8. Next steps (suggested)
-1. Owner approves the stats-row removal (branch `remove-stats-row`), then PR to `main`.
-2. Copy the decisions in §7b into `docs/` (MONET-V2 §12 settled, TRD/BSD static start, AFD unlock-by-PIN and auto-lock, DBD/TRD BIP39) and push to `monet-docs`.
-3. Create private repo `monet-app`; build step 1 test-first up to deploy.
-4. Owner creates a Cloudflare account and links it to GitHub; deploy and test step 1 on phone and laptop.
-5. Then IPD Phase 2: port the `app/` prototype screens onto the encrypted store with the offline rules engine → owner starts daily use.
-6. Before beta: landing page v2 copy (F-84), real waitlist (F-82).
+1. Create private repo `monet-app`; build step 1 (IPD Phases 0–1) test-first up to deploy. Test passkey PRF on the owner's phone and laptop early.
+2. Owner creates a Cloudflare account and links it to GitHub; deploy and test step 1 on phone and laptop.
+3. Then IPD Phase 2: port the `app/` prototype screens onto the encrypted store with the offline rules engine → owner starts daily use.
+4. Before beta: landing page v2 copy (F-84), real waitlist (F-82).
 
 ## 9. Changelog
 | Date | Change |
@@ -167,4 +166,6 @@ Not yet copied into the docs in `docs/` (next step 2).
 | 6 Nov 2026 | `docs/` rewritten for Monet v2 (local only): PRD, TRD, AFD, DBD, BSD, IPD → v2.0; DESIGN §11 v2 screens; MONET-V2 marked approved. v1 docs kept in `docs/v1/`. Cross-checked: no Supabase/QStash leftovers, every referenced feature ID exists |
 | 6 Nov 2026 | Grilling session with the owner (4 rounds): decisions saved in §7b; next steps rewritten |
 | 6 Nov 2026 | Backups: `app/` prototype committed and pushed to branch `app-prototype` (`0416e20`); `docs/` made its own git repo and pushed to private repo `monet-docs` (`1e25496`). Git name/email set for this repo only |
-| 6 Nov 2026 | Landing page (branch `remove-stats-row`, not pushed): removed the unmeasured stats row under the demo (HTML, CSS, `sa1`–`sa4` in `ID`). Tested at 1440 px and 390 px |
+| 6 Nov 2026 | Landing page: removed the unmeasured stats row under the demo (HTML, CSS, `sa1`–`sa4` in `ID`). Tested at 1440 px and 390 px. Merged to `main` via PR #4 (`6757d6d`), live on Vercel |
+| 6 Nov 2026 | Deleted merged branches `landing-mobile-fixes` and `remove-stats-row` (GitHub and local), on request. Kept `monet-blue` and `app-prototype` |
+| 6 Nov 2026 | `docs/` updated with the 6 Nov decisions and pushed to `monet-docs` (`ec8f957`): MONET-V2 §12–14; static export first (Workers from Phase 4, server accounts from Phase 5); BIP39 phrase; device PIN when no PRF; app lock 15 min + on close; recovery opt-out; free drive sync; manual prices in v1; domain by Phase 6. Location line in each doc now points to `monet-docs` |
