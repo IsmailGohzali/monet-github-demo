@@ -23,9 +23,9 @@ Agents never talk to the user or to each other directly. Everything goes through
 | Old blue/navy site | Kept on branch **`monet-blue`** (not deployed as homepage). |
 | Coral prototype (`saas2/`) | Deleted on request. |
 | App prototype (`app/`) | **Built locally, not committed or pushed** (branch `app-prototype`, local only). Clickable front-end with demo data; no backend. See §5b. |
-| Real app (chat, database, WhatsApp) | **Not started.** Plans exist (see §7). |
-| Branches on GitHub | Only `main` and `monet-blue` (others deleted 1 Nov 2026). |
-| Planning docs in `docs/` | All 7 present. DESIGN, PRD, AFD, IPD, TRD updated to v1.2 on 2 Nov 2026 (dark mode, menu, floating button, logo tiles, phone rules, app prototype); BSD and DBD unchanged (v1.1). |
+| Real app (Monet v2) | **Not started.** Fully planned as **Monet v2** (local-first, encrypted, Cloudflare): see §7 and `docs/MONET-V2.md`. |
+| Branches on GitHub | Only `main`, `monet-blue` and `landing-mobile-fixes` (same as `main`). |
+| Planning docs in `docs/` | **v2 (6 Nov 2026):** PRD, TRD, AFD, DBD, BSD, IPD rewritten for Monet v2; DESIGN extended (§11 v2 screens); MONET-V2.md = decision record. Old v1 docs (Supabase plan) kept in `docs/v1/`. |
 
 ## 3. Files in the repo
 | Path | What it is |
@@ -94,23 +94,24 @@ Agents never talk to the user or to each other directly. Everything goes through
 - [ ] Inter font isn't embedded (most visitors see their system font).
 
 ## 7. Planning documents (local only, in `docs/`, not in Git)
-Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**, so a new session won't have them unless the owner provides them again.
+Monet v2 plan, rewritten 6 Nov 2026 (v1 Supabase plan from 1 Nov kept in `docs/v1/`). **They are not in the repository**, so a new session won't have them unless the owner provides them again.
 
 | File | Content |
 |---|---|
-| PRD.md | Product requirements: features F-1 … F-83 with priorities |
-| TRD.md | Tech: Next.js + Vercel, Supabase (Postgres, Auth, Storage), QStash, WhatsApp Cloud API, inbound email, Claude API (`claude-opus-5-5` for Monet + Analyst, `claude-haiku-5-5` for Bookkeeper; Reminder is plain code) |
-| AFD.md | User flows (onboarding, chat turn, logging, confirmations, reports, reminders, settings) |
-| DBD.md | 19 tables (users, accounts, transactions, bills, bill_periods, messages, agent_messages, pending_confirmations, preferences, reports…), money as whole Rupiah `bigint` |
-| BSD.md | Folder structure, API endpoints, orchestrator loop, cron jobs |
-| IPD.md | 12 phases, about 14–15 weeks |
-| DESIGN.md | Full design rules (short version in §5 above) |
+| **MONET-V2.md** | Decision record (3 Nov 2026): local-first and encrypted; user chooses sync (Monet's encrypted Cloudflare server, own Google Drive/OneDrive, device only); passkey + 12-word recovery phrase + Monet-assisted recovery; Telegram bot + email inbox read instantly, only sealed results kept; AI online / rules offline / on-device AI; learns the user's style; budgets, goals, debts, investments; freemium; personal use first. §12 = open questions |
+| PRD.md | v2.0: features F-1 … F-112 with priorities and Free/Paid plan per feature; privacy model; risks; open questions |
+| TRD.md | v2.0: privacy model (what Monet can/can't read), stack (Next.js PWA + OpenNext, Cloudflare Workers/D1/R2/KV, Dexie, Web Crypto, passkeys, Telegram, Claude: `claude-sonnet-5-5` chat/reports, `claude-haiku-5-5` extraction/inbox, `claude-opus-5-5` advanced reports), keys and encryption, sync, device-side AI orchestration, inbox, reminders, security |
+| AFD.md | v2.0: setup (passkey, phrase, storage choice), unlock, input → log, learning, receipts, voice, Telegram/email inbox, reports, reminders, money tools, sync, assisted recovery, settings, edge cases |
+| DBD.md | v2.0: device vault collections (incl. budgets, goals, debts, holdings, rules) and server tables (D1 metadata + encrypted records only), R2, KV, Drive format, lifecycle |
+| BSD.md | v2.0: monorepo (apps/web, workers/api, workers/recovery, packages/shared + rules), API endpoints, device orchestrator, inbox processing, cron, auth, errors, tests (incl. privacy scan) |
+| IPD.md | v2.0: 10 phases (~15 weeks); owner uses it daily from Phase 2 (~week 4); beta prep last |
+| DESIGN.md | Full design rules (short version in §5 above); §11 = v2 screens (setup, recovery phrase, storage choice, sync status, recovery, money tools, plan gates) |
 
 ## 8. Next steps (suggested)
-1. Owner reviews the `app/` prototype locally; collect changes. Decide whether to commit it (and whether it should be deployed at `/app`) before anything is pushed.
-2. Add the new chart colour tokens to `docs/DESIGN.md`.
-3. Resolve the open items in §6 (stats row, real sign-up).
-4. Start the real app: IPD Phase 0 (Next.js + Supabase setup), reusing the prototype's screens; apply for WhatsApp Business early.
+1. Owner decides the open points (PRD.md §11 / MONET-V2.md §12): recovery ID check and opt-out, Drive sync free or paid, price sources, speech-to-text provider. Only the price sources are needed before Phase 3; the rest can wait.
+2. Start IPD.md Phase 0–1: monorepo on Cloudflare, encrypted vault, passkey + recovery phrase, backup file.
+3. Phase 2: port the `app/` prototype screens onto the vault with the offline rules engine → owner starts daily use.
+4. Before beta: landing page v2 copy (F-84), real waitlist (F-82), stats row (F-83).
 
 ## 9. Changelog
 | Date | Change |
@@ -144,3 +145,5 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 2 Nov 2026 | `docs/` updated (local only): DESIGN.md (theme tokens + dark mode, menu controls, floating "Get started", same-size buttons, logo tiles, phone rules, app prototype section), PRD.md (F-80b–d, status), AFD.md (Add/input screen, prototype note), IPD.md (done list), TRD.md (theme keys, prototype note) |
 | 2 Nov 2026 | Landing page (pushed to `main`): floating "Get started" bigger (60 px tall), higher (32 px desktop, 28 px phone) and more noticeable (stronger pulse + hop). Tested at 1440 px and 390 px |
 | 2 Nov 2026 | Landing page (pushed to `main`): on phones, How it works (diagram on top, 3 compact step buttons + active step text below) and Demo (chat on top, 3 compact prompt buttons below) each fit in one screen. Desktop unchanged. Tested at 390 px and desktop |
+| 3 Nov 2026 | Reimagined Monet with the owner (4 rounds of questions); decisions saved to `docs/MONET-V2.md` (local only). Next steps updated: docs rewrite, then build v2 for personal use |
+| 6 Nov 2026 | `docs/` rewritten for Monet v2 (local only): PRD, TRD, AFD, DBD, BSD, IPD → v2.0; DESIGN §11 v2 screens; MONET-V2 marked approved. v1 docs kept in `docs/v1/`. Cross-checked: no Supabase/QStash leftovers, every referenced feature ID exists |
