@@ -23,7 +23,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 | Old blue/navy site | Kept on branch **`monet-blue`** (not deployed as homepage). |
 | Coral prototype (`saas2/`) | Deleted on request. |
 | App prototype (`app/`) | **Backed up on GitHub branch `app-prototype`** (commit `0416e20`, 6 Nov 2026; not merged, not deployed). Switch to that branch to see or run it. Clickable front-end with demo data; no backend. See §5b. |
-| Real app (Monet v2) | **Not started.** MONET-V2 **approved** as the plan (6 Nov 2026). Code will live in a new private repo `monet-app`. See §7 and §7b. |
+| Real app (Monet v2) | **Step 1 built (7 Nov 2026)** in the private repo [monet-app](https://github.com/IsmailGohzali/monet-app) (its own `progress.md`): encrypted local vault, passkey/PIN/12-word unlock, add and list transactions, backup, PWA. **Live at https://monet-app.ismailgohzali.workers.dev** (Cloudflare Worker, deploys from `main` of `monet-app`). See §7 and §7b. |
 | Branches on GitHub | `main`, `monet-blue` (old blue site), `app-prototype` (prototype backup). |
 | Planning docs in `docs/` | **v2 (6 Nov 2026):** PRD, TRD, AFD, DBD, BSD, IPD rewritten for Monet v2; DESIGN extended (§11 v2 screens); MONET-V2.md = decision record. Old v1 docs (Supabase plan) kept in `docs/v1/`. **Backed up in the private repo [monet-docs](https://github.com/IsmailGohzali/monet-docs)** (`docs/` is its own git repo; this repo still ignores it). |
 
@@ -125,10 +125,9 @@ Copied into the docs on 6 Nov 2026 (MONET-V2 §12–14 and PRD, TRD, AFD, DBD, B
 - **Owner has no Cloudflare account yet:** the owner creates it before the first deploy (Claude guides).
 
 ## 8. Next steps (suggested)
-1. Create private repo `monet-app`; build step 1 (IPD Phases 0–1) test-first up to deploy. Test passkey PRF on the owner's phone and laptop early.
-2. Owner creates a Cloudflare account and links it to GitHub; deploy and test step 1 on phone and laptop.
-3. Then IPD Phase 2: port the `app/` prototype screens onto the encrypted store with the offline rules engine → owner starts daily use.
-4. Before beta: landing page v2 copy (F-84), real waitlist (F-82).
+1. Test step 1 on the owner's phone and laptop at the live address (install, passkey PRF, offline, backup restore).
+2. Then IPD Phase 2: port the `app/` prototype screens onto the encrypted store with the offline rules engine → owner starts daily use.
+3. Before beta: landing page v2 copy (F-84), real waitlist (F-82).
 
 ## 9. Changelog
 | Date | Change |
@@ -168,4 +167,6 @@ Copied into the docs on 6 Nov 2026 (MONET-V2 §12–14 and PRD, TRD, AFD, DBD, B
 | 6 Nov 2026 | Backups: `app/` prototype committed and pushed to branch `app-prototype` (`0416e20`); `docs/` made its own git repo and pushed to private repo `monet-docs` (`1e25496`). Git name/email set for this repo only |
 | 6 Nov 2026 | Landing page: removed the unmeasured stats row under the demo (HTML, CSS, `sa1`–`sa4` in `ID`). Tested at 1440 px and 390 px. Merged to `main` via PR #4 (`6757d6d`), live on Vercel |
 | 6 Nov 2026 | Deleted merged branches `landing-mobile-fixes` and `remove-stats-row` (GitHub and local), on request. Kept `monet-blue` and `app-prototype` |
+| 7 Nov 2026 | Real app step 1 built test-first in the new private repo `monet-app` (commits `792c3c1`, `1879c7b`): 41 unit tests + 10 Playwright runs pass. IPD Phase 0–1 ticked in `monet-docs` (`0d7fb11`). Local `.claude/launch.json` gained a `monet-app` preview (port 4173) |
+| 7 Nov 2026 | Owner created the Cloudflare account; `monet-app` deploys as a Cloudflare Worker (PRs #1, #2 in `monet-app`). Live at https://monet-app.ismailgohzali.workers.dev; checked pages, headers, service worker, console |
 | 6 Nov 2026 | `docs/` updated with the 6 Nov decisions and pushed to `monet-docs` (`ec8f957`): MONET-V2 §12–14; static export first (Workers from Phase 4, server accounts from Phase 5); BIP39 phrase; device PIN when no PRF; app lock 15 min + on close; recovery opt-out; free drive sync; manual prices in v1; domain by Phase 6. Location line in each doc now points to `monet-docs` |
