@@ -74,7 +74,7 @@ Agents never talk to the user or to each other directly. Everything goes through
 - [ ] Inter font isn't embedded (most visitors see their system font).
 
 ## 7. Planning documents (local only, in `docs/`, not in Git)
-Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**, so a new session won't have them unless the owner provides them again.
+Written on 1 Nov 2026 for the full Monet app (v1.1, updated the same day). **They are not in the repository**, so a new session won't have them unless the owner provides them again.
 
 | File | Content |
 |---|---|
@@ -102,3 +102,5 @@ Written on 1 Nov 2026 for the full Monet app. **They are not in the repository**
 | 1 Nov 2026 | Added `progress.md` and `CLAUDE.md` |
 | 1 Nov 2026 | White landing page merged to `main` as the homepage (`index.html`); `/saas` removed; footer "Original site" link removed. Old blue site saved on branch `monet-blue` |
 | 1 Nov 2026 | `.gitignore` now ignores the whole `docs/` folder; planning docs moved into `docs/` |
+| 1 Nov 2026 | Planning docs in `docs/` updated to v1.1: homepage location, `monet-blue` branch, `progress.md`, "already done" list in IPD (local only) |
+| 8 Nov 2026 | Bottom sign-up button renamed "Get Started" (ID: "Mulai sekarang"); menu and bottom Get Started buttons now link to the app at `https://monet-app.ismailgohzali.workers.dev`, replacing the email link |
